@@ -3,8 +3,11 @@ package dsw.gerumap.app;
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.core.Gui;
 import dsw.gerumap.app.gui.swing.SwingGui;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.swing.*;
+
 
 public class AppCore extends ApplicationFramework{
 
