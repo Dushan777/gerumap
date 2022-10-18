@@ -8,11 +8,9 @@ import lombok.Setter;
 
 import javax.swing.*;
 
-
 public class AppCore extends ApplicationFramework{
 
     private static AppCore instance;
-
     private AppCore()
     {
 
