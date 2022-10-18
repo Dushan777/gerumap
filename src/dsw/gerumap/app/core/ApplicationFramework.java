@@ -8,6 +8,7 @@ public abstract class ApplicationFramework {
 
     public void initialise(Gui gui)
     {
+
         this.gui = gui;
     }
 
