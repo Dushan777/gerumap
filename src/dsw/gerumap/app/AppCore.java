@@ -8,7 +8,7 @@ import javax.swing.*;
 
 public class AppCore extends ApplicationFramework{
 
-    private  static AppCore instance;
+    private static AppCore instance;
 
     private AppCore()
     {
