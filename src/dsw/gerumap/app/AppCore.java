@@ -3,10 +3,7 @@ package dsw.gerumap.app;
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.core.Gui;
 import dsw.gerumap.app.gui.swing.SwingGui;
-import lombok.Getter;
-import lombok.Setter;
 
-import javax.swing.*;
 
 public class AppCore extends ApplicationFramework{
 
@@ -27,13 +24,13 @@ public class AppCore extends ApplicationFramework{
 
     public void run()
     {
-       // this.gui = gui;
+        this.gui.start();
     }
 
     public static void main(String[] args) {
-      //  Gui gui = new SwingGui();
-       ApplicationFramework appCore = AppCore.getInstance();
-      //  appCore.initialise(gui);
+        Gui gui = new SwingGui();
+        ApplicationFramework appCore = AppCore.getInstance();
+        appCore.initialise(gui);
         appCore.run();
     }
 

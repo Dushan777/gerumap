@@ -15,7 +15,7 @@ public class SwingGui implements Gui {
 
     @Override
     public void start() {
-       // instance = MainFrame.getInstance();
-      //  instance.setVisible(true);
+        instance = MainFrame.getInstance();
+        instance.setVisible(true);
     }
 }
