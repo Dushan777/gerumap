@@ -13,7 +13,7 @@ public class ExitAction extends AbstractGerumapAction {
     public ExitAction() {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_F4, ActionEvent.ALT_MASK));
-        putValue(SMALL_ICON, loadIcon("images/delete.png"));
+        putValue(SMALL_ICON, loadIcon("images/remove (1).png"));
         putValue(NAME, "Exit");
         putValue(SHORT_DESCRIPTION, "Exit");
     }
