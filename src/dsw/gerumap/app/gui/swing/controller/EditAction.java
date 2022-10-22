@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 public class EditAction extends AbstractGerumapAction{
 
     public EditAction() {
-        putValue(SMALL_ICON, loadIcon("images/remove (1).png"));
+        putValue(SMALL_ICON, loadIcon("images/edit.png"));
         putValue(NAME, "Edit");
         putValue(SHORT_DESCRIPTION, "Edit");
     }
