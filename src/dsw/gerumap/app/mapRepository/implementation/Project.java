@@ -23,11 +23,7 @@ public class Project extends MapNodeComposite {
             mindMaps.add((MindMap) child);
     }
 
-    @Override
-    public void deleteChild(MapNode child) {
-        if(mindMaps.size() != 0)
-            mindMaps.remove((MindMap) child);
-    }
+
 
 
 }

@@ -24,9 +24,6 @@ public class ProjectExplorer extends MapNodeComposite {
 
     }
 
-    @Override
-    public void deleteChild(MapNode child) {
-        if(projects.size() != 0)
-            projects.remove((Project) child);
-    }
+    // get project expl, init
+
 }
