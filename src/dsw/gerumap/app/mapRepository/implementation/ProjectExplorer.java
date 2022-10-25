@@ -21,6 +21,5 @@ public class ProjectExplorer extends MapNodeComposite {
 
     }
 
-    // get project expl, init
 
 }
