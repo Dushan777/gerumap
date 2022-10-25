@@ -1,4 +1,17 @@
 package dsw.gerumap.app.mapRepository.implementation;
 
-public class ProjectExplorer {
+import dsw.gerumap.app.mapRepository.composite.MapNode;
+import dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
+
+public class ProjectExplorer extends MapNodeComposite {
+
+    @Override
+    public void addChild(MapNode child) {
+
+    }
+
+    @Override
+    public void deleteChild(MapNode child) {
+
+    }
 }
