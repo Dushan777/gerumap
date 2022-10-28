@@ -11,6 +11,7 @@ public class MainFrame extends JFrame{
     private ActionManager actionManager;
     private JMenuBar menu;
     private JToolBar toolBar;
+    private JDialog dialog;
 
     private MainFrame()
     {
@@ -67,5 +68,6 @@ public class MainFrame extends JFrame{
     {
         return  actionManager;
     }
+
 
 }

@@ -20,11 +20,13 @@ public class MyMenuBar extends JMenuBar {
 
         JMenu infoMenu = new JMenu("Info"); // jos ne radi nista
         infoMenu.setMnemonic(KeyEvent.VK_I);
+        infoMenu.add(MainFrame.getInstance().getActionManager().getInfoAction());
 
 
         this.add(fileMenu);
         this.add(helpMenu);
         this.add(infoMenu);
+
     }
 
 
