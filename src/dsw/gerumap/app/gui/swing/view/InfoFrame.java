@@ -22,8 +22,8 @@ public class InfoFrame extends JDialog {
         setLocationRelativeTo(MainFrame.getInstance());
         setTitle("Info");
 
-        lblD = new JLabel(MainFrame.getInstance().getActionManager().getInfoAction().loadIcon("images/add.png") + "  Dusan Colic RN 31/21 ");
-        lblU = new JLabel(MainFrame.getInstance().getActionManager().getInfoAction().loadIcon("images/add.png") + "  Uros Colic RN 30/21 ");
+        lblD = new JLabel(MainFrame.getInstance().getActionManager().getInfoAction().loadIcon("/images/add.png") + "  Dusan Colic RN 31/21 ");
+        lblU = new JLabel(MainFrame.getInstance().getActionManager().getInfoAction().loadIcon("/images/add.png") + "  Uros Colic RN 30/21 ");
 
         BoxLayout boxLayout = new BoxLayout(getContentPane(), BoxLayout.Y_AXIS);
         getContentPane().setLayout(boxLayout);

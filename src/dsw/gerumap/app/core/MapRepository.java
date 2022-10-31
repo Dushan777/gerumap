@@ -1,10 +1,12 @@
 package dsw.gerumap.app.core;
 
+import dsw.gerumap.app.mapRepository.composite.MapNode;
+import dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
 import dsw.gerumap.app.mapRepository.implementation.ProjectExplorer;
 
 public interface MapRepository {
 
-    void initialise();
-    ProjectExplorer getProjectExplorer();
 
+    ProjectExplorer getProjectExplorer();
+    void addChild(MapNodeComposite parent, MapNode child);
 }
