@@ -9,7 +9,7 @@ public class InfoAction extends AbstractGerumapAction{
 
     public InfoAction()
     {
-        putValue(SMALL_ICON ,loadIcon("images/info.png"));
+        putValue(SMALL_ICON ,loadIcon("/images/info.png"));
 
     }
 
