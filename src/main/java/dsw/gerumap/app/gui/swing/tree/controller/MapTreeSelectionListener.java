@@ -1,6 +1,6 @@
-package main.java.dsw.gerumap.app.gui.swing.tree.controller;
+package dsw.gerumap.app.gui.swing.tree.controller;
 
-import main.java.dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
+import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;

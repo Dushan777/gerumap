@@ -1,11 +1,12 @@
-package main.java.dsw.gerumap.app.gui.swing.tree;
+package dsw.gerumap.app.gui.swing.tree;
 
-import main.java.dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
-import main.java.dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
-import main.java.dsw.gerumap.app.mapRepository.composite.MapNode;
-import main.java.dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
-import main.java.dsw.gerumap.app.mapRepository.implementation.Project;
-import main.java.dsw.gerumap.app.mapRepository.implementation.ProjectExplorer;
+import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
+import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
+import dsw.gerumap.app.mapRepository.composite.MapNode;
+import dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
+import dsw.gerumap.app.mapRepository.implementation.Project;
+import dsw.gerumap.app.mapRepository.implementation.ProjectExplorer;
+
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
@@ -14,6 +15,7 @@ import java.util.Random;
 public class MapTreeImplementation implements MapTree{
 
     private MapTreeView treeView;
+    private static int br = 1;
     private DefaultTreeModel treeModel;
 
     @Override
@@ -44,7 +46,7 @@ public class MapTreeImplementation implements MapTree{
 
     private MapNode createChild(MapNode parent) {
         if (parent instanceof ProjectExplorer)
-            return  new Project("Project" +new Random().nextInt(100), parent);
+            return  new Project("Project" + br++, parent);
         return null;
     }
 

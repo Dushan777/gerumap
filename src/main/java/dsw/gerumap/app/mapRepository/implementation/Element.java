@@ -1,6 +1,6 @@
-package main.java.dsw.gerumap.app.mapRepository.implementation;
+package dsw.gerumap.app.mapRepository.implementation;
 
-import main.java.dsw.gerumap.app.mapRepository.composite.MapNode;
+import dsw.gerumap.app.mapRepository.composite.MapNode;
 import lombok.Getter;
 import lombok.Setter;
 

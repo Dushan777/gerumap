@@ -1,10 +1,10 @@
-package main.java.dsw.gerumap.app.gui.swing.controller;
+package dsw.gerumap.app.gui.swing.controller;
 
 
 import java.awt.event.ActionEvent;
 
 
-public class EditAction extends AbstractGerumapAction{
+public class EditAction extends AbstractGerumapAction {
 
     public EditAction() {
         putValue(SMALL_ICON, loadIcon("/images/edit.png"));

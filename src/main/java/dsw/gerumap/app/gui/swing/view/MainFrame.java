@@ -1,17 +1,26 @@
-package main.java.dsw.gerumap.app.gui.swing.view;
+package dsw.gerumap.app.gui.swing.view;
 
-import main.java.dsw.gerumap.app.gui.swing.controller.ActionManager;
+import dsw.gerumap.app.core.ApplicationFramework;
+import dsw.gerumap.app.gui.swing.controller.ActionManager;
+import dsw.gerumap.app.gui.swing.tree.MapTree;
+import dsw.gerumap.app.gui.swing.tree.MapTreeImplementation;
+import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
-
+@Getter
+@Setter
 public class MainFrame extends JFrame{
 
     private static MainFrame instance;
     private ActionManager actionManager;
     private JMenuBar menu;
     private JToolBar toolBar;
-    private JDialog dialog;
+    private MapTree mapTree;
+
+    private MapTreeView projectExplorer;
 
     private MainFrame()
     {
@@ -21,10 +30,12 @@ public class MainFrame extends JFrame{
     private void initialise()
     {
         actionManager = new ActionManager();
-        initialiseGUI();
+        mapTree = new MapTreeImplementation();
+        projectExplorer = mapTree.generateTree(ApplicationFramework.getInstance().getMapRepository().getProjectExplorer());
+        initialiseGUI(projectExplorer);
     }
 
-    private void initialiseGUI() {
+    private void initialiseGUI(MapTreeView projectExplorer) {
 
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
@@ -43,7 +54,7 @@ public class MainFrame extends JFrame{
 
         JPanel desktop = new JPanel();
 
-        JScrollPane scroll = new JScrollPane();
+        JScrollPane scroll = new JScrollPane(projectExplorer);
         scroll.setMinimumSize(new Dimension(200,150));
         JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll,desktop);
         getContentPane().add(split,BorderLayout.CENTER);

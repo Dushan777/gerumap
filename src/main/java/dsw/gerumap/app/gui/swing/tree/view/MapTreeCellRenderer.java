@@ -1,10 +1,10 @@
-package main.java.dsw.gerumap.app.gui.swing.tree.view;
+package dsw.gerumap.app.gui.swing.tree.view;
 
 
+import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
+import dsw.gerumap.app.mapRepository.implementation.Project;
+import dsw.gerumap.app.mapRepository.implementation.ProjectExplorer;
 import lombok.NoArgsConstructor;
-import main.java.dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
-import main.java.dsw.gerumap.app.mapRepository.implementation.Project;
-import main.java.dsw.gerumap.app.mapRepository.implementation.ProjectExplorer;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellRenderer;

@@ -1,6 +1,7 @@
-package main.java.dsw.gerumap.app.gui.swing.tree.controller;
+package dsw.gerumap.app.gui.swing.tree.controller;
 
-import main.java.dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
+
+import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;
@@ -29,8 +30,6 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
         return (Component) edit;
     }
 
-
-
     public boolean isCellEditable(EventObject arg0) {
         if (arg0 instanceof MouseEvent)
             if (((MouseEvent)arg0).getClickCount()==3){
@@ -38,8 +37,6 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
             }
         return false;
     }
-
-
 
     public void actionPerformed(ActionEvent e){
 

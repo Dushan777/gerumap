@@ -1,4 +1,4 @@
-package main.java.dsw.gerumap.app.gui.swing.view;
+package dsw.gerumap.app.gui.swing.view;
 
 import javax.swing.*;
 
@@ -18,7 +18,7 @@ public class MyMenuBar extends JMenuBar {
         helpMenu.setMnemonic(KeyEvent.VK_H);
         helpMenu.add(MainFrame.getInstance().getActionManager().getEditAction());
 
-        JMenu infoMenu = new JMenu("Info"); // jos ne radi nista
+        JMenu infoMenu = new JMenu("Info");
         infoMenu.setMnemonic(KeyEvent.VK_I);
         infoMenu.add(MainFrame.getInstance().getActionManager().getInfoAction());
 

@@ -1,7 +1,7 @@
-package main.java.dsw.gerumap.app.mapRepository.implementation;
+package dsw.gerumap.app.mapRepository.implementation;
 
-import main.java.dsw.gerumap.app.mapRepository.composite.MapNode;
-import main.java.dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
+import dsw.gerumap.app.mapRepository.composite.MapNode;
+import dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,8 +17,14 @@ public class ProjectExplorer extends MapNodeComposite {
 
     @Override
     public void addChild(MapNode child) {
-        if(child instanceof Project)
-            getChildren().add((Project) child);
+        if(child != null && child instanceof Project)
+        {
+            Project project = (Project) child;
+            if(!this.getChildren().contains(project))
+            {
+                this.getChildren().add(project);
+            }
+        }
 
     }
 

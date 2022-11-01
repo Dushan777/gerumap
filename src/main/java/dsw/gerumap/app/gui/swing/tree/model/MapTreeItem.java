@@ -1,8 +1,8 @@
-package main.java.dsw.gerumap.app.gui.swing.tree.model;
+package dsw.gerumap.app.gui.swing.tree.model;
 
+import dsw.gerumap.app.mapRepository.composite.MapNode;
 import lombok.Getter;
 import lombok.Setter;
-import main.java.dsw.gerumap.app.mapRepository.composite.MapNode;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 

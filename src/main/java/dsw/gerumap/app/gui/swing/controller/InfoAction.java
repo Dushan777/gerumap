@@ -1,11 +1,12 @@
-package main.java.dsw.gerumap.app.gui.swing.controller;
+package dsw.gerumap.app.gui.swing.controller;
 
 
-import main.java.dsw.gerumap.app.gui.swing.view.InfoFrame;
+
+import dsw.gerumap.app.gui.swing.view.InfoFrame;
 
 import java.awt.event.ActionEvent;
 
-public class InfoAction extends AbstractGerumapAction{
+public class InfoAction extends AbstractGerumapAction {
 
     public InfoAction()
     {

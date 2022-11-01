@@ -1,8 +1,8 @@
-package main.java.dsw.gerumap.app.gui.swing.tree;
+package dsw.gerumap.app.gui.swing.tree;
 
-import main.java.dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
-import main.java.dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
-import main.java.dsw.gerumap.app.mapRepository.implementation.ProjectExplorer;
+import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
+import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
+import dsw.gerumap.app.mapRepository.implementation.ProjectExplorer;
 
 public interface MapTree {
 

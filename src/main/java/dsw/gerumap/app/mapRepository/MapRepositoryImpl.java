@@ -1,9 +1,9 @@
-package main.java.dsw.gerumap.app.mapRepository;
+package dsw.gerumap.app.mapRepository;
 
-import main.java.dsw.gerumap.app.core.MapRepository;
-import main.java.dsw.gerumap.app.mapRepository.composite.MapNode;
-import main.java.dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
-import main.java.dsw.gerumap.app.mapRepository.implementation.ProjectExplorer;
+import dsw.gerumap.app.core.MapRepository;
+import dsw.gerumap.app.mapRepository.composite.MapNode;
+import dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
+import dsw.gerumap.app.mapRepository.implementation.ProjectExplorer;
 
 public class MapRepositoryImpl implements MapRepository {
 
