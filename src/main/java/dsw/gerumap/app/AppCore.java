@@ -7,32 +7,13 @@ import main.java.dsw.gerumap.app.gui.swing.SwingGui;
 import main.java.dsw.gerumap.app.mapRepository.MapRepositoryImpl;
 
 
-public class AppCore extends ApplicationFramework{
+public class AppCore {
 
-    private static AppCore instance;
-    private AppCore()
-    {
-
-    }
-
-    public  static  AppCore getInstance()
-    {
-        if(instance == null)
-        {
-            instance = new AppCore();
-        }
-        return instance;
-    }
-
-    public void run()
-    {
-        this.gui.start();
-    }
 
     public static void main(String[] args) {
         Gui gui = new SwingGui();
         MapRepository repository = new MapRepositoryImpl();
-        ApplicationFramework appCore = AppCore.getInstance();
+        ApplicationFramework appCore = ApplicationFramework.getInstance();
         appCore.initialise(gui,repository);
         appCore.run();
     }
