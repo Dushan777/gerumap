@@ -7,7 +7,6 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@NoArgsConstructor
 public abstract class MapNode {
 
     private String name;
