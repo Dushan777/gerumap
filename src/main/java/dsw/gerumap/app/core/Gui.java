@@ -1,0 +1,6 @@
+package main.java.dsw.gerumap.app.core;
+
+public interface Gui {
+    void start();
+
+}
