@@ -2,6 +2,7 @@ package dsw.gerumap.app.gui.swing.tree.view;
 
 
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
+import dsw.gerumap.app.mapRepository.implementation.Element;
 import dsw.gerumap.app.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.mapRepository.implementation.Project;
 import dsw.gerumap.app.mapRepository.implementation.ProjectExplorer;
@@ -29,13 +30,16 @@ public class MapTreeCellRenderer extends DefaultTreeCellRenderer {
         else if (((MapTreeItem)value).getMapNode() instanceof MindMap) {
             imageURL = getClass().getResource("/images/map.png");
         }
+        else if (((MapTreeItem)value).getMapNode() instanceof Element) {
+            imageURL = getClass().getResource("/images/tproject.gif");
+        }
 
 
         Icon icon = null;
-        if (imageURL != null)
+        if (imageURL != null) {
             icon = new ImageIcon(imageURL);
-        setIcon(icon);
-
+            setIcon(icon);
+        }
         return this;
     }
 
