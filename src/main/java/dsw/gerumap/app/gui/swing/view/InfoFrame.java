@@ -8,8 +8,8 @@ import java.awt.*;
 @NoArgsConstructor
 public class InfoFrame extends JDialog {
 
-    private JLabel lblD;
-    private JLabel lblU;
+    private JLabel lblD, lblDName;
+    private JLabel lblU, lblUName;
 
     public void initialise()
     {
@@ -22,8 +22,11 @@ public class InfoFrame extends JDialog {
         setLocationRelativeTo(MainFrame.getInstance());
         setTitle("Info");
 
-        lblD = new JLabel(MainFrame.getInstance().getActionManager().getInfoAction().loadIcon("/images/add.png") + "  Dusan Colic RN 31/21 ");
-        lblU = new JLabel(MainFrame.getInstance().getActionManager().getInfoAction().loadIcon("/images/add.png") + "  Uros Colic RN 30/21 ");
+        lblD = new JLabel(MainFrame.getInstance().getActionManager().getInfoAction().loadIcon("/images/add.png"));
+        lblU = new JLabel(MainFrame.getInstance().getActionManager().getInfoAction().loadIcon("/images/add.png"));
+        lblDName = new JLabel("Dusan Colic RN 31/21");
+        lblUName = new JLabel("Uros Colic RN 30/21");
+
 
         BoxLayout boxLayout = new BoxLayout(getContentPane(), BoxLayout.Y_AXIS);
         getContentPane().setLayout(boxLayout);
@@ -39,10 +42,12 @@ public class InfoFrame extends JDialog {
         JPanel panelD = new JPanel();
         panelD.setLayout(flowLayoutD);
         panelD.add(lblD);
+        panelD.add(lblDName);
 
         JPanel panelU = new JPanel();
         panelU.setLayout(flowLayoutU);
         panelU.add(lblU);
+        panelU.add(lblUName);
 
 
         add(panelD);
