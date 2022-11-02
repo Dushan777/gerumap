@@ -4,18 +4,18 @@ import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
 import dsw.gerumap.app.mapRepository.composite.MapNode;
 import dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
+import dsw.gerumap.app.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.mapRepository.implementation.Project;
 import dsw.gerumap.app.mapRepository.implementation.ProjectExplorer;
 
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
-import java.util.Random;
 
 public class MapTreeImplementation implements MapTree{
 
     private MapTreeView treeView;
-    private static int br = 1;
+    private static int brProject = 1, brMindMap = 1;
     private DefaultTreeModel treeModel;
 
     @Override
@@ -46,7 +46,9 @@ public class MapTreeImplementation implements MapTree{
 
     private MapNode createChild(MapNode parent) {
         if (parent instanceof ProjectExplorer)
-            return  new Project("Project" + br++, parent);
+            return  new Project("Project" + brProject++, parent);
+        if(parent instanceof  Project)
+            return  new MindMap("Mind Map" + brMindMap++ , parent);
         return null;
     }
 
