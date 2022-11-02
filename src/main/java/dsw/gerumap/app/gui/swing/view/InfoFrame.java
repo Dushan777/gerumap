@@ -10,7 +10,6 @@ public class InfoFrame extends JDialog {
 
     private JLabel lblD, lblDName;
     private JLabel lblU, lblUName;
-
     public void initialise()
     {
         Toolkit kit = Toolkit.getDefaultToolkit();

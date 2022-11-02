@@ -1,9 +1,12 @@
 package dsw.gerumap.app.gui.swing.view;
 
+
+
 import javax.swing.*;
 import java.awt.*;
 
 public class EditFrame extends JDialog {
+
 
     private JLabel lblAuthor;
     private JTextField tfName;
@@ -26,6 +29,7 @@ public class EditFrame extends JDialog {
         tfName = new JTextField();
         tfName.setPreferredSize(new Dimension(100,25));
         btnOk = new JButton("OK");
+        btnOk.addActionListener(MainFrame.getInstance().getActionManager().getOkAction());
 
         FlowLayout flowLayout = new FlowLayout();
         flowLayout.setHgap(30);
@@ -39,6 +43,8 @@ public class EditFrame extends JDialog {
         panel.add(btnOk);
 
         add(panel);
+
+
 
     }
 }
