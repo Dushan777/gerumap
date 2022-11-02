@@ -48,7 +48,11 @@ public class MapTreeImplementation implements MapTree{
         if (parent instanceof ProjectExplorer)
             return  new Project("Project" + brProject++, parent);
         if(parent instanceof  Project)
+        {
+            brMindMap = ((Project) parent).getChildren().size() + 1;
             return  new MindMap("Mind Map" + brMindMap++ , parent);
+        }
+
         return null;
     }
 

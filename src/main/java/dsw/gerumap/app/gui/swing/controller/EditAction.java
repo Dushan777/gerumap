@@ -1,6 +1,8 @@
 package dsw.gerumap.app.gui.swing.controller;
 
 
+import dsw.gerumap.app.gui.swing.view.EditFrame;
+
 import java.awt.event.ActionEvent;
 
 
@@ -14,7 +16,9 @@ public class EditAction extends AbstractGerumapAction {
 
     public void actionPerformed(ActionEvent arg0)
     {
-        System.exit(0); // promeniti
+        EditFrame editFrame = new EditFrame();
+        editFrame.initialise();
+        editFrame.setVisible(true);
     }
 
 }
