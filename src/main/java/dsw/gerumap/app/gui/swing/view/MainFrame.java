@@ -22,6 +22,9 @@ public class MainFrame extends JFrame{
 
     private MapTreeView projectExplorer;
 
+    private JLabel lbl;
+
+
     private MainFrame()
     {
 
@@ -52,7 +55,11 @@ public class MainFrame extends JFrame{
         toolBar = new Toolbar();
         add(toolBar,BorderLayout.NORTH);
 
+        lbl = new JLabel("lol");
+
+
         JPanel desktop = new JPanel();
+        desktop.add(lbl);
 
         JScrollPane scroll = new JScrollPane(projectExplorer);
         scroll.setMinimumSize(new Dimension(200,150));
