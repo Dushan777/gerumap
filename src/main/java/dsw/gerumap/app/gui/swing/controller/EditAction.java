@@ -16,9 +16,8 @@ public class EditAction extends AbstractGerumapAction {
 
     public void actionPerformed(ActionEvent arg0)
     {
-        EditFrame editFrame = new EditFrame();
-        editFrame.initialise();
-        editFrame.setVisible(true);
+        EditFrame.getInstance().setVisible(true);
+
     }
 
 }

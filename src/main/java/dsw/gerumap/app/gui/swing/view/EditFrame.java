@@ -2,14 +2,23 @@ package dsw.gerumap.app.gui.swing.view;
 
 
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.swing.*;
 import java.awt.*;
-
+@Getter
+@Setter
 public class EditFrame extends JDialog {
 
+    private static EditFrame instance;
 
+    private EditFrame()
+    {
+
+    }
     private JLabel lblAuthor;
-    private JTextField tfName;
+    private JTextField tfAuthor;
     private JButton btnOk;
     public void initialise()
     {
@@ -26,8 +35,8 @@ public class EditFrame extends JDialog {
         getContentPane().setLayout(boxLayout);
 
         lblAuthor = new JLabel("Set author's name: ");
-        tfName = new JTextField();
-        tfName.setPreferredSize(new Dimension(100,25));
+        tfAuthor = new JTextField();
+        tfAuthor.setPreferredSize(new Dimension(100,25));
         btnOk = new JButton("OK");
         btnOk.addActionListener(MainFrame.getInstance().getActionManager().getOkAction());
 
@@ -39,7 +48,7 @@ public class EditFrame extends JDialog {
         JPanel panel = new JPanel();
         panel.setLayout(flowLayout);
         panel.add(lblAuthor);
-        panel.add(tfName);
+        panel.add(tfAuthor);
         panel.add(btnOk);
 
         add(panel);
@@ -47,4 +56,15 @@ public class EditFrame extends JDialog {
 
 
     }
+
+    public static EditFrame getInstance()
+    {
+        if(instance == null)
+        {
+            instance = new EditFrame();
+            instance.initialise();
+        }
+        return instance;
+    }
+
 }
