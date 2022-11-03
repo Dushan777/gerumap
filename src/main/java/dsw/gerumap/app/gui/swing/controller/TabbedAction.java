@@ -1,20 +1,30 @@
 package dsw.gerumap.app.gui.swing.controller;
 
-import dsw.gerumap.app.gui.swing.view.TabbedFrame;
+import dsw.gerumap.app.gui.swing.tree.controller.MapTreeSelectionListener;
+import dsw.gerumap.app.gui.swing.view.MainFrame;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 @Getter
 @Setter
 public class TabbedAction extends AbstractGerumapAction{
 
+   private JPanel tab;
+   private String tabName;
+   private MapTreeSelectionListener treeSelectionListener;
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        TabbedFrame tabbedFrame = new TabbedFrame();
-        tabbedFrame.initialise();
-        tabbedFrame.setVisible(true);
+        tab = new JPanel();
+        treeSelectionListener = new MapTreeSelectionListener();  // TODO
+        tabName = treeSelectionListener.getName();    // TODO
+
+        if (!tabName.equals("")) {
+            MainFrame.getInstance().getTabbedPane().addTab(tabName, tab);
+        }
     }
 }

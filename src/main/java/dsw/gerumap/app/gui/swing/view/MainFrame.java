@@ -23,7 +23,8 @@ public class MainFrame extends JFrame{
     private MapTreeView projectExplorer;
 
     private JLabel lbl;
-
+    private JTabbedPane tabbedPane;
+    private String authorName, projectName; // TODO
 
     private MainFrame()
     {
@@ -58,13 +59,25 @@ public class MainFrame extends JFrame{
         lbl = new JLabel("lol");
 
 
-        JPanel desktop = new JPanel();
-        desktop.add(lbl);
+        tabbedPane = new JTabbedPane(SwingConstants.TOP);
+        JPanel jPanel1 = new JPanel();
+        JPanel jPanel2 = new JPanel();
+        JPanel jPanel3 = new JPanel();
+        tabbedPane.addTab("Tab 1", jPanel1);
+        tabbedPane.addTab("Tab 2", jPanel2);
+        tabbedPane.addTab("Tab 3", jPanel3);
+
+
+        JPanel desktop = new JPanel(new BorderLayout());
+        desktop.add(lbl, BorderLayout.NORTH);
+        desktop.add(tabbedPane);
+
 
         JScrollPane scroll = new JScrollPane(projectExplorer);
         scroll.setMinimumSize(new Dimension(200,150));
         JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll,desktop);
         getContentPane().add(split,BorderLayout.CENTER);
+
         split.setDividerLocation(250);
         split.setOneTouchExpandable(true);
 

@@ -16,26 +16,26 @@ public class InfoFrame extends JDialog {
         Dimension screenSize = kit.getScreenSize();
         int screenHeight = screenSize.height;
         int screenWidth = screenSize.width;
-        setSize(screenWidth / 4,  screenHeight / 4);
+        setSize(screenWidth / 4,  screenHeight / 2);
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(MainFrame.getInstance());
         setTitle("Info");
 
-        lblD = new JLabel(MainFrame.getInstance().getActionManager().getInfoAction().loadIcon("/images/add.png"));
-        lblU = new JLabel(MainFrame.getInstance().getActionManager().getInfoAction().loadIcon("/images/add.png"));
+        lblD = new JLabel(MainFrame.getInstance().getActionManager().getInfoAction().loadIcon("/images/dusan.png"));
+        lblU = new JLabel(MainFrame.getInstance().getActionManager().getInfoAction().loadIcon("/images/uros.png"));
         lblDName = new JLabel("Dusan Colic RN 31/21");
-        lblUName = new JLabel("Uros Colic RN 30/21");
+        lblUName = new JLabel("   Uros Colic RN 30/21");
 
 
         BoxLayout boxLayout = new BoxLayout(getContentPane(), BoxLayout.Y_AXIS);
         getContentPane().setLayout(boxLayout);
 
         FlowLayout flowLayoutD = new FlowLayout();
-        flowLayoutD.setHgap(30);
+        flowLayoutD.setHgap(20);
         flowLayoutD.setAlignment(FlowLayout.CENTER);
 
         FlowLayout flowLayoutU = new FlowLayout();
-        flowLayoutU.setHgap(30);
+        flowLayoutU.setHgap(20);
         flowLayoutU.setAlignment(FlowLayout.CENTER);
 
         JPanel panelD = new JPanel();
