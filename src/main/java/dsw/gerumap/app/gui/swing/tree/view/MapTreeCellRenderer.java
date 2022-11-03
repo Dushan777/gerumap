@@ -31,7 +31,7 @@ public class MapTreeCellRenderer extends DefaultTreeCellRenderer {
             imageURL = getClass().getResource("/images/map.png");
         }
         else if (((MapTreeItem)value).getMapNode() instanceof Element) {
-            imageURL = getClass().getResource("/images/tproject.gif");
+            imageURL = getClass().getResource("/images/element.png");
         }
 
 
