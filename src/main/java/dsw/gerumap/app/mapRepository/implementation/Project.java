@@ -26,7 +26,8 @@ public class Project extends MapNodeComposite {
 
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return projectName + " - " + author;
+    }
 }
