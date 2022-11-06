@@ -109,7 +109,7 @@ public class MainFrame extends JFrame implements ISubscriber {
         if(notification instanceof Project)
         {
             Project p = (Project) notification;
-            lbl.setText(p.getName() + " - " + p.getAuthor());    // vidljiva promena
+            lbl.setText(p.toString());    // vidljiva promena
         }
 
     }
