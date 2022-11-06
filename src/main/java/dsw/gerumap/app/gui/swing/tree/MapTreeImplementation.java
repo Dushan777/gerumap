@@ -14,7 +14,7 @@ import dsw.gerumap.app.mapRepository.implementation.ProjectExplorer;
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
 
-public class MapTreeImplementation implements MapTree{
+public class MapTreeImplementation implements MapTree {
 
     private MapTreeView treeView;
     private static int brProject = 1, brMindMap = 1, brElement = 1;
@@ -35,6 +35,7 @@ public class MapTreeImplementation implements MapTree{
             return;
 
         MapNode child = createChild(parent.getMapNode());
+        child.addSubscribers(MainFrame.getInstance());      // za svako dete se dodaje MainFrame kao subscriber
         parent.add(new MapTreeItem(child));
         ((MapNodeComposite) parent.getMapNode()).addChild(child);
         treeView.expandPath(treeView.getSelectionPath());

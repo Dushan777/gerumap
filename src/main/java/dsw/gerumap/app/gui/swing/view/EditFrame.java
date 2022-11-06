@@ -50,10 +50,7 @@ public class EditFrame extends JDialog {
         panel.add(lblAuthor);
         panel.add(tfAuthor);
         panel.add(btnOk);
-
         add(panel);
-
-
 
     }
 

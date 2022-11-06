@@ -15,8 +15,8 @@ public class RemoveAction extends AbstractGerumapAction {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_F4, ActionEvent.ALT_MASK));
         putValue(SMALL_ICON, loadIcon("/images/remove.png"));
-        putValue(NAME, "Exit");
-        putValue(SHORT_DESCRIPTION, "Exit");
+        putValue(NAME, "Remove");
+        putValue(SHORT_DESCRIPTION, "Remove");
     }
 
     public void actionPerformed(ActionEvent arg0)

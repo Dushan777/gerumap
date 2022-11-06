@@ -2,9 +2,11 @@ package dsw.gerumap.app.gui.swing.view;
 
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.controller.ActionManager;
+import dsw.gerumap.app.gui.swing.observer.ISubscriber;
 import dsw.gerumap.app.gui.swing.tree.MapTree;
 import dsw.gerumap.app.gui.swing.tree.MapTreeImplementation;
 import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
+import dsw.gerumap.app.mapRepository.implementation.Project;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +14,7 @@ import javax.swing.*;
 import java.awt.*;
 @Getter
 @Setter
-public class MainFrame extends JFrame{
+public class MainFrame extends JFrame implements ISubscriber {
 
     private static MainFrame instance;
     private ActionManager actionManager;
@@ -56,7 +58,7 @@ public class MainFrame extends JFrame{
         toolBar = new Toolbar();
         add(toolBar,BorderLayout.NORTH);
 
-        lbl = new JLabel("lol");
+        lbl = new JLabel("");
 
 
         tabbedPane = new JTabbedPane(SwingConstants.TOP);
@@ -101,4 +103,14 @@ public class MainFrame extends JFrame{
     }
 
 
+    @Override
+    public void update(Object notification)
+    {
+        if(notification instanceof Project)
+        {
+            Project p = (Project) notification;
+            lbl.setText(p.getName() + " - " + p.getAuthor());    // vidljiva promena
+        }
+
+    }
 }

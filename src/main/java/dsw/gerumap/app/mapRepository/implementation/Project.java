@@ -8,15 +8,18 @@ import lombok.Setter;
 
 
 
+
 @Getter
 @Setter
 
 public class Project extends MapNodeComposite {
 
-    private String projectName, author, folderDirection;
+    private String author = " ", folderDirection;
 
     public Project(String name, MapNode parent) {
         super(name, parent);
+
+
     }
 
     @Override
@@ -28,6 +31,11 @@ public class Project extends MapNodeComposite {
 
     @Override
     public String toString() {
-        return projectName + " - " + author;
+
+        if(author.equals(" "))
+            return getName();
+        return getName() + " - " + author;
     }
+
+
 }

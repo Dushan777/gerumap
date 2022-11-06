@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 
 public class EditAction extends AbstractGerumapAction {
 
+
+
     public EditAction() {
         putValue(SMALL_ICON, loadIcon("/images/edit.png"));
         putValue(NAME, "Edit");
