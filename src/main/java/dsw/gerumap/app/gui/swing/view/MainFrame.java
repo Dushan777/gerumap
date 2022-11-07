@@ -58,7 +58,7 @@ public class MainFrame extends JFrame implements ISubscriber {
         toolBar = new Toolbar();
         add(toolBar,BorderLayout.NORTH);
 
-        lbl = new JLabel("");
+        lbl = new JLabel(" ");
 
 
         tabbedPane = new JTabbedPane(SwingConstants.TOP);

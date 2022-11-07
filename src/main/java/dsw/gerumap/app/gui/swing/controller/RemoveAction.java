@@ -19,13 +19,13 @@ public class RemoveAction extends AbstractGerumapAction {
         putValue(SHORT_DESCRIPTION, "Remove");
     }
 
-    public void actionPerformed(ActionEvent arg0)
-    {
+    public void actionPerformed(ActionEvent arg0) {
         MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
-        MainFrame.getInstance().getMapTree().getSelectedNode().removeFromParent();
-        MainFrame.getInstance().getMapTree().removeChild(selected);
+        if (selected != null) {
+            MainFrame.getInstance().getMapTree().getSelectedNode().removeFromParent();
+            MainFrame.getInstance().getMapTree().removeChild(selected);
+        }
+
     }
-
-
 
 }

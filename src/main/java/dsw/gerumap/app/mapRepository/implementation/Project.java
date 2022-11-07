@@ -32,7 +32,7 @@ public class Project extends MapNodeComposite {
     @Override
     public String toString() {
 
-        if(author.equals(" "))
+        if(author.equals(" ") || author.equals(""))
             return getName();
         return getName() + " - " + author;
     }
