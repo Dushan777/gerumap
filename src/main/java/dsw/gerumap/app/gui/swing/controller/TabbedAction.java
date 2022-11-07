@@ -25,6 +25,7 @@ public class TabbedAction extends AbstractGerumapAction{
 
         if (!tabName.equals("")) {
             MainFrame.getInstance().getTabbedPane().addTab(tabName, tab);
+
         }
     }
 }

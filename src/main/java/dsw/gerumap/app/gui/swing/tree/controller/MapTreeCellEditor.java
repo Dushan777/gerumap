@@ -2,8 +2,11 @@ package dsw.gerumap.app.gui.swing.tree.controller;
 
 
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
+import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.mapRepository.composite.MapNode;
 import dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
+import dsw.gerumap.app.mapRepository.implementation.Project;
+import lombok.Getter;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;
@@ -14,12 +17,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.EventObject;
 
+@Getter
 public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionListener {
 
 
     private Object clickedOn = null;
     private JTextField edit = null;
-
     private int brojac;
 
     public MapTreeCellEditor(JTree arg0, DefaultTreeCellRenderer arg1) {
@@ -36,15 +39,15 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
 
     public boolean isCellEditable(EventObject arg0) {
 
-
         if (arg0 instanceof MouseEvent)
-        {
-             brojac = ((MouseEvent)arg0).getClickCount();
-            if (brojac == 3 || brojac == 2) {                   // treba li nam ovo????
+            if (((MouseEvent)arg0).getClickCount() == 3) {
+                brojac = 0;
                 return true;
             }
-
-        }
+            else if (((MouseEvent)arg0).getClickCount() == 2)
+            {
+                brojac = 2;
+            }
         return false;
     }
 
@@ -55,25 +58,19 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
         MapTreeItem clicked = (MapTreeItem) clickedOn;
         MapNodeComposite parent = (MapNodeComposite) clicked.getMapNode().getParent();
 
-      /*  if (brojac == 3) {*/
-            boolean editable = true;
-            for (MapNode child : parent.getChildren()) {
-                if (!(child.getName().equals(e.getActionCommand()))) {
-                    editable = true;
-                } else {
-                    editable = false;
-                    break;
-                }
+        boolean editable = true;
+        for (MapNode child : parent.getChildren()) {
+            if (!(child.getName().equals(e.getActionCommand()))) {
+                editable = true;
+            } else {
+                editable = false;
+                break;
             }
-            if (editable)
-                clicked.setName(e.getActionCommand());
-            clicked.getMapNode().notifySubscribers(clicked.getMapNode());
+        }
+       if (editable)
+            clicked.setName(e.getActionCommand());
 
-       // }
-     //   else
-      //  {
-    //        clicked.getMapNode().notifySubscribers(clicked.getMapNode());
-     //   }
+
     }
 
 

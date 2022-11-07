@@ -2,15 +2,18 @@ package dsw.gerumap.app.mapRepository.composite;
 
 import dsw.gerumap.app.gui.swing.observer.IPublisher;
 import dsw.gerumap.app.gui.swing.observer.ISubscriber;
+import dsw.gerumap.app.gui.swing.tree.controller.MapTreeCellEditor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.EventObject;
 import java.util.List;
 
 @Getter
-@Setter
 public abstract class MapNode implements IPublisher {
 
     private String name;
@@ -66,4 +69,13 @@ public abstract class MapNode implements IPublisher {
         }
     }
 
+    public boolean doubleClicked(MapTreeCellEditor map) {
+       if(map.getBrojac() == 2)
+           return true;
+       return false;
+    }
+    public void setName(String name) {
+        this.name = name;
+        this.notifySubscribers(this);
+    }
 }
