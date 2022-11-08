@@ -35,7 +35,8 @@ public class MapTreeImplementation implements MapTree {
             return;
 
         MapNode child = createChild(parent.getMapNode());
-        child.addSubscribers(MainFrame.getInstance());      // za svako dete se dodaje MainFrame kao subscriber
+        if(child instanceof Project)
+            child.addSubscribers(MainFrame.getInstance().getProjectView());     //dodaje ProjectView kao subscribera Project-u
         parent.add(new MapTreeItem(child));
         ((MapNodeComposite) parent.getMapNode()).addChild(child);
         treeView.expandPath(treeView.getSelectionPath());

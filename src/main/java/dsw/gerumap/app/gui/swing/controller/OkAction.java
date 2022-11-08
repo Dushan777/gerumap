@@ -25,7 +25,7 @@ public class OkAction implements ActionListener {
             if(project instanceof Project)
             {
                 ((Project) project).setAuthor(author);
-                MainFrame.getInstance().getLbl().setText(project.toString());
+                MainFrame.getInstance().getProjectView().getLbl().setText(project.toString());
             }
         }
         EditFrame.getInstance().dispose();
