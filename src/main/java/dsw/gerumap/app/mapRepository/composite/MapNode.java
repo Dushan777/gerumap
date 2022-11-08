@@ -14,6 +14,7 @@ import java.util.EventObject;
 import java.util.List;
 
 @Getter
+@Setter
 public abstract class MapNode implements IPublisher {
 
     private String name;

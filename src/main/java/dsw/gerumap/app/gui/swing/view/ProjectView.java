@@ -25,7 +25,6 @@ public class ProjectView extends JPanel implements ISubscriber {
 
     public ProjectView()
     {
-
         initialise();
     }
 
