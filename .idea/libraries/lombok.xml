@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="lombok">
-    <CLASSES>
-      <root url="jar://$USER_HOME$/eclipse/java-2021-12/eclipse/lombok.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

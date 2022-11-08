@@ -12,6 +12,8 @@ import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+
 @Getter
 @Setter
 public class MainFrame extends JFrame implements ISubscriber {
@@ -26,8 +28,8 @@ public class MainFrame extends JFrame implements ISubscriber {
 
     private JLabel lbl;
     private JTabbedPane tabbedPane;
-    private String authorName, projectName; // TODO
-
+    private String authorName, projectName;
+    // dodati dvoklik
     private MainFrame()
     {
 
@@ -106,10 +108,11 @@ public class MainFrame extends JFrame implements ISubscriber {
     @Override
     public void update(Object notification)
     {
-        if(notification instanceof Project)
+
+        if(notification instanceof Project )
         {
             Project p = (Project) notification;
-            lbl.setText(p.toString());    // vidljiva promena
+            lbl.setText(p.toString());               // vidljiva promena
         }
 
     }

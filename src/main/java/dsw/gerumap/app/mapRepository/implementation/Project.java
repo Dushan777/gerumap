@@ -11,7 +11,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-
 public class Project extends MapNodeComposite {
 
     private String author = " ", folderDirection;
@@ -35,7 +34,7 @@ public class Project extends MapNodeComposite {
         if(author.equals(" ") || author.equals(""))
             return getName();
         return getName() + " - " + author;
-    }
 
+    }
 
 }
