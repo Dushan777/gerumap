@@ -29,7 +29,7 @@ public class MainFrame extends JFrame implements ISubscriber {
     private JLabel lbl;
     private JTabbedPane tabbedPane;
     private String authorName, projectName;
-
+    // dodati dvoklik
     private MainFrame()
     {
 
