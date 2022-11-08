@@ -24,7 +24,6 @@ public class TabbedAction extends AbstractGerumapAction{
         tabName = treeSelectionListener.getName();    // TODO
 
         if (!tabName.equals("")) {
-            MainFrame.getInstance().getTabbedPane().addTab(tabName, tab);
 
         }
     }
