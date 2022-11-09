@@ -1,10 +1,11 @@
 package dsw.gerumap.app;
 
-import dsw.gerumap.app.core.ApplicationFramework;
-import dsw.gerumap.app.core.Gui;
-import dsw.gerumap.app.core.MapRepository;
+import dsw.gerumap.app.core.*;
 import dsw.gerumap.app.gui.swing.SwingGui;
+import dsw.gerumap.app.gui.swing.errorLogger.ConsoleLogger;
+import dsw.gerumap.app.gui.swing.errorLogger.ErrorFactory;
 import dsw.gerumap.app.mapRepository.MapRepositoryImpl;
+import dsw.gerumap.app.messsageGenerator.MessageGeneratorImplementation;
 
 
 public class AppCore {
@@ -14,7 +15,11 @@ public class AppCore {
         ApplicationFramework appCore = ApplicationFramework.getInstance();
         Gui gui = new SwingGui();
         MapRepository repository = new MapRepositoryImpl();
-        appCore.initialise(gui,repository);
+        MessageGenerator messageGenerator = new MessageGeneratorImplementation() ;
+        ErrorFactory errorFactory = new ErrorFactory();
+        ErrorLogger errorLogger = errorFactory.createLogger("FileLOGGEr");
+        errorLogger.log();
+        appCore.initialise(gui,repository,messageGenerator,errorLogger);
         appCore.run();
     }
 
