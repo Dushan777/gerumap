@@ -30,7 +30,7 @@ public class ProjectView extends JPanel implements ISubscriber {
 
     private  void initialise()
     {
-        if(selected != null)                    // sta project da bude
+        if(selected != null)                   // sta project da bude
         {
             project = (Project)selected.getMapNode();
             project.addSubscribers(this);

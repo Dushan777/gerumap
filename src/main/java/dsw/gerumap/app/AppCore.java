@@ -2,10 +2,9 @@ package dsw.gerumap.app;
 
 import dsw.gerumap.app.core.*;
 import dsw.gerumap.app.gui.swing.SwingGui;
-import dsw.gerumap.app.gui.swing.errorLogger.ConsoleLogger;
 import dsw.gerumap.app.gui.swing.errorLogger.ErrorFactory;
 import dsw.gerumap.app.mapRepository.MapRepositoryImpl;
-import dsw.gerumap.app.messsageGenerator.MessageGeneratorImplementation;
+import dsw.gerumap.app.messageGenerator.MessageGeneratorImplementation;
 
 
 public class AppCore {

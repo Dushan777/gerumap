@@ -1,5 +1,6 @@
 package dsw.gerumap.app.gui.swing.controller;
 
+import dsw.gerumap.app.core.MessageGenerator;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.EditFrame;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
@@ -27,6 +28,14 @@ public class OkAction implements ActionListener {
                 ((Project) project).setAuthor(author);
                 MainFrame.getInstance().getProjectView().getLbl().setText(project.toString());
             }
+            else
+            {
+                // mora biti selektovan project
+            }
+        }
+        else
+        {
+            // nista nije selektovano
         }
         EditFrame.getInstance().dispose();
 
