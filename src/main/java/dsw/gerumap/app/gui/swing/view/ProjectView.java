@@ -100,6 +100,8 @@ public class ProjectView extends JPanel implements ISubscriber {
         if(this.project != null)
             this.project.removeSubscribers(this);
         this.project = project;
+        if(this.project == null)
+            return ;
         this.project.addSubscribers(this);
         switchUI();
     }
