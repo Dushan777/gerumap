@@ -68,7 +68,10 @@ public class ProjectView extends JPanel implements ISubscriber {
                             flag = true;
 
                     if(!flag)
+                    {
                         tabbedPane.removeTabAt(j);
+                        numberOfTabs--;
+                    }
                     flag = false;
                 }
             }
