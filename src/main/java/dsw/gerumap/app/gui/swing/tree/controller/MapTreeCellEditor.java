@@ -2,8 +2,10 @@ package dsw.gerumap.app.gui.swing.tree.controller;
 
 
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
+import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.mapRepository.composite.MapNode;
 import dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
+import dsw.gerumap.app.mapRepository.implementation.Project;
 import lombok.Getter;
 
 import javax.swing.*;
@@ -21,7 +23,6 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
 
     private Object clickedOn = null;
     private JTextField edit = null;
-    private int brojac;
 
     public MapTreeCellEditor(JTree arg0, DefaultTreeCellRenderer arg1) {
         super(arg0, arg1);
@@ -39,12 +40,13 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
 
         if (arg0 instanceof MouseEvent)
             if (((MouseEvent)arg0).getClickCount() == 3) {
-                brojac = 0;
                 return true;
             }
             else if (((MouseEvent)arg0).getClickCount() == 2)
             {
-                brojac = 2;
+        MapNode node = MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode();
+                if(node instanceof Project)
+                    MainFrame.getInstance().getProjectView().setProject((Project)node);
             }
         return false;
     }

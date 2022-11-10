@@ -5,14 +5,13 @@ import dsw.gerumap.app.mapRepository.composite.MapNode;
 
 public abstract class NodeFactory {
 
-   public MapNode getNode(String type)
+   public MapNode getNode()
    {
        MapNode mapNode;
-       mapNode = createNode(type);
-       //mapNode.setName();
+       mapNode = createNode();
        mapNode.setParent(MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode());
        return mapNode;
    }
 
-   public abstract MapNode createNode(String type);
+   public abstract MapNode createNode();
 }

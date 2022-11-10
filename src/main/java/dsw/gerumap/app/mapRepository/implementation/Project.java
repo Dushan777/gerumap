@@ -14,6 +14,7 @@ import lombok.Setter;
 public class Project extends MapNodeComposite {
 
     private String author = " ", folderDirection;
+    private static int br = 1;
 
     public Project(String name, MapNode parent) {
         super(name, parent);
@@ -22,7 +23,7 @@ public class Project extends MapNodeComposite {
     }
     public Project()
     {
-
+        this.settName();
     }
 
     @Override
@@ -41,5 +42,9 @@ public class Project extends MapNodeComposite {
 
     }
 
+    private void settName()
+    {
+       this.setName("Project" + br++);
+    }
 
 }

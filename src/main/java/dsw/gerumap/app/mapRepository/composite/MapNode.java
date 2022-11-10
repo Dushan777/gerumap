@@ -71,11 +71,6 @@ public abstract class MapNode implements IPublisher {
         }
     }
 
-    public boolean doubleClicked(MapTreeCellEditor map) {
-       if(map.getBrojac() == 2)
-           return true;
-       return false;
-    }
     public void setName(String name) {
         this.name = name;
         this.notifySubscribers(this);
