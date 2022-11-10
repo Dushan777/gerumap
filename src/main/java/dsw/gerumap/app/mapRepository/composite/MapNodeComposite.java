@@ -9,18 +9,12 @@ import java.util.List;
 @Getter
 @Setter
 public abstract class MapNodeComposite extends MapNode{
-    List<MapNode> children;
+    List<MapNode> children = new ArrayList<>();
 
     public MapNodeComposite(String name, MapNode parent) {
         super(name, parent);
-        this.children = new ArrayList<>();
     }
-    public MapNodeComposite(){}
-
-    public MapNodeComposite(String name, MapNode parent, List<MapNode> children) {
-        super(name, parent);
-        this.children = children;
-    }
+    public MapNodeComposite() {}
 
     public abstract void addChild(MapNode child);
 

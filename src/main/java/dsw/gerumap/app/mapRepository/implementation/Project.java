@@ -30,10 +30,9 @@ public class Project extends MapNodeComposite {
     public void addChild(MapNode child) {
         if(child instanceof MindMap)
         {
-            getChildren().add((MindMap) child);
+            this.getChildren().add((MindMap) child);
             this.notifySubscribers(this);
         }
-
 
     }
 
