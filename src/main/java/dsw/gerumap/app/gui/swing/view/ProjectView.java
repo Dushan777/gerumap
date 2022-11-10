@@ -17,7 +17,6 @@ import java.util.List;
 @Setter
 public class ProjectView extends JPanel implements ISubscriber {
 
-    private MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
     private JLabel lbl;
     private JTabbedPane tabbedPane;
     private List<MindMapView> mindMapViews;
@@ -30,11 +29,6 @@ public class ProjectView extends JPanel implements ISubscriber {
 
     private  void initialise()
     {
-        if(selected != null)                   // sta project da bude
-        {
-            project = (Project)selected.getMapNode();
-            project.addSubscribers(this);
-        }
 
         mindMapViews = new ArrayList<>();
         this.setLayout(new BorderLayout());
@@ -63,5 +57,11 @@ public class ProjectView extends JPanel implements ISubscriber {
             lbl.setText(p.toString());               // vidljiva promena
         }
 
+    }
+
+    public void setProject(Project project) {
+        this.project.removeSubscribers(this);
+        this.project = project;
+        project.addSubscribers(this);
     }
 }

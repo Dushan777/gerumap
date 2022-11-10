@@ -32,6 +32,7 @@ public abstract class MapNode implements IPublisher {
 
     }
 
+    public MapNode(){}
     @Override
     public boolean equals(Object obj) {
         if (obj != null && obj instanceof MapNode) {

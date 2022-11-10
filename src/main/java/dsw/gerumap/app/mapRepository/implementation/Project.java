@@ -20,6 +20,10 @@ public class Project extends MapNodeComposite {
 
 
     }
+    public Project()
+    {
+
+    }
 
     @Override
     public void addChild(MapNode child) {
@@ -36,5 +40,6 @@ public class Project extends MapNodeComposite {
         return getName() + " - " + author;
 
     }
+
 
 }

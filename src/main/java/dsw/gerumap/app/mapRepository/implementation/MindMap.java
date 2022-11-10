@@ -16,7 +16,7 @@ public class MindMap extends MapNodeComposite {
         super(name, parent);
     }
 
-
+    public MindMap(){}
     @Override
     public void addChild(MapNode child) {
         if(child instanceof Element)

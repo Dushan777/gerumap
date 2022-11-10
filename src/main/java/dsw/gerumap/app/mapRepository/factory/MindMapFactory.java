@@ -6,8 +6,6 @@ import dsw.gerumap.app.mapRepository.implementation.MindMap;
 public class MindMapFactory extends NodeFactory{
     @Override
     public MapNode createNode(String type) {
-     //   return new MindMap();
-        return null;
-
+       return new MindMap();
     }
 }

@@ -1,5 +1,6 @@
 package dsw.gerumap.app.mapRepository.factory;
 
+import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.mapRepository.composite.MapNode;
 
 public abstract class NodeFactory {
@@ -9,7 +10,7 @@ public abstract class NodeFactory {
        MapNode mapNode;
        mapNode = createNode(type);
        //mapNode.setName();
-      // mapNode.setParent();
+       mapNode.setParent(MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode());
        return mapNode;
    }
 
