@@ -29,7 +29,11 @@ public class Project extends MapNodeComposite {
     @Override
     public void addChild(MapNode child) {
         if(child instanceof MindMap)
+        {
             getChildren().add((MindMap) child);
+            this.notifySubscribers(this);
+        }
+
 
     }
 
@@ -47,4 +51,9 @@ public class Project extends MapNodeComposite {
        this.setName("Project" + br++);
     }
 
+    @Override
+    public void deleteChild(MapNode child) {
+        super.deleteChild(child);
+        this.notifySubscribers(this);
+    }
 }

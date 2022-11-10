@@ -7,7 +7,6 @@ import dsw.gerumap.app.mapRepository.composite.MapNode;
 import dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
 import dsw.gerumap.app.mapRepository.implementation.Project;
 import lombok.Getter;
-
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;
 import javax.swing.tree.DefaultTreeCellRenderer;
@@ -44,9 +43,10 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
             }
             else if (((MouseEvent)arg0).getClickCount() == 2)
             {
-        MapNode node = MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode();
+                MapNode node = MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode();
                 if(node instanceof Project)
                     MainFrame.getInstance().getProjectView().setProject((Project)node);
+
             }
         return false;
     }

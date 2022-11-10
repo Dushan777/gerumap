@@ -30,5 +30,11 @@ public class MindMap extends MapNodeComposite {
         this.setName("MindMap" + br++);
     }
 
+    @Override
+    public void setName(String name) {
+        super.setName(name);
+        Project project = (Project) this.getParent();
+        this.notifySubscribers(project);
 
+    }
 }

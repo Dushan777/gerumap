@@ -35,8 +35,6 @@ public class MapTreeImplementation implements MapTree {
             return;
 
         MapNode child = createChild(parent.getMapNode());
-        if(child instanceof Project)
-            child.addSubscribers(MainFrame.getInstance().getProjectView());     //dodaje ProjectView kao subscribera Project-u
         parent.add(new MapTreeItem(child));
         ((MapNodeComposite) parent.getMapNode()).addChild(child);
         treeView.expandPath(treeView.getSelectionPath());
@@ -58,11 +56,11 @@ public class MapTreeImplementation implements MapTree {
 
     private MapNode createChild(MapNode parent) {
         if (parent instanceof ProjectExplorer)
-            return  new Project("Project" + brProject++, parent);
+            return new Project("Project" + brProject++, parent);
         if(parent instanceof  Project)
         {
             brMindMap = ((Project) parent).getChildren().size() + 1;
-            return  new MindMap("Mind Map" + brMindMap++ , parent);
+            return new MindMap("Mind Map" + brMindMap++ , parent);
         }
         if(parent instanceof MindMap)
         {
