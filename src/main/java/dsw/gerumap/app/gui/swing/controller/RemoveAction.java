@@ -34,6 +34,7 @@ public class RemoveAction extends AbstractGerumapAction {
             {
                 MainFrame.getInstance().getProjectView().getLbl().setText(" ");
                 MainFrame.getInstance().getProjectView().getTabbedPane().removeAll();
+                MainFrame.getInstance().getProjectView().setProject(null);
             }
         }
         else
