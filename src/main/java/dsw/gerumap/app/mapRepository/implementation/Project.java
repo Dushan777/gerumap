@@ -26,12 +26,22 @@ public class Project extends MapNodeComposite {
         this.settName();
     }
 
+    private int numberOfChildren()
+    {
+        int i = 0;
+        for(MapNode mapNode : this.getChildren())
+            i++;
+        return i;
+    }
+
     @Override
     public void addChild(MapNode child) {
         if(child instanceof MindMap)
         {
+
             this.getChildren().add((MindMap) child);
             this.notifySubscribers(this);
+            //MindMap.br = numberOfChildren() + 1;
         }
 
     }
@@ -45,9 +55,11 @@ public class Project extends MapNodeComposite {
 
     }
 
+
+
     private void settName()
     {
-       this.setName("Project" + br++);
+        this.setName("Project" + br++);
     }
 
     @Override

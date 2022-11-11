@@ -5,6 +5,7 @@ import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.mapRepository.composite.MapNode;
 import dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
+import dsw.gerumap.app.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.mapRepository.implementation.Project;
 import lombok.Getter;
 import javax.swing.*;
@@ -46,6 +47,8 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
                 MapNode node = MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode();
                 if(node instanceof Project)
                     MainFrame.getInstance().getProjectView().setProject((Project)node);
+                if(node instanceof MindMap)
+                    MainFrame.getInstance().getProjectView().setProject((Project)((MindMap)node).getParent());
 
             }
         return false;

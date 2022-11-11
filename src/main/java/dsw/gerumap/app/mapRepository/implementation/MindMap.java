@@ -11,7 +11,7 @@ import lombok.Setter;
 public class MindMap extends MapNodeComposite {
 
     private boolean template;
-    private static int br = 1;
+    public static int br = 1;
     public MindMap(String name, MapNode parent) {
         super(name, parent);
     }
@@ -23,7 +23,17 @@ public class MindMap extends MapNodeComposite {
     @Override
     public void addChild(MapNode child) {
         if(child instanceof Element)
+        {
             getChildren().add((Element) child);
+        }
+    }
+    private int numberOfChildren()
+    {
+        int i = 0;
+        for(MapNode mapNode : ((Project)this.getParent()).getChildren())
+            i++;
+        return i;
+
     }
     private void settName()
     {
@@ -33,8 +43,6 @@ public class MindMap extends MapNodeComposite {
     @Override
     public void setName(String name) {
         super.setName(name);
-        Project project = (Project) this.getParent();
-        this.notifySubscribers(project);
-
+        this.notifySubscribers(this);
     }
 }

@@ -43,8 +43,10 @@ public class ProjectView extends JPanel implements ISubscriber {
         tabbedPane.removeAll();
         for(MapNode mapNode : project.getChildren())
         {
+
             MindMap mindMap = (MindMap)mapNode;
             tabbedPane.addTab(mindMap.getName(), new JPanel());
+            mindMap.addSubscribers(MainFrame.getInstance().getProjectView());
         }
     }
 
@@ -72,7 +74,6 @@ public class ProjectView extends JPanel implements ISubscriber {
                         tabbedPane.removeTabAt(j);
                         numberOfTabs--;
                     }
-                    flag = false;
                 }
             }
 
@@ -93,6 +94,26 @@ public class ProjectView extends JPanel implements ISubscriber {
                         tabbedPane.addTab(mapNode.getName(), new JPanel());
                 }
             }
+        }
+        if(notification instanceof MindMap)
+             mindMapTabNames((Project) ((MindMap)notification).getParent());
+    }
+    private void mindMapTabNames(Project p)
+    {
+        List<String> childrenNames = new ArrayList<>();
+        List<String> tabNames = new ArrayList<>();
+
+        for(MapNode mapNode : p.getChildren())
+            childrenNames.add(mapNode.getName());
+
+        for(int i = 0; i < tabbedPane.getTabCount(); i++)
+            tabNames.add(tabbedPane.getTitleAt(i));
+
+        for(String s : childrenNames)
+        {
+            if(tabNames.contains(s))
+                continue;
+            tabbedPane.setTitleAt(childrenNames.indexOf(s),s);
         }
     }
 
