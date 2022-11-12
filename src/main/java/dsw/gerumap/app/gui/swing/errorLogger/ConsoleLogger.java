@@ -1,11 +1,16 @@
 package dsw.gerumap.app.gui.swing.errorLogger;
 
 import dsw.gerumap.app.core.ErrorLogger;
+import dsw.gerumap.app.messageGenerator.Message;
 
 public class ConsoleLogger implements ErrorLogger {
     @Override
-    public String log() {
-        System.out.println("jhdvshjfjhdsfjhvdsjfvjhdsvfvdjs");
-        return null;
+    public void log(Message msg) {
+        System.out.println(msg.toString());
+    }
+
+    @Override
+    public void update(Object notification) {
+            log((Message) notification);
     }
 }
