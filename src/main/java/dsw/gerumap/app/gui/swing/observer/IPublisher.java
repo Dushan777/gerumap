@@ -4,5 +4,5 @@ public interface IPublisher {
 
   void addSubscribers(ISubscriber sub);
   void removeSubscribers(ISubscriber sub);
-  void notifySubscribers(Object nofitication);
+  void notifySubscribers(Object notification);
 }
