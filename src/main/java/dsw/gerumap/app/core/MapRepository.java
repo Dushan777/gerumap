@@ -10,5 +10,5 @@ public interface MapRepository {
 
 
     ProjectExplorer getProjectExplorer();
-    void addChild(MapNodeComposite parent, MapNode child);
+
 }
