@@ -14,6 +14,11 @@ public class Message {
         this.messageText = messageText;
         this.type = type;
     }
+    public Message(String messageText)
+    {
+        this.messageText = messageText;
+    }
+
 
 
 }
