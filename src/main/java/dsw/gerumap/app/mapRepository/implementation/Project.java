@@ -14,8 +14,6 @@ import lombok.Setter;
 public class Project extends MapNodeComposite {
 
     private String author = " ", folderDirection;
-    private static int br = 1;
-
     public Project(String name, MapNode parent) {
         super(name, parent);
 
@@ -26,13 +24,6 @@ public class Project extends MapNodeComposite {
         this.settName();
     }
 
-    private int numberOfChildren()
-    {
-        int i = 0;
-        for(MapNode mapNode : this.getChildren())
-            i++;
-        return i;
-    }
 
     @Override
     public void addChild(MapNode child) {
@@ -41,7 +32,6 @@ public class Project extends MapNodeComposite {
 
             this.getChildren().add((MindMap) child);
             this.notifySubscribers(this);
-            //MindMap.br = numberOfChildren() + 1;
         }
 
     }
@@ -56,10 +46,9 @@ public class Project extends MapNodeComposite {
     }
 
 
-
     private void settName()
     {
-        this.setName("Project" + br++);
+        this.setName("Project");
     }
 
     @Override

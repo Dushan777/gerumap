@@ -9,7 +9,6 @@ import lombok.Setter;
 
 public class Element extends MapNode {
 
-    private static int br = 1;
     public Element(String name, MapNode parent) {
         super(name, parent);
     }
@@ -19,6 +18,6 @@ public class Element extends MapNode {
     }
     private void settName()
     {
-        this.setName("Element" + br++);
+        this.setName("Element");
     }
 }
