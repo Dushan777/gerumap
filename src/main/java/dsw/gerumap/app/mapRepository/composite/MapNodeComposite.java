@@ -1,5 +1,6 @@
 package dsw.gerumap.app.mapRepository.composite;
 
+import dsw.gerumap.app.gui.swing.view.MainFrame;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +11,7 @@ import java.util.List;
 @Setter
 public abstract class MapNodeComposite extends MapNode{
     List<MapNode> children = new ArrayList<>();
+    private int numberOfChildren = 1;
 
     public MapNodeComposite(String name, MapNode parent) {
         super(name, parent);
@@ -29,8 +31,8 @@ public abstract class MapNodeComposite extends MapNode{
 
     public void deleteChild(MapNode child)
     {
-        if(children.size() > 0)
-            children.remove(child);
+        children.remove(child);
+
     }
 
 }

@@ -1,12 +1,15 @@
 package dsw.gerumap.app.gui.swing.tree.controller;
 
 
+import dsw.gerumap.app.core.ApplicationFramework;
+import dsw.gerumap.app.gui.swing.errorLogger.EventType;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.mapRepository.composite.MapNode;
 import dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
 import dsw.gerumap.app.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.mapRepository.implementation.Project;
+import dsw.gerumap.app.messageGenerator.MessageGeneratorImplementation;
 import lombok.Getter;
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;
@@ -60,8 +63,9 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
             return;
         MapTreeItem clicked = (MapTreeItem) clickedOn;
         MapNodeComposite parent = (MapNodeComposite) clicked.getMapNode().getParent();
-
         boolean editable = true;
+
+
         for (MapNode child : parent.getChildren()) {
             if (!(child.getName().equals(e.getActionCommand()))) {
                 editable = true;
@@ -69,6 +73,13 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
                 editable = false;
                 break;
             }
+        }
+        if(!e.getActionCommand().matches("[a-zA-Z0-9]+"))
+        {
+            editable = false;
+            ((MessageGeneratorImplementation) ApplicationFramework.getInstance().getMessageGenerator()).setType(EventType.CANNOT_SET_NAME);
+            ApplicationFramework.getInstance().getMessageGenerator().generateMessage();
+
         }
        if (editable)
             clicked.setName(e.getActionCommand());

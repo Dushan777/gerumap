@@ -1,6 +1,8 @@
 package dsw.gerumap.app.core;
 
-public interface Gui {
+import dsw.gerumap.app.gui.swing.observer.ISubscriber;
+
+public interface Gui extends ISubscriber {
     void start();
 
 }

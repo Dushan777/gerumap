@@ -1,11 +1,14 @@
 package dsw.gerumap.app.gui.swing.controller;
 
+import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.core.MessageGenerator;
+import dsw.gerumap.app.gui.swing.errorLogger.EventType;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.EditFrame;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.mapRepository.composite.MapNode;
 import dsw.gerumap.app.mapRepository.implementation.Project;
+import dsw.gerumap.app.messageGenerator.MessageGeneratorImplementation;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,12 +33,14 @@ public class OkAction implements ActionListener {
             }
             else
             {
-                // mora biti selektovan project
+                ((MessageGeneratorImplementation) ApplicationFramework.getInstance().getMessageGenerator()).setType(EventType.CANNOT_SET_AUTHOR);
+                ApplicationFramework.getInstance().getMessageGenerator().generateMessage();
             }
         }
         else
         {
-            // nista nije selektovano
+            ((MessageGeneratorImplementation)ApplicationFramework.getInstance().getMessageGenerator()).setType(EventType.NOTHING_IS_SELECTED);
+            ApplicationFramework.getInstance().getMessageGenerator().generateMessage();
         }
         EditFrame.getInstance().dispose();
 

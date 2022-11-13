@@ -43,7 +43,6 @@ public class ProjectView extends JPanel implements ISubscriber {
         tabbedPane.removeAll();
         for(MapNode mapNode : project.getChildren())
         {
-
             MindMap mindMap = (MindMap)mapNode;
             tabbedPane.addTab(mindMap.getName(), new JPanel());
             mindMap.addSubscribers(MainFrame.getInstance().getProjectView());

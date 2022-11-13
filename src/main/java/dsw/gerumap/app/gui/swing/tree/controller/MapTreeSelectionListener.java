@@ -1,6 +1,7 @@
 package dsw.gerumap.app.gui.swing.tree.controller;
 
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
+import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.mapRepository.implementation.Project;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +14,7 @@ import javax.swing.tree.TreePath;
 @Setter
 public class MapTreeSelectionListener implements TreeSelectionListener {
 
-    private String name = "";  // TODO
+    private String name = "";
     @Override
     public void valueChanged(TreeSelectionEvent e) {
         TreePath path = e.getPath();

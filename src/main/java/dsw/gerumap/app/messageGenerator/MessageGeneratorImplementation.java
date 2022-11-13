@@ -27,9 +27,13 @@ public class MessageGeneratorImplementation implements MessageGenerator {
         if(type.equals(EventType.CANNOT_REMOVE))
             this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [ProjectExplorer cannot be removed!]"));
         if(type.equals(EventType.CANNOT_SET_AUTHOR))
-            this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [Cannot set author for elements that are not projects!]"));
+            this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [Cannot set author for nodes that are not projects!]"));
         if(type.equals(EventType.NAME_CANNOT_BE_EMPTY))
             this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [Cannot set an empty name!]"));
+        if(type.equals(EventType.NOTHING_IS_SELECTED))
+            this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [Must select a node!]"));
+        if(type.equals(EventType.CANNOT_SET_NAME))
+            this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [Must choose a valid name!]"));
 
     }
 

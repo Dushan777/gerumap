@@ -14,9 +14,11 @@ public class AppCore {
         ApplicationFramework appCore = ApplicationFramework.getInstance();
         Gui gui = new SwingGui();
         MapRepository repository = new MapRepositoryImpl();
-        MessageGenerator messageGenerator = new MessageGeneratorImplementation() ;
+        MessageGenerator messageGenerator = new MessageGeneratorImplementation();
+        messageGenerator.addSubscribers(gui);
         ErrorFactory errorFactory = new ErrorFactory();
-        ErrorLogger errorLogger = errorFactory.createLogger("FileLOGGEr");
+        ErrorLogger errorLogger = errorFactory.createLogger("consoleLogger");
+        messageGenerator.addSubscribers(errorLogger);
         appCore.initialise(gui,repository,messageGenerator,errorLogger);
         appCore.run();
     }

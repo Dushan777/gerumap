@@ -43,6 +43,7 @@ public class MapTreeImplementation implements MapTree {
         parent.removeAllChildren();
         treeView.expandPath(treeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(treeView);
+
     }
 
     @Override

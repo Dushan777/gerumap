@@ -2,10 +2,14 @@ package dsw.gerumap.app.gui.swing.controller;
 
 import dsw.gerumap.app.AppCore;
 import dsw.gerumap.app.core.ApplicationFramework;
+import dsw.gerumap.app.gui.swing.errorLogger.EventType;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.mapRepository.factory.FactoryUtils;
 import dsw.gerumap.app.mapRepository.factory.NodeFactory;
+import dsw.gerumap.app.mapRepository.implementation.Element;
+import dsw.gerumap.app.messageGenerator.Message;
+import dsw.gerumap.app.messageGenerator.MessageGeneratorImplementation;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -24,6 +28,18 @@ public class NewProjectAction extends AbstractGerumapAction {
     {
 
         MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
+        if(selected == null)
+        {
+            ((MessageGeneratorImplementation)ApplicationFramework.getInstance().getMessageGenerator()).setType(EventType.NOTHING_IS_SELECTED);
+            ApplicationFramework.getInstance().getMessageGenerator().generateMessage();
+            return;
+        }
+        if(selected.getMapNode() instanceof Element)
+        {
+            ((MessageGeneratorImplementation)ApplicationFramework.getInstance().getMessageGenerator()).setType(EventType.CANNOT_ADD_CHILD);
+            ApplicationFramework.getInstance().getMessageGenerator().generateMessage();
+            return;
+        }
         MainFrame.getInstance().getMapTree().addChild(selected);
 
     }

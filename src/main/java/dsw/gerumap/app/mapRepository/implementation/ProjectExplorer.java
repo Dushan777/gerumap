@@ -1,5 +1,6 @@
 package dsw.gerumap.app.mapRepository.implementation;
 
+import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.mapRepository.composite.MapNode;
 import dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
 import lombok.Getter;
@@ -28,5 +29,9 @@ public class ProjectExplorer extends MapNodeComposite {
 
     }
 
-
+    @Override
+    public void deleteChild(MapNode child) {
+        super.deleteChild(child);
+        child.removeSubscribers(MainFrame.getInstance().getProjectView());
+    }
 }

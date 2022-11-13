@@ -16,9 +16,13 @@ public class FileLogger implements ErrorLogger {
 
     public FileLogger()
     {
-        URL filePath = this.getClass().getResource("/files/log.txt");
-        file = new File(filePath.getFile());
-        path = file.toPath();
+        URL filePath = this.getClass().getResource("/log.txt");
+        if(filePath != null)
+        {
+            file = new File(filePath.getFile());
+            path = file.toPath();
+        }
+
     }
 
     @Override
@@ -29,7 +33,8 @@ public class FileLogger implements ErrorLogger {
                     fw.write(msg.toString() + '\n');
                     fw.close();
                 }
-            Files.createFile(path);
+            else
+                Files.createFile(path);
             }
             catch (IOException e) {
                 e.printStackTrace();
