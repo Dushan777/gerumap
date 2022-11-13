@@ -24,6 +24,13 @@ public class OkAction implements ActionListener {
         if(selected != null)
         {
             author = EditFrame.getInstance().getTfAuthor().getText();
+            if(!author.matches("[a-zA-Z0-9]+"))
+            {
+                ((MessageGeneratorImplementation) ApplicationFramework.getInstance().getMessageGenerator()).setType(EventType.CANNOT_SET_NAME);
+                ApplicationFramework.getInstance().getMessageGenerator().generateMessage();
+                EditFrame.getInstance().getTfAuthor().setText("");
+                return;
+            }
             EditFrame.getInstance().getTfAuthor().setText("");
             project = selected.getMapNode();
             if(project instanceof Project)
