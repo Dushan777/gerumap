@@ -8,7 +8,6 @@ import lombok.Setter;
 
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +15,7 @@ import java.util.List;
 @Setter
 public class MessageGeneratorImplementation extends MessageGenerator {
     private EventType type;
-    List<ISubscriber> subscribers;
+
     @Override
     public void generateMessage() {
 
