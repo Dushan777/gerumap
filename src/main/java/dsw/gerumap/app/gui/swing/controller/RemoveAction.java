@@ -41,10 +41,11 @@ public class RemoveAction extends AbstractGerumapAction {
             ((MapNodeComposite)selected.getMapNode().getParent()).deleteChild(selected.getMapNode());
                 MainFrame.getInstance().getMapTree().removeChild(selected);
 
-            if(selected.getMapNode() instanceof Project && selected.getMapNode().getName().equals(MainFrame.getInstance().getProjectView().getProject().getName()))
+            if(MainFrame.getInstance().getProjectView().getProject() != null && selected.getMapNode() instanceof Project && selected.getMapNode().getName().equals(MainFrame.getInstance().getProjectView().getProject().getName()))
             {
                 MainFrame.getInstance().getProjectView().getLbl().setText(" ");
                 MainFrame.getInstance().getProjectView().getTabbedPane().removeAll();
+                MainFrame.getInstance().getProjectView().setProject(null);
             }
         }
         else
