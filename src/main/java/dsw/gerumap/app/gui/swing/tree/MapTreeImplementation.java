@@ -32,9 +32,9 @@ public class MapTreeImplementation implements MapTree {
             return;
 
         MapNode child = createChild(parent.getMapNode());
+        child.setName(child.getName() + String.valueOf(((MapNodeComposite) parent.getMapNode()).getChildren().size()+1));
         parent.add(new MapTreeItem(child));
         ((MapNodeComposite) parent.getMapNode()).addChild(child);
-        child.setName(child.getName() + String.valueOf(((MapNodeComposite) parent.getMapNode()).getChildren().size()));
         treeView.expandPath(treeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(treeView);
     }
@@ -42,7 +42,7 @@ public class MapTreeImplementation implements MapTree {
     @Override
     public void removeChild(MapTreeItem child) {
 
-        MapNodeComposite parent = (MapNodeComposite) child.getMapNode().getParent();
+       // MapNodeComposite parent = (MapNodeComposite) child.getMapNode().getParent();
         ((MapNodeComposite) child.getMapNode().getParent()).deleteChild(child.getMapNode());
         MainFrame.getInstance().getProjectExplorer().setSelectionPath(null);
         treeView.expandPath(treeView.getSelectionPath());

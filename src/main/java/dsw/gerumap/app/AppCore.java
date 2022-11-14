@@ -17,7 +17,7 @@ public class AppCore {
         MessageGenerator messageGenerator = new MessageGeneratorImplementation();
         messageGenerator.addSubscribers(gui);
         ErrorFactory errorFactory = new ErrorFactory();
-        ErrorLogger errorLogger = errorFactory.createLogger("fileLogger");
+        ErrorLogger errorLogger = errorFactory.createLogger("consoleLogGeR");
         messageGenerator.addSubscribers(errorLogger);
         appCore.initialise(gui,repository,messageGenerator,errorLogger);
         appCore.run();
