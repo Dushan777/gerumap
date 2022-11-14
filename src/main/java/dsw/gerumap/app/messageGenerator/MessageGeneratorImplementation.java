@@ -14,7 +14,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class MessageGeneratorImplementation implements MessageGenerator {
+public class MessageGeneratorImplementation extends MessageGenerator {
     private EventType type;
     List<ISubscriber> subscribers;
     @Override
@@ -37,31 +37,5 @@ public class MessageGeneratorImplementation implements MessageGenerator {
 
     }
 
-    @Override
-    public void addSubscribers(ISubscriber sub) {
-        if(sub == null)
-            return;
-        if(this.subscribers == null)
-            this.subscribers = new ArrayList<>();
-        if(this.subscribers.contains(sub))
-            return;
-        this.subscribers.add(sub);
-    }
 
-    @Override
-    public void removeSubscribers(ISubscriber sub) {
-        if(sub == null || this.subscribers == null || !this.subscribers.contains(sub))
-            return;
-        this.subscribers.remove(sub);
-    }
-
-    @Override
-    public void notifySubscribers(Object notification) {
-        if(notification == null || this.subscribers == null || this.subscribers.isEmpty())
-            return;
-
-        for(ISubscriber listener : subscribers){
-            listener.update(notification);
-        }
-    }
 }

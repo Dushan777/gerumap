@@ -94,26 +94,6 @@ public class ProjectView extends JPanel implements ISubscriber {
                 }
             }
         }
-        if(notification instanceof MindMap)
-             mindMapTabNames((Project) ((MindMap)notification).getParent());
-    }
-    private void mindMapTabNames(Project p)
-    {
-        List<String> childrenNames = new ArrayList<>();
-        List<String> tabNames = new ArrayList<>();
-
-        for(MapNode mapNode : p.getChildren())
-            childrenNames.add(mapNode.getName());
-
-        for(int i = 0; i < tabbedPane.getTabCount(); i++)
-            tabNames.add(tabbedPane.getTitleAt(i));
-
-        for(String s : childrenNames)
-        {
-            if(tabNames.contains(s))
-                continue;
-            tabbedPane.setTitleAt(childrenNames.indexOf(s),s);
-        }
     }
 
     public void setProject(Project project) {
