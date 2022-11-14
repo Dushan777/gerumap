@@ -2,15 +2,10 @@ package dsw.gerumap.app.mapRepository.composite;
 
 import dsw.gerumap.app.gui.swing.observer.IPublisher;
 import dsw.gerumap.app.gui.swing.observer.ISubscriber;
-import dsw.gerumap.app.gui.swing.tree.controller.MapTreeCellEditor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.EventObject;
 import java.util.List;
 
 @Getter

@@ -2,14 +2,13 @@ package dsw.gerumap.app.messageGenerator;
 
 import dsw.gerumap.app.core.MessageGenerator;
 import dsw.gerumap.app.gui.swing.errorLogger.EventType;
-import dsw.gerumap.app.gui.swing.observer.ISubscriber;
 import lombok.Getter;
 import lombok.Setter;
 
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
+
 
 @Getter
 @Setter

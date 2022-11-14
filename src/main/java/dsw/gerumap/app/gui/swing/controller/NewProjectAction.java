@@ -1,14 +1,10 @@
 package dsw.gerumap.app.gui.swing.controller;
 
-import dsw.gerumap.app.AppCore;
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.errorLogger.EventType;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
-import dsw.gerumap.app.mapRepository.factory.FactoryUtils;
-import dsw.gerumap.app.mapRepository.factory.NodeFactory;
 import dsw.gerumap.app.mapRepository.implementation.Element;
-import dsw.gerumap.app.messageGenerator.Message;
 import dsw.gerumap.app.messageGenerator.MessageGeneratorImplementation;
 
 import javax.swing.*;

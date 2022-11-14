@@ -14,7 +14,6 @@ import lombok.Getter;
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;
 import javax.swing.tree.DefaultTreeCellRenderer;
-import javax.swing.tree.TreePath;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -73,6 +72,8 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
                 editable = true;
             } else {
                 editable = false;
+                ((MessageGeneratorImplementation) ApplicationFramework.getInstance().getMessageGenerator()).setType(EventType.CANNOT_SET_NAME);
+                ApplicationFramework.getInstance().getMessageGenerator().generateMessage();
                 break;
             }
         }

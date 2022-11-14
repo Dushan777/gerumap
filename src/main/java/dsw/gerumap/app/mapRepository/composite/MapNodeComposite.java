@@ -1,6 +1,5 @@
 package dsw.gerumap.app.mapRepository.composite;
 
-import dsw.gerumap.app.gui.swing.view.MainFrame;
 import lombok.Getter;
 import lombok.Setter;
 

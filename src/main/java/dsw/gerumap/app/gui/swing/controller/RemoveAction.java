@@ -6,7 +6,6 @@ import dsw.gerumap.app.gui.swing.errorLogger.EventType;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
-import dsw.gerumap.app.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.mapRepository.implementation.Project;
 import dsw.gerumap.app.mapRepository.implementation.ProjectExplorer;
 import dsw.gerumap.app.messageGenerator.MessageGeneratorImplementation;
@@ -42,11 +41,10 @@ public class RemoveAction extends AbstractGerumapAction {
             ((MapNodeComposite)selected.getMapNode().getParent()).deleteChild(selected.getMapNode());
                 MainFrame.getInstance().getMapTree().removeChild(selected);
 
-            if(selected.getMapNode() instanceof Project)
+            if(selected.getMapNode() instanceof Project && selected.getMapNode().getName().equals(MainFrame.getInstance().getProjectView().getProject().getName()))
             {
                 MainFrame.getInstance().getProjectView().getLbl().setText(" ");
                 MainFrame.getInstance().getProjectView().getTabbedPane().removeAll();
-
             }
         }
         else

@@ -2,17 +2,14 @@ package dsw.gerumap.app.gui.swing.view;
 
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.controller.ActionManager;
-import dsw.gerumap.app.gui.swing.observer.ISubscriber;
 import dsw.gerumap.app.gui.swing.tree.MapTree;
 import dsw.gerumap.app.gui.swing.tree.MapTreeImplementation;
 import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
-import dsw.gerumap.app.mapRepository.implementation.Project;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 
 @Getter
 @Setter

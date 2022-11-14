@@ -1,7 +1,6 @@
 package dsw.gerumap.app.gui.swing.controller;
 
 import dsw.gerumap.app.core.ApplicationFramework;
-import dsw.gerumap.app.core.MessageGenerator;
 import dsw.gerumap.app.gui.swing.errorLogger.EventType;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.EditFrame;
