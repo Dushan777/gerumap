@@ -15,7 +15,7 @@ public class FileLogger implements ErrorLogger {
 
     public FileLogger()
     {
-        URL filePath = this.getClass().getResource("/src/main/resources/log.txt");
+        URL filePath = this.getClass().getResource("/log.txt");
         if(filePath != null)
         {
             file = new File(filePath.getFile());
