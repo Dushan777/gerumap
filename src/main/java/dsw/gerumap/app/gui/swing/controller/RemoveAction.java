@@ -41,14 +41,12 @@ public class RemoveAction extends AbstractGerumapAction {
             }
             ((MapNodeComposite)selected.getMapNode().getParent()).deleteChild(selected.getMapNode());
                 MainFrame.getInstance().getMapTree().removeChild(selected);
-//            if(selected.getMapNode() instanceof MindMap)
-//                MainFrame.getInstance().getProjectView().getProject().deleteChild((MindMap)selected.getMapNode());
+
             if(selected.getMapNode() instanceof Project)
             {
                 MainFrame.getInstance().getProjectView().getLbl().setText(" ");
                 MainFrame.getInstance().getProjectView().getTabbedPane().removeAll();
-                MainFrame.getInstance().getProjectView().setProject(null);
-                // nakon brisanja ostane selektovan
+
             }
         }
         else
@@ -56,7 +54,7 @@ public class RemoveAction extends AbstractGerumapAction {
             ((MessageGeneratorImplementation)ApplicationFramework.getInstance().getMessageGenerator()).setType(EventType.NOTHING_IS_SELECTED);
             ApplicationFramework.getInstance().getMessageGenerator().generateMessage();
         }
-        //MainFrame.getInstance().getMapTree().getSelectedNode().setMapNode(null);
+
 
     }
 

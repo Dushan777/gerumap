@@ -49,6 +49,7 @@ public class OkAction implements ActionListener {
             ((MessageGeneratorImplementation)ApplicationFramework.getInstance().getMessageGenerator()).setType(EventType.NOTHING_IS_SELECTED);
             ApplicationFramework.getInstance().getMessageGenerator().generateMessage();
         }
+        EditFrame.getInstance().getTfAuthor().setText("");
         EditFrame.getInstance().dispose();
 
 

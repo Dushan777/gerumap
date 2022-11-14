@@ -14,6 +14,7 @@ import lombok.Getter;
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;
 import javax.swing.tree.DefaultTreeCellRenderer;
+import javax.swing.tree.TreePath;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -52,6 +53,7 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
                     MainFrame.getInstance().getProjectView().setProject((Project)node);
                 if(node instanceof MindMap)
                     MainFrame.getInstance().getProjectView().setProject((Project)((MindMap)node).getParent());
+
 
             }
         return false;
