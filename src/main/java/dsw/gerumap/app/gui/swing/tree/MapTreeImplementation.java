@@ -37,11 +37,11 @@ public class MapTreeImplementation implements MapTree {
         MapNode child = createChild(parent.getMapNode());
         parent.add(new MapTreeItem(child));
         if(child instanceof MindMap || child instanceof Element)
-            child.setName(child.getName() + String.valueOf(((MapNodeComposite) parent.getMapNode()).getChildren().size()+1));
+            child.setName(child.getName() + String.valueOf(((MapNodeComposite) parent.getMapNode()).getNumberOfChildren()+1));
 
         ((MapNodeComposite) parent.getMapNode()).addChild(child);
         if(child instanceof Project)
-            child.setName(child.getName() + String.valueOf(((MapNodeComposite) parent.getMapNode()).getChildren().size()));
+            child.setName(child.getName() + String.valueOf(((MapNodeComposite) parent.getMapNode()).getNumberOfChildren()));
         treeView.expandPath(treeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(treeView);
     }

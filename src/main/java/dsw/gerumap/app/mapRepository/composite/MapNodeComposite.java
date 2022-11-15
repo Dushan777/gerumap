@@ -10,7 +10,6 @@ import java.util.List;
 @Setter
 public abstract class MapNodeComposite extends MapNode{
     List<MapNode> children = new ArrayList<>();
-    private int numberOfChildren = 1;
 
     public MapNodeComposite(String name, MapNode parent) {
         super(name, parent);
@@ -31,6 +30,10 @@ public abstract class MapNodeComposite extends MapNode{
     public void deleteChild(MapNode child)
     {
         children.remove(child);
+    }
+    public int getNumberOfChildren()
+    {
+       return this.getNumberOfChildren();
 
     }
 

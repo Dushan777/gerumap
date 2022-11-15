@@ -12,6 +12,8 @@ import lombok.Setter;
 @Setter
 public class ProjectExplorer extends MapNodeComposite {
 
+    private int numberOfChildren = 0;
+
     public ProjectExplorer(String name) {
         super(name, null);
     }
@@ -24,7 +26,9 @@ public class ProjectExplorer extends MapNodeComposite {
             if(!this.getChildren().contains(project))
             {
                 this.getChildren().add(project);
+                numberOfChildren ++;
             }
+
         }
 
     }
