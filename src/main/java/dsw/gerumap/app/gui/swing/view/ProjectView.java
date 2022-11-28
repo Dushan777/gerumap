@@ -5,6 +5,7 @@ import dsw.gerumap.app.mapRepository.composite.MapNode;
 import dsw.gerumap.app.mapRepository.factory.MindMapFactory;
 import dsw.gerumap.app.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.mapRepository.implementation.Project;
+import dsw.gerumap.app.state.StateManager;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,6 +23,7 @@ public class ProjectView extends JPanel implements ISubscriber {
     private List<MindMapView> mindMapViews;
     private Project project;
     private JToolBar mindMapToolbar;
+    private StateManager stateManager;
     public ProjectView()
     {
         initialise();
@@ -30,6 +32,7 @@ public class ProjectView extends JPanel implements ISubscriber {
     private  void initialise()
     {
 
+        stateManager = new StateManager();
         mindMapViews = new ArrayList<>();
         this.setLayout(new BorderLayout());
         lbl = new JLabel(" ");
@@ -99,6 +102,32 @@ public class ProjectView extends JPanel implements ISubscriber {
             }
         }
     }
+
+    public void startAddState()
+    {
+        this.stateManager.setAddState();
+    }
+    public void startSelectState()
+    {
+        this.stateManager.setSelectState();
+    }
+    public void startConnectState()
+    {
+        this.stateManager.setConnectState();
+    }
+    public void startMoveState()
+    {
+        this.stateManager.setMoveState();
+    }
+    public void startRemoveState()
+    {
+        this.stateManager.setRemoveState();
+    }
+    public void startZoomState()
+    {
+        this.stateManager.setZoomState();
+    }
+
 
     public void setProject(Project project) {
         if(this.project != null)

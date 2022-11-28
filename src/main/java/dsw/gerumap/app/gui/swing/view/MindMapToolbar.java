@@ -8,11 +8,12 @@ public class MindMapToolbar extends JToolBar {
     {
         super(VERTICAL);
         setFloatable(false);
-        // izmeniti na odgovarajuce akcije
-        add(MainFrame.getInstance().getActionManager().getNewProjectAction());
-        add(MainFrame.getInstance().getActionManager().getRemoveAction());
-        add(MainFrame.getInstance().getActionManager().getEditAction());
-        add(MainFrame.getInstance().getActionManager().getInfoAction());
+        add(MainFrame.getInstance().getActionManager().getSelectStateAction());
+        add(MainFrame.getInstance().getActionManager().getAddStateAction());
+        add(MainFrame.getInstance().getActionManager().getConnectStateAction());
+        add(MainFrame.getInstance().getActionManager().getMoveStateAction());
+        add(MainFrame.getInstance().getActionManager().getRemoveStateAction());
+        add(MainFrame.getInstance().getActionManager().getZoomStateAction());
     }
 
 }
