@@ -2,6 +2,7 @@ package dsw.gerumap.app.gui.swing.view;
 
 import dsw.gerumap.app.gui.swing.observer.ISubscriber;
 import dsw.gerumap.app.mapRepository.composite.MapNode;
+import dsw.gerumap.app.mapRepository.factory.MindMapFactory;
 import dsw.gerumap.app.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.mapRepository.implementation.Project;
 import lombok.Getter;
@@ -44,7 +45,9 @@ public class ProjectView extends JPanel implements ISubscriber {
         for(MapNode mapNode : project.getChildren())
         {
             MindMap mindMap = (MindMap)mapNode;
-            tabbedPane.addTab(mindMap.getName(), new JPanel());
+            MindMapView mindMapView = new MindMapView(mindMap);
+            mindMapView.getLbl().setText(mindMap.getName());
+            tabbedPane.addTab(mindMap.getName(),mindMapView);
             mindMap.addSubscribers(MainFrame.getInstance().getProjectView());
         }
     }
