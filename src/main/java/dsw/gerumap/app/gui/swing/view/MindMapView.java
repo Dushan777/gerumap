@@ -11,12 +11,10 @@ import javax.swing.*;
 public class MindMapView extends JPanel {
 
     private MindMap mindMap;
-    private JLabel lbl = new JLabel();
 
     public MindMapView(MindMap mindMap)
     {
         this.mindMap = mindMap;
-        this.add(lbl);
     }
 
 

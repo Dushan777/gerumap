@@ -21,7 +21,7 @@ public class ProjectView extends JPanel implements ISubscriber {
     private JTabbedPane tabbedPane;
     private List<MindMapView> mindMapViews;
     private Project project;
-
+    private JToolBar mindMapToolbar;
     public ProjectView()
     {
         initialise();
@@ -34,6 +34,8 @@ public class ProjectView extends JPanel implements ISubscriber {
         this.setLayout(new BorderLayout());
         lbl = new JLabel(" ");
         tabbedPane = new JTabbedPane(SwingConstants.TOP);
+        mindMapToolbar = new MindMapToolbar();
+        add(mindMapToolbar, BorderLayout.EAST);
         add(lbl, BorderLayout.NORTH);
         add(tabbedPane);
     }
@@ -46,7 +48,6 @@ public class ProjectView extends JPanel implements ISubscriber {
         {
             MindMap mindMap = (MindMap)mapNode;
             MindMapView mindMapView = new MindMapView(mindMap);
-            mindMapView.getLbl().setText(mindMap.getName());
             tabbedPane.addTab(mindMap.getName(),mindMapView);
             mindMap.addSubscribers(MainFrame.getInstance().getProjectView());
         }
