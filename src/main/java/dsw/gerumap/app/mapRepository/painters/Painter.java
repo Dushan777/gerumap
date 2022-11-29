@@ -8,14 +8,13 @@ import lombok.Getter;
 public abstract class Painter {
 
     protected Element element;
-    protected void draw()
+    public void draw()
     {
 
     }
-    protected Element elementAt()
+    public boolean elementAt()
     {
-
-        return null;
+        return false;
     }
 
 

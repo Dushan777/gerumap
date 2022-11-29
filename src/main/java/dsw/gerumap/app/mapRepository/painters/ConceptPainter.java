@@ -7,7 +7,7 @@ public class ConceptPainter extends Painter{
     private Shape shape;
 
     @Override
-    protected void draw() {
+    public void draw() {
 
 
     }

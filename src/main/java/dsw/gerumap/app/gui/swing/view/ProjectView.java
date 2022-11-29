@@ -51,6 +51,8 @@ public class ProjectView extends JPanel implements ISubscriber {
         {
             MindMap mindMap = (MindMap)mapNode;
             MindMapView mindMapView = new MindMapView(mindMap);
+            if(!mindMapViews.contains(mindMapView))
+                mindMapViews.add(mindMapView);
             tabbedPane.addTab(mindMap.getName(),mindMapView);
             mindMap.addSubscribers(MainFrame.getInstance().getProjectView());
         }
@@ -97,7 +99,12 @@ public class ProjectView extends JPanel implements ISubscriber {
                         }
                     }
                     if(!flag)
-                        tabbedPane.addTab(mapNode.getName(), new MindMapView((MindMap)mapNode));
+                    {
+                        MindMapView mindMapView = new MindMapView((MindMap) mapNode);
+                        tabbedPane.addTab(mapNode.getName(), mindMapView);
+                        if (!mindMapViews.contains(mindMapView))
+                            mindMapViews.add(mindMapView);
+                    }
                 }
             }
         }
@@ -142,4 +149,11 @@ public class ProjectView extends JPanel implements ISubscriber {
         this.project.addSubscribers(this);
         switchUI();
     }
+
+    public void mousePressed(int x, int y)
+    {
+
+    }
+    // za svaku metodu u mouseController-u postoji metoda u ProjectView-u i u State-u
+    // paintComponent se poziva metodom repaint, ne drugacije
 }

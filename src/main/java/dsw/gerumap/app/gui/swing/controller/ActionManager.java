@@ -21,8 +21,8 @@ public class ActionManager {
     private ConnectStateAction connectStateAction;
     private ZoomStateAction zoomStateAction;
     private SelectStateAction selectStateAction;
-
     private ColorChooserAction colorChooserAction;
+    private ConfirmAction confirmAction;
     public ActionManager()
     {
         initialiseActions();
@@ -41,6 +41,7 @@ public class ActionManager {
         zoomStateAction = new ZoomStateAction();
         selectStateAction = new SelectStateAction();
         colorChooserAction = new ColorChooserAction();
+        confirmAction = new ConfirmAction();
     }
 
 

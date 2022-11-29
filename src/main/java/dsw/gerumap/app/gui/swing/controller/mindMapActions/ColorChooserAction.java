@@ -2,15 +2,19 @@ package dsw.gerumap.app.gui.swing.controller.mindMapActions;
 
 import dsw.gerumap.app.gui.swing.controller.AbstractGerumapAction;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
+import lombok.Getter;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.concurrent.Flow;
 
+@Getter
 public class ColorChooserAction extends AbstractGerumapAction {
 
-
+    private JFrame frame;
+    private JColorChooser colorChooser;
+    private JTextField textField;
     public ColorChooserAction()
     {
         putValue(SMALL_ICON, loadIcon("/images/edit.png"));
@@ -19,10 +23,13 @@ public class ColorChooserAction extends AbstractGerumapAction {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        JFrame frame = new JFrame();
-        JColorChooser colorChooser = new JColorChooser();
-        JTextField textField = new JTextField();
-        JButton button = new JButton("OK");
+
+        frame = new JFrame();
+        colorChooser = new JColorChooser(Color.BLACK);
+        textField = new JTextField();
+        JButton button = new JButton("Confirm");
+        button.addActionListener(MainFrame.getInstance().getActionManager().getConfirmAction());
+
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
         colorChooser.setPreferredSize(new Dimension(100,100));
