@@ -1,9 +1,15 @@
 package dsw.gerumap.app.gui.swing.view;
 
 
-import javax.swing.*;
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.swing.*;
+@Getter
+@Setter
 public class Toolbar extends JToolBar {
+
+    private JColorChooser colorChooser = new JColorChooser();
 
     public Toolbar()
     {

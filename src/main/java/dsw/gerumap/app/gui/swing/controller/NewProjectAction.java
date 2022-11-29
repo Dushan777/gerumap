@@ -5,6 +5,7 @@ import dsw.gerumap.app.gui.swing.errorLogger.EventType;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.mapRepository.implementation.Element;
+import dsw.gerumap.app.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.messageGenerator.MessageGeneratorImplementation;
 
 import javax.swing.*;
@@ -30,7 +31,7 @@ public class NewProjectAction extends AbstractGerumapAction {
             ApplicationFramework.getInstance().getMessageGenerator().generateMessage();
             return;
         }
-        if(selected.getMapNode() instanceof Element)
+        if(selected.getMapNode() instanceof MindMap)
         {
             ((MessageGeneratorImplementation)ApplicationFramework.getInstance().getMessageGenerator()).setType(EventType.CANNOT_ADD_CHILD);
             ApplicationFramework.getInstance().getMessageGenerator().generateMessage();

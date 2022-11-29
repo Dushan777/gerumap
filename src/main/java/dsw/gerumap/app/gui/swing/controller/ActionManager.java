@@ -2,6 +2,7 @@ package dsw.gerumap.app.gui.swing.controller;
 
 
 import dsw.gerumap.app.gui.swing.controller.mindMapActions.*;
+import dsw.gerumap.app.state.concrete.ColorState;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,6 +22,7 @@ public class ActionManager {
     private ZoomStateAction zoomStateAction;
     private SelectStateAction selectStateAction;
 
+    private ColorChooserAction colorChooserAction;
     public ActionManager()
     {
         initialiseActions();
@@ -38,6 +40,7 @@ public class ActionManager {
         connectStateAction = new ConnectStateAction();
         zoomStateAction = new ZoomStateAction();
         selectStateAction = new SelectStateAction();
+        colorChooserAction = new ColorChooserAction();
     }
 
 
