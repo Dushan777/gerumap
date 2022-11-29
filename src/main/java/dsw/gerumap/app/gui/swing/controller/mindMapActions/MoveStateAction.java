@@ -9,7 +9,7 @@ public class MoveStateAction extends AbstractGerumapAction {
 
     public MoveStateAction()
     {
-        putValue(SMALL_ICON, loadIcon("/images/edit.png"));
+        putValue(SMALL_ICON, loadIcon("/images/move.png"));
         putValue(NAME, "Move");
         putValue(SHORT_DESCRIPTION, "Move");
     }

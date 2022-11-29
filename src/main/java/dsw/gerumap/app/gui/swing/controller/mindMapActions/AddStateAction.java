@@ -9,7 +9,7 @@ public class AddStateAction extends AbstractGerumapAction {
 
     public AddStateAction()
     {
-        putValue(SMALL_ICON, loadIcon("/images/edit.png"));
+        putValue(SMALL_ICON, loadIcon("/images/add.png"));
         putValue(NAME, "Add Element");
         putValue(SHORT_DESCRIPTION, "Add Element");
     }

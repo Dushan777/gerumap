@@ -1,6 +1,7 @@
 package dsw.gerumap.app.mapRepository.implementation;
 
 import dsw.gerumap.app.mapRepository.composite.MapNode;
+import dsw.gerumap.app.mapRepository.painters.Painter;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,6 +10,8 @@ import lombok.Setter;
 
 public class Element extends MapNode {
 
+    protected int lineStroke;
+    protected String color;
     public Element(String name, MapNode parent) {
         super(name, parent);
     }

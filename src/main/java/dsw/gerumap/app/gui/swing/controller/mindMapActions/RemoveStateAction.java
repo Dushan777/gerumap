@@ -9,7 +9,7 @@ public class RemoveStateAction extends AbstractGerumapAction {
 
     public RemoveStateAction()
     {
-        putValue(SMALL_ICON, loadIcon("/images/edit.png"));
+        putValue(SMALL_ICON, loadIcon("/images/remove.png"));
         putValue(NAME, "Remove");
         putValue(SHORT_DESCRIPTION, "Remove");
     }
