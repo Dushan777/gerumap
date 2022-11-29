@@ -20,15 +20,19 @@ public class ColorChooserAction extends AbstractGerumapAction {
     public void actionPerformed(ActionEvent e) {
         JFrame frame = new JFrame();
         JColorChooser colorChooser = new JColorChooser();
+        JTextField textField = new JTextField(10);
+
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
         int screenHeight = screenSize.height;
         int screenWidth = screenSize.width;
-        frame.setSize(screenWidth / 4,  screenHeight / 2);
+        frame.setSize(screenWidth / 2,  screenHeight / 2);
         frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         frame.setLocationRelativeTo(MainFrame.getInstance());
         frame.setTitle("Color");
-        frame.add(colorChooser);
+        frame.add(colorChooser, BorderLayout.SOUTH);
+        frame.add(new JLabel("Unesi debljinu linije: "));
+        frame.add(textField, BorderLayout.NORTH);
         frame.setVisible(true);
         MainFrame.getInstance().getProjectView().startColorState();
     }
