@@ -97,7 +97,7 @@ public class ProjectView extends JPanel implements ISubscriber {
                         }
                     }
                     if(!flag)
-                        tabbedPane.addTab(mapNode.getName(), new JPanel());
+                        tabbedPane.addTab(mapNode.getName(), new MindMapView((MindMap)mapNode));
                 }
             }
         }

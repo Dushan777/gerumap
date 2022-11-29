@@ -21,9 +21,8 @@ public class ColorChooserAction extends AbstractGerumapAction {
     public void actionPerformed(ActionEvent e) {
         JFrame frame = new JFrame();
         JColorChooser colorChooser = new JColorChooser();
-        JTextField textField = new JTextField(10);
-        JButton button = new JButton("Ok");
-
+        JTextField textField = new JTextField();
+        JButton button = new JButton("OK");
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
         colorChooser.setPreferredSize(new Dimension(100,100));
@@ -37,11 +36,26 @@ public class ColorChooserAction extends AbstractGerumapAction {
 
         BoxLayout boxLayout = new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS);
         frame.getContentPane().setLayout(boxLayout);
+        FlowLayout flowLayout = new FlowLayout();
+        flowLayout.setAlignOnBaseline(true);
 
-        frame.add(new JLabel("Unesi debljinu linije: "));
-        frame.add(textField);
-        frame.add(colorChooser);
-        frame.add(button);
+        JPanel panel = new JPanel();
+        panel.setLayout(flowLayout);
+        panel.add(new JLabel("Choose line stroke size: "));
+        panel.add(textField);
+
+        textField.setPreferredSize(new Dimension(150,20));
+        flowLayout.setAlignment(FlowLayout.CENTER);
+
+
+        JPanel panel1 = new JPanel();
+        BoxLayout boxLayout1 = new BoxLayout(panel1, BoxLayout.Y_AXIS);
+        panel1.setLayout(boxLayout1);
+        panel1.add(colorChooser);
+        panel1.add(button);
+
+        frame.add(panel);
+        frame.add(panel1);
         frame.setVisible(true);
 
         MainFrame.getInstance().getProjectView().startColorState();
