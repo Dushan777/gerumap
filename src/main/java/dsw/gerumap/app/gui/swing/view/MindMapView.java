@@ -32,9 +32,10 @@ public class MindMapView extends JPanel implements ISubscriber {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Graphics2D graphics2D = (Graphics2D)g;
         for(Painter p : painters)
         {
-            p.draw();
+            p.draw(graphics2D, p.getElement());
         }
 
     }
@@ -46,10 +47,9 @@ public class MindMapView extends JPanel implements ISubscriber {
 
     private class MouseController extends MouseAdapter {
 
-        private MindMapView mindMapView = (MindMapView) MainFrame.getInstance().getProjectView().getTabbedPane().getSelectedComponent();
-
         @Override
         public void mousePressed(MouseEvent e) {
+            MindMapView mindMapView = (MindMapView) MainFrame.getInstance().getProjectView().getTabbedPane().getSelectedComponent();
             Point position = e.getPoint();
             MainFrame.getInstance().getProjectView().mousePressed(mindMapView, position.x, position.y);
         }
