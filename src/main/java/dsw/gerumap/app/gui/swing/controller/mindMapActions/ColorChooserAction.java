@@ -15,6 +15,7 @@ public class ColorChooserAction extends AbstractGerumapAction {
     private JFrame frame;
     private JColorChooser colorChooser;
     private JTextField textField;
+    private JTextField textFieldText;
     public ColorChooserAction()
     {
         putValue(SMALL_ICON, loadIcon("/images/edit.png"));
@@ -27,6 +28,8 @@ public class ColorChooserAction extends AbstractGerumapAction {
         frame = new JFrame();
         colorChooser = new JColorChooser(Color.BLACK);
         textField = new JTextField();
+        textFieldText = new JTextField();
+
         JButton button = new JButton("Confirm");
         button.addActionListener(MainFrame.getInstance().getActionManager().getConfirmAction());
 
@@ -50,8 +53,11 @@ public class ColorChooserAction extends AbstractGerumapAction {
         panel.setLayout(flowLayout);
         panel.add(new JLabel("Choose line stroke size: "));
         panel.add(textField);
+        panel.add(new JLabel("Insert text: "));
+        panel.add(textFieldText);
 
         textField.setPreferredSize(new Dimension(150,20));
+        textFieldText.setPreferredSize(new Dimension(150,20));
         flowLayout.setAlignment(FlowLayout.CENTER);
 
 

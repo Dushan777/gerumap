@@ -7,6 +7,7 @@ public class SelectState extends State {
 
     @Override
     public void mousePressed(MindMapView mindMapView, int x, int y) {
+        System.out.println("select");
 
     }
 }

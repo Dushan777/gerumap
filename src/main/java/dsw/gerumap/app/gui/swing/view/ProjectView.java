@@ -20,7 +20,7 @@ public class ProjectView extends JPanel implements ISubscriber {
 
     private JLabel lbl;
     private JTabbedPane tabbedPane;
-    private List<MindMapView> mindMapViews;
+//    private List<MindMapView> mindMapViews;
     private Project project;
     private JToolBar mindMapToolbar;
     private StateManager stateManager;
@@ -33,7 +33,7 @@ public class ProjectView extends JPanel implements ISubscriber {
     {
 
         stateManager = new StateManager();
-        mindMapViews = new ArrayList<>();
+       // mindMapViews = new ArrayList<>();
         this.setLayout(new BorderLayout());
         lbl = new JLabel(" ");
         tabbedPane = new JTabbedPane(SwingConstants.TOP);
@@ -51,64 +51,92 @@ public class ProjectView extends JPanel implements ISubscriber {
         {
             MindMap mindMap = (MindMap)mapNode;
             MindMapView mindMapView = new MindMapView(mindMap);
-            if(!mindMapViews.contains(mindMapView))
-                mindMapViews.add(mindMapView);
+//            if(!mindMapViews.contains(mindMapView))
+//                mindMapViews.add(mindMapView);
             tabbedPane.addTab(mindMap.getName(),mindMapView);
             mindMap.addSubscribers(MainFrame.getInstance().getProjectView());
+            mindMap.addSubscribers(mindMapView);
         }
     }
 
     @Override
-    public void update(Object notification)
-    {
-        if(notification instanceof Project)
-        {
+    public void update(Object notification) {
+        if (notification instanceof Project) {
             Project p = (Project) notification;
             lbl.setText(p.toString());               // vidljiva promena
             int numberOfTabs = tabbedPane.getTabCount();
             int numberOfChildren = p.getChildren().size();
 
-            if(numberOfTabs > numberOfChildren)
-            {
-                for(int j = 0; j < numberOfTabs; j++)
-                {
+            if (numberOfTabs > numberOfChildren) {
+                for (int j = 0; j < numberOfTabs; j++) {
                     boolean flag = false;
-                    for(MapNode mapNode : p.getChildren())
+                    for (MapNode mapNode : p.getChildren())
                         if (tabbedPane.getTitleAt(j).equals(mapNode.getName()))
                             flag = true;
 
-                    if(!flag)
-                    {
+                    if (!flag) {
                         tabbedPane.removeTabAt(j);
                         numberOfTabs--;
                     }
                 }
-            }
-
-            else if(numberOfTabs < numberOfChildren)
-            {
-                for(MapNode mapNode : p.getChildren())
-                {
+            } else if (numberOfTabs < numberOfChildren) {
+                for (MapNode mapNode : p.getChildren()) {
                     boolean flag = false;
-                    for(int j = 0; j < numberOfTabs; j++)
-                    {
-                        if (tabbedPane.getTitleAt(j).equals(mapNode.getName()))
-                        {
+                    for (int j = 0; j < numberOfTabs; j++) {
+                        if (tabbedPane.getTitleAt(j).equals(mapNode.getName())) {
                             flag = true;
                             break;
                         }
                     }
-                    if(!flag)
-                    {
+                    if (!flag) {
                         MindMapView mindMapView = new MindMapView((MindMap) mapNode);
-                        tabbedPane.addTab(mapNode.getName(), mindMapView);
-                        if (!mindMapViews.contains(mindMapView))
-                            mindMapViews.add(mindMapView);
+                        tabbedPane.addTab(mindMapView.getMindMap().getName(), mindMapView);
+//                        if (!mindMapViews.contains(mindMapView))
+//                            mindMapViews.add(mindMapView);
                     }
                 }
             }
         }
+        if(notification instanceof MindMap)
+            mindMapTabNames((Project) ((MindMap)notification).getParent());
     }
+    private void mindMapTabNames(Project p)
+    {
+        List<String> childrenNames = new ArrayList<>();
+        List<String> tabNames = new ArrayList<>();
+
+        for(MapNode mapNode : p.getChildren())
+            childrenNames.add(mapNode.getName());
+
+        for(int i = 0; i < tabbedPane.getTabCount(); i++)
+            tabNames.add(tabbedPane.getTitleAt(i));
+
+        for(String s : childrenNames)
+        {
+            if(tabNames.contains(s))
+                continue;
+            tabbedPane.setTitleAt(childrenNames.indexOf(s),s);
+        }
+    }
+    public void setProject(Project project) {
+        if(this.project != null)
+            this.project.removeSubscribers(this);
+        this.project = project;
+        if(this.project == null)
+            return ;
+        this.project.addSubscribers(this);
+        switchUI();
+    }
+
+    public void mousePressed(MindMapView mindMapView, int x, int y)
+    {
+        stateManager.getCurrentState().mousePressed(mindMapView, x, y);
+    }
+    // za svaku metodu u mouseController-u postoji metoda u ProjectView-u i u State-u
+    // paintComponent se poziva metodom repaint, ne drugacije
+
+
+
 
     public void startAddState()
     {
@@ -138,22 +166,5 @@ public class ProjectView extends JPanel implements ISubscriber {
     {
         this.stateManager.setColorState();
     }
-
-
-    public void setProject(Project project) {
-        if(this.project != null)
-            this.project.removeSubscribers(this);
-        this.project = project;
-        if(this.project == null)
-            return ;
-        this.project.addSubscribers(this);
-        switchUI();
-    }
-
-    public void mousePressed(int x, int y)
-    {
-
-    }
-    // za svaku metodu u mouseController-u postoji metoda u ProjectView-u i u State-u
-    // paintComponent se poziva metodom repaint, ne drugacije
 }
+

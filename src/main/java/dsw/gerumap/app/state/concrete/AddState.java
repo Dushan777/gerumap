@@ -6,6 +6,6 @@ import dsw.gerumap.app.state.State;
 public class AddState extends State {
     @Override
     public void mousePressed(MindMapView mindMapView, int x, int y) {
-
+        System.out.println("add");
     }
 }
