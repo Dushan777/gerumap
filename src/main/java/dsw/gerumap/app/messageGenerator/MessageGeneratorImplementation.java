@@ -31,7 +31,7 @@ public class MessageGeneratorImplementation extends MessageGenerator {
         if(type.equals(EventType.NOTHING_IS_SELECTED))
             this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [Must select a node!]"));
         if(type.equals(EventType.CANNOT_SET_NAME))
-            this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [Must choose a valid name!]"));
+            this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [Must choose a valid value!]"));
 
     }
 

@@ -16,7 +16,7 @@ public class ConceptPainter extends Painter{
         if(name != null)
         {
             concept.setName(name);
-            g.drawString(concept.getName(), concept.getPosition().x + 25, concept.getPosition().y + 25);
+            g.drawString(concept.getName(), concept.getPosition().x + concept.getHeight()/2, concept.getPosition().y + concept.getWidth()/2);
         }
         g.setStroke(new BasicStroke(MainFrame.getInstance().getActionManager().getConfirmAction().getLineStroke()));
         g.drawOval(concept.getPosition().x, concept.getPosition().y, concept.getHeight(), concept.getWidth());
@@ -28,7 +28,23 @@ public class ConceptPainter extends Painter{
     }
 
     @Override
-    public boolean elementAt() {
+    public boolean elementAt(int x, int y) {
+        Concept c = (Concept)element;
+        int x1 = c.getPosition().x;
+        int y1 = c.getPosition().y;
+        int height = c.getHeight();
+        int width = c.getWidth();
+        int centerX = x1+width/2;
+        int centerY = y1+height/2;
+        int a = (x-centerX)*(x-centerX)/(height/2 * height/2);
+        int b = (y-centerY)*(y-centerY)/(width/2 * width/2);
+        // x,y koordinate kliknute tacke
+        // x1,y1 od elementa
+        if(a+b<=1)
+            return true;
         return false;
+
     }
+
+
 }

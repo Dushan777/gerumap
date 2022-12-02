@@ -42,4 +42,9 @@ public class MindMap extends MapNodeComposite {
         super.setName(name);
         this.notifySubscribers(this);
     }
+    @Override
+    public void deleteChild(MapNode child) {
+        super.deleteChild(child);
+        this.notifySubscribers(this);
+    }
 }

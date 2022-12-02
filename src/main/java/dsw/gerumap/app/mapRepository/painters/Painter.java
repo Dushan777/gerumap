@@ -19,7 +19,7 @@ public abstract class Painter {
         this.element = element;
     }
 
-    public abstract boolean elementAt();
+    public abstract boolean elementAt(int x, int y);
 
 
 

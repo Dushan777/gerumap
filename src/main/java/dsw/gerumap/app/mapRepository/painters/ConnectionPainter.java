@@ -10,12 +10,14 @@ public class ConnectionPainter extends Painter{
     }
 
     @Override
+    public boolean elementAt(int x, int y) {
+        return false;
+    }
+
+    @Override
     public void draw(Graphics2D g, Element e) {
 
     }
 
-    @Override
-    public boolean elementAt() {
-        return false;
-    }
+
 }

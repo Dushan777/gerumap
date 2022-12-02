@@ -54,13 +54,13 @@ public class MindMapView extends JPanel implements ISubscriber {
             MainFrame.getInstance().getProjectView().mousePressed(mindMapView, position.x, position.y);
         }
 
-        //todo
+
         @Override
         public void mouseReleased(MouseEvent e) {
             super.mouseReleased(e);
         }
 
-        //todo
+
         @Override
         public void mouseDragged(MouseEvent e) {
             super.mouseDragged(e);
