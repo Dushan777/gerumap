@@ -1,21 +1,43 @@
 package dsw.gerumap.app.state.concrete;
 
 
+import dsw.gerumap.app.core.ApplicationFramework;
+import dsw.gerumap.app.gui.swing.errorLogger.EventType;
+import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.gui.swing.view.MindMapView;
 import dsw.gerumap.app.mapRepository.implementation.Concept;
 import dsw.gerumap.app.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.mapRepository.painters.ConceptPainter;
+import dsw.gerumap.app.messageGenerator.MessageGeneratorImplementation;
 import dsw.gerumap.app.state.State;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.awt.*;
 
+@Getter
+@Setter
 public class AddState extends State {
+
+
     @Override
     public void mousePressed(MindMapView mindMapView, int x, int y)
     {
+        int br = MainFrame.getInstance().getActionManager().getConfirmAction().getDimensionX();
+        int br2 = MainFrame.getInstance().getActionManager().getConfirmAction().getDimensionY();
         MindMap mindMap = mindMapView.getMindMap();
-        Concept concept = new Concept("Concept", new Point(x, y), 70, 40);
-        mindMapView.getPainters().add(new ConceptPainter(concept));
-        mindMap.addChild(concept);
+        int num = mindMap.getNumberOfChildren()+1;
+        if(br != 0 && br2 != 0)
+        {
+            Concept concept = new Concept("Concept" + num, new Point(x, y), br, br2);
+            mindMapView.getPainters().add(new ConceptPainter(concept));
+            mindMap.addChild(concept);
+        }
+        else
+        {
+            ((MessageGeneratorImplementation) ApplicationFramework.getInstance().getMessageGenerator()).setType(EventType.CANNOT_ADD_CHILD);
+            ApplicationFramework.getInstance().getMessageGenerator().generateMessage();
+        }
     }
 }
+

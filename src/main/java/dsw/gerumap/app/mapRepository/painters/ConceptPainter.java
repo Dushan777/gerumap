@@ -16,7 +16,7 @@ public class ConceptPainter extends Painter{
         if(name != null)
         {
             concept.setName(name);
-            g.drawString(concept.getName(), concept.getPosition().x + concept.getHeight()/2, concept.getPosition().y + concept.getWidth()/2);
+            g.drawString(concept.getName(), concept.getPosition().x + concept.getHeight()/5+9, concept.getPosition().y + concept.getWidth()/2);
         }
         g.setStroke(new BasicStroke(MainFrame.getInstance().getActionManager().getConfirmAction().getLineStroke()));
         g.drawOval(concept.getPosition().x, concept.getPosition().y, concept.getHeight(), concept.getWidth());
@@ -29,6 +29,10 @@ public class ConceptPainter extends Painter{
 
     @Override
     public boolean elementAt(int x, int y) {
+
+        // objekat se je pomeren dole levo, tj brise ga kad se klikne dole levo od njega !!!!!!!!!
+        // parametri treba da se promene
+
         Concept c = (Concept)element;
         int x1 = c.getPosition().x;
         int y1 = c.getPosition().y;

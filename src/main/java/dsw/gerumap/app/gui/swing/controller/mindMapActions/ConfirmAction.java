@@ -15,10 +15,13 @@ public class ConfirmAction implements ActionListener {
     private Color color;
     private int lineStroke;
     private String text2;
+    private int dimensionX, dimensionY;
     @Override
     public void actionPerformed(ActionEvent e) {
         String text = MainFrame.getInstance().getActionManager().getColorChooserAction().getTextField().getText();
         text2 = MainFrame.getInstance().getActionManager().getColorChooserAction().getTextFieldText().getText();
+        dimensionX = text2.length()*7 + 45;
+        dimensionY = text2.length()*3/2 + 30;
         if(!text.matches("[0-9]+") || !text2.matches("[0-9a-zA-Z]+"))
         {
             ((MessageGeneratorImplementation) ApplicationFramework.getInstance().getMessageGenerator()).setType(EventType.CANNOT_SET_NAME);
