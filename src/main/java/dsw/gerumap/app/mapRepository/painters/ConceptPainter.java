@@ -3,6 +3,7 @@ package dsw.gerumap.app.mapRepository.painters;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.mapRepository.implementation.Concept;
 import dsw.gerumap.app.mapRepository.implementation.Element;
+import javafx.scene.shape.Ellipse;
 
 import java.awt.*;
 
@@ -11,6 +12,7 @@ public class ConceptPainter extends Painter{
     @Override
     public void draw(Graphics2D g, Element e) {
         Concept concept = (Concept)e;
+        // ovo treba bolje, ne treba preko MainFrame mislim
         g.setPaint(MainFrame.getInstance().getActionManager().getConfirmAction().getColor());
         String name = MainFrame.getInstance().getActionManager().getConfirmAction().getText2();
         if(name != null)
@@ -18,6 +20,7 @@ public class ConceptPainter extends Painter{
             concept.setName(name);
             g.drawString(concept.getName(), concept.getPosition().x + concept.getHeight()/5+9, concept.getPosition().y + concept.getWidth()/2);
         }
+        // ovo treba bolje, ne treba preko MainFrame mislim
         g.setStroke(new BasicStroke(MainFrame.getInstance().getActionManager().getConfirmAction().getLineStroke()));
         g.drawOval(concept.getPosition().x, concept.getPosition().y, concept.getHeight(), concept.getWidth());
         //promeniti boju, debljinu linije i tekst da ne bude svima isti, pozicija teksta treba da se stavi da bude unutar elipse
@@ -38,8 +41,9 @@ public class ConceptPainter extends Painter{
         int y1 = c.getPosition().y;
         int height = c.getHeight();
         int width = c.getWidth();
-        int centerX = x1+width/2;
-        int centerY = y1+height/2;
+        int centerX = x1+height/2;
+        int centerY = y1+width/2;
+        //System.out.println("x " + x + " y " + y + " x1 " + x1 + " y1 " + y1 + " cx " + centerX + " cy " + centerY + " w " + width + " h " + height + " ");
         int a = (x-centerX)*(x-centerX)/(height/2 * height/2);
         int b = (y-centerY)*(y-centerY)/(width/2 * width/2);
         // x,y koordinate kliknute tacke

@@ -5,11 +5,13 @@ import dsw.gerumap.app.gui.swing.errorLogger.EventType;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.messageGenerator.MessageGeneratorImplementation;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 @Getter
+@Setter
 public class ConfirmAction implements ActionListener {
 
     private Color color;
