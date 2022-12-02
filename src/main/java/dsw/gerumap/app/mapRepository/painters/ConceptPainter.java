@@ -40,12 +40,12 @@ public class ConceptPainter extends Painter{
         int x1 = c.getPosition().x;
         int y1 = c.getPosition().y;
         int height = c.getHeight();
-        int width = c.getWidth();
+        int width = c.getWidth() ;
         int centerX = x1+height/2;
+        int k = MainFrame.getInstance().getActionManager().getColorChooserAction().getTextFieldText().getText().length();
         int centerY = y1+width/2;
-        //System.out.println("x " + x + " y " + y + " x1 " + x1 + " y1 " + y1 + " cx " + centerX + " cy " + centerY + " w " + width + " h " + height + " ");
-        int a = (x-centerX)*(x-centerX)/(height/2 * height/2);
-        int b = (y-centerY)*(y-centerY)/(width/2 * width/2);
+        int a = (centerX - x)*(centerX - x)/((height/2-k) * (height/2-k));
+        int b = (centerY - y)*(centerY - y)/((width/2-k/3) * (width/2-k/3));
         // x,y koordinate kliknute tacke
         // x1,y1 od elementa
         if(a+b<=1)
