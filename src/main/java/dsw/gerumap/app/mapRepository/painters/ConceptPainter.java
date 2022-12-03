@@ -17,10 +17,8 @@ public class ConceptPainter extends Painter{
         {
             g.drawString(concept.getName(), concept.getPosition().x + concept.getHeight()/5+9 - concept.getHeight()/2, concept.getPosition().y);
         }
-        // ovo treba bolje, ne treba preko MainFrame mislim
-        g.setStroke(new BasicStroke(MainFrame.getInstance().getActionManager().getConfirmAction().getLineStroke()));
+        g.setStroke(new BasicStroke(concept.getLineStroke()));
         g.drawOval(concept.getPosition().x - concept.getHeight()/2, concept.getPosition().y - concept.getWidth()/2, concept.getHeight(), concept.getWidth());
-        //promeniti boju, debljinu linije i tekst da ne bude svima isti, pozicija teksta treba da se stavi da bude unutar elipse
     }
     public ConceptPainter(Element element)
     {
