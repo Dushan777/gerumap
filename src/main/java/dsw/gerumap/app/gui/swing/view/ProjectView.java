@@ -1,3 +1,4 @@
+
 package dsw.gerumap.app.gui.swing.view;
 
 import dsw.gerumap.app.gui.swing.observer.ISubscriber;
@@ -20,7 +21,7 @@ public class ProjectView extends JPanel implements ISubscriber {
 
     private JLabel lbl;
     private JTabbedPane tabbedPane;
-//    private List<MindMapView> mindMapViews;
+    //    private List<MindMapView> mindMapViews;
     private Project project;
     private JToolBar mindMapToolbar;
     private StateManager stateManager;
@@ -33,7 +34,7 @@ public class ProjectView extends JPanel implements ISubscriber {
     {
 
         stateManager = new StateManager();
-       // mindMapViews = new ArrayList<>();
+        // mindMapViews = new ArrayList<>();
         this.setLayout(new BorderLayout());
         lbl = new JLabel(" ");
         tabbedPane = new JTabbedPane(SwingConstants.TOP);
@@ -136,8 +137,15 @@ public class ProjectView extends JPanel implements ISubscriber {
     // za svaku metodu u mouseController-u postoji metoda u ProjectView-u i u State-u
     // paintComponent se poziva metodom repaint, ne drugacije
 
+    public void misPusten(MindMapView mindMapView, int x, int y)
+    {
+        stateManager.getCurrentState().misPusten(mindMapView, x, y);
+    }
 
-
+    public void misPrevucen(MindMapView mindMapView, int x, int y)
+    {
+        stateManager.getCurrentState().misPrevucen(mindMapView, x, y);
+    }
 
     public void startAddState()
     {
@@ -168,4 +176,3 @@ public class ProjectView extends JPanel implements ISubscriber {
         this.stateManager.setColorState();
     }
 }
-

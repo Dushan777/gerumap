@@ -57,7 +57,9 @@ public class MindMapView extends JPanel implements ISubscriber {
 
         @Override
         public void mouseReleased(MouseEvent e) {
-            super.mouseReleased(e);
+            MindMapView mindMapView = (MindMapView) MainFrame.getInstance().getProjectView().getTabbedPane().getSelectedComponent();
+            Point position = e.getPoint();
+            MainFrame.getInstance().getProjectView().misPusten(mindMapView, position.x, position.y);
         }
 
 

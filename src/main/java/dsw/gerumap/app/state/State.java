@@ -8,5 +8,13 @@ public abstract class State {
     {
 
     }
+    public void misPusten(MindMapView mindMapView, int x, int y)
+    {
 
+    }
+
+    public void misPrevucen(MindMapView mindMapView, int x, int y)
+    {
+
+    }
 }
