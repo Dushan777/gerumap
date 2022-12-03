@@ -22,9 +22,10 @@ public class ConfirmAction implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String text = MainFrame.getInstance().getActionManager().getColorChooserAction().getTextField().getText();
         text2 = MainFrame.getInstance().getActionManager().getColorChooserAction().getTextFieldText().getText();
-        dimensionX = text2.length()*7 + 45;
+        dimensionX = text2.length()*9 + 45;
         dimensionY = text2.length()*3/2 + 30;
-        if(!text.matches("[0-9]+") || !text2.matches("[0-9a-zA-Z]+"))
+
+        if(!text.matches("[0-9]+") || !text2.matches("[0-9a-zA-Z\\s]+"))
         {
             ((MessageGeneratorImplementation) ApplicationFramework.getInstance().getMessageGenerator()).setType(EventType.CANNOT_SET_NAME);
             ApplicationFramework.getInstance().getMessageGenerator().generateMessage();
