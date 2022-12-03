@@ -5,13 +5,15 @@ import dsw.gerumap.app.mapRepository.painters.Painter;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.awt.*;
+
 @Getter
 @Setter
 
 public class Element extends MapNode {
 
     protected int lineStroke;
-    protected String color;
+    protected Color color;
     public Element(String name, MapNode parent) {
         super(name, parent);
     }

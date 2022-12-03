@@ -13,7 +13,7 @@ import dsw.gerumap.app.state.State;
 public class SelectState extends State {
 
     @Override
-    public void mousePressed(MindMapView mindMapView, int x, int y) {
+    public void misKliknut(MindMapView mindMapView, int x, int y) {
         MindMap mindMap = mindMapView.getMindMap();
         Painter toBeSelected = null;
         for(Painter p : mindMapView.getPainters())

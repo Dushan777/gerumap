@@ -129,9 +129,9 @@ public class ProjectView extends JPanel implements ISubscriber {
         switchUI();
     }
 
-    public void mousePressed(MindMapView mindMapView, int x, int y)
+    public void misKliknut(MindMapView mindMapView, int x, int y)
     {
-        stateManager.getCurrentState().mousePressed(mindMapView, x, y);
+        stateManager.getCurrentState().misKliknut(mindMapView, x, y);
     }
     // za svaku metodu u mouseController-u postoji metoda u ProjectView-u i u State-u
     // paintComponent se poziva metodom repaint, ne drugacije

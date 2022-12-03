@@ -34,10 +34,10 @@ public class ConfirmAction implements ActionListener {
 
             return;
         }
-          lineStroke = Integer.parseInt(text);
-          color = MainFrame.getInstance().getActionManager().getColorChooserAction().getColorChooser().getColor();
+
+        lineStroke = Integer.parseInt(text);
+        color = MainFrame.getInstance().getActionManager().getColorChooserAction().getColorChooser().getColor();
         System.out.println(color);
         MainFrame.getInstance().getActionManager().getColorChooserAction().getFrame().dispose();
-
     }
 }

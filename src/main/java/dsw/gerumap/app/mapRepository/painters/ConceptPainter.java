@@ -3,7 +3,6 @@ package dsw.gerumap.app.mapRepository.painters;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.mapRepository.implementation.Concept;
 import dsw.gerumap.app.mapRepository.implementation.Element;
-import javafx.scene.shape.Ellipse;
 
 import java.awt.*;
 
@@ -12,12 +11,10 @@ public class ConceptPainter extends Painter{
     @Override
     public void draw(Graphics2D g, Element e) {
         Concept concept = (Concept)e;
-        // ovo treba bolje, ne treba preko MainFrame mislim
-        g.setPaint(MainFrame.getInstance().getActionManager().getConfirmAction().getColor());
-        String name = MainFrame.getInstance().getActionManager().getConfirmAction().getText2();
+        g.setPaint(concept.getColor());
+        String name = concept.getName();
         if(name != null)
         {
-            concept.setName(name);
             g.drawString(concept.getName(), concept.getPosition().x + concept.getHeight()/5+9 - concept.getHeight()/2, concept.getPosition().y);
         }
         // ovo treba bolje, ne treba preko MainFrame mislim

@@ -21,15 +21,18 @@ public class AddState extends State {
 
 
     @Override
-    public void mousePressed(MindMapView mindMapView, int x, int y)
+    public void misKliknut(MindMapView mindMapView, int x, int y)
     {
         int br = MainFrame.getInstance().getActionManager().getConfirmAction().getDimensionX();
         int br2 = MainFrame.getInstance().getActionManager().getConfirmAction().getDimensionY();
         MindMap mindMap = mindMapView.getMindMap();
-        int num = mindMap.getNumberOfChildren()+1;
+      //  int num = mindMap.getNumberOfChildren()+1;
+        String name = MainFrame.getInstance().getActionManager().getConfirmAction().getText2();
+        Color color = MainFrame.getInstance().getActionManager().getConfirmAction().getColor();
         if(br != 0 && br2 != 0)
         {
-            Concept concept = new Concept("Concept" + num, new Point(x, y), br, br2);
+            Concept concept = new Concept(name, new Point(x, y), br, br2);
+            concept.setColor(color);
             mindMapView.getPainters().add(new ConceptPainter(concept));
             mindMap.addChild(concept);
         }
