@@ -44,6 +44,8 @@ public class ConnectState extends State {
 
     @Override
     public void misPusten(MindMapView mindMapView, int x, int y) {
+        if(firstConcept == null)
+            return;
         MindMap mindMap = mindMapView.getMindMap();
         Painter selected = null;
         for(Painter p : mindMapView.getPainters())
@@ -68,6 +70,8 @@ public class ConnectState extends State {
         Connection connection = new Connection("Connection" + mindMap.getNumberOfChildren(), mindMap, firstConcept, secondConcept);
         mindMapView.getPainters().add(new ConnectionPainter(connection));
         mindMap.addChild(connection);
+        firstConcept = null;
+        secondConcept = null;
 
     }
 }

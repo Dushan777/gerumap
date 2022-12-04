@@ -46,7 +46,6 @@ public class RemoveState extends State {
                 }
                 if(flag)
                 {
-                    mindMap.deleteChild(connection);
                     ConnectionPainter connectionPainter = null;
                     flag = false;
                     for(Painter p : mindMapView.getPainters())
@@ -62,6 +61,7 @@ public class RemoveState extends State {
                     }
                     if(flag)
                         mindMapView.getPainters().remove(connectionPainter);
+                    mindMap.deleteChild(connection);
                 }
                 // ako je pojam obrisati i njegovu vezu, proci kroz sve veze iz mape uma
                 // ako je jedan od njenih pojmova onda se brise
@@ -69,7 +69,6 @@ public class RemoveState extends State {
             else
             {
                 connection = (Connection) toBeDeleted.getElement();
-                mindMap.deleteChild(connection);
                 ConnectionPainter connectionPainter = null;
                 flag = false;
                 for(Painter p : mindMapView.getPainters())
@@ -86,6 +85,7 @@ public class RemoveState extends State {
                 }
                 if(flag)
                     mindMapView.getPainters().remove(connectionPainter);
+                mindMap.deleteChild(connection);
             }
 
         }
