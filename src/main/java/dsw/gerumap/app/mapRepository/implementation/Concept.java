@@ -12,6 +12,7 @@ import java.awt.*;
 public class Concept extends Element{
 
     private String name;
+    private boolean selected = false;
     private int height, width;
     private Point position;
 

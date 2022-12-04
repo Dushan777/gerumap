@@ -10,6 +10,8 @@ import dsw.gerumap.app.mapRepository.painters.ConceptPainter;
 import dsw.gerumap.app.mapRepository.painters.Painter;
 import dsw.gerumap.app.state.State;
 
+import java.awt.*;
+
 public class SelectState extends State {
 
     @Override
@@ -26,23 +28,17 @@ public class SelectState extends State {
         if(toBeSelected != null)
         {
             Element e = toBeSelected.getElement();
-            int newStroke = e.getLineStroke() + 3;
             mindMapView.getPainters().remove(toBeSelected);
             mindMap.deleteChild(e);
-            // svima menja debljinu, kad god se klikne poveca debljinu
             Concept c  = new Concept(((Concept)e).getName(), ((Concept)e).getPosition(), ((Concept)e).getHeight(), ((Concept)e).getWidth());
-            c.setLineStroke(newStroke);
-            MainFrame.getInstance().getActionManager().getConfirmAction().setLineStroke(newStroke);
+            c.setSelected(true);
+            c.setColor(((Concept)e).getColor());
+            c.setLineStroke(((Concept)e).getLineStroke());
             mindMapView.getPainters().add(new ConceptPainter(c));
-            MainFrame.getInstance().getActionManager().getConfirmAction().setLineStroke(e.getLineStroke());
             mindMap.addChild(c);
 
-
-
-
-
-
         }
+
 
     }
 }

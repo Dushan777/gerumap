@@ -21,7 +21,6 @@ public class ConnectState extends State {
     private Concept secondConcept = null;
     @Override
     public void misKliknut(MindMapView mindMapView, int x, int y) {
-        MindMap mindMap = mindMapView.getMindMap();
         Painter selected = null;
         for(Painter p : mindMapView.getPainters())
         {
@@ -66,7 +65,7 @@ public class ConnectState extends State {
         secondConcept = c;
         if(firstConcept.getPosition().getX() == secondConcept.getPosition().getX() && firstConcept.getPosition().getY() == secondConcept.getPosition().getY())
             return;
-        Connection connection = new Connection("Connection", mindMap, firstConcept, secondConcept);
+        Connection connection = new Connection("Connection" + mindMap.getNumberOfChildren(), mindMap, firstConcept, secondConcept);
         mindMapView.getPainters().add(new ConnectionPainter(connection));
         mindMap.addChild(connection);
 

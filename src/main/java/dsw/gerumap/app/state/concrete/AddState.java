@@ -26,12 +26,11 @@ public class AddState extends State {
         int br = MainFrame.getInstance().getActionManager().getConfirmAction().getDimensionX();
         int br2 = MainFrame.getInstance().getActionManager().getConfirmAction().getDimensionY();
         MindMap mindMap = mindMapView.getMindMap();
-      //  int num = mindMap.getNumberOfChildren()+1;
         String name = MainFrame.getInstance().getActionManager().getConfirmAction().getText2();
         Color color = MainFrame.getInstance().getActionManager().getConfirmAction().getColor();
-        int stroke = Integer.parseInt(MainFrame.getInstance().getActionManager().getColorChooserAction().getTextField().getText()) ;
         if(br != 0 && br2 != 0)
         {
+            int stroke = Integer.parseInt(MainFrame.getInstance().getActionManager().getColorChooserAction().getTextField().getText()) ;
             Concept concept = new Concept(name, new Point(x, y), br, br2);
             concept.setColor(color);
             concept.setLineStroke(stroke);
