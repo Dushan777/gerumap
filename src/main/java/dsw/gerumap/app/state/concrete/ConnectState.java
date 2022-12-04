@@ -68,6 +68,7 @@ public class ConnectState extends State {
         if(firstConcept.getPosition().getX() == secondConcept.getPosition().getX() && firstConcept.getPosition().getY() == secondConcept.getPosition().getY())
             return;
         Connection connection = new Connection("Connection" + mindMap.getNumberOfChildren(), mindMap, firstConcept, secondConcept);
+       // connection.setParent(mindMap);
         mindMapView.getPainters().add(new ConnectionPainter(connection));
         mindMap.addChild(connection);
         firstConcept = null;

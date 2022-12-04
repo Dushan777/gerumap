@@ -2,7 +2,6 @@ package dsw.gerumap.app.gui.swing.controller;
 
 
 import dsw.gerumap.app.gui.swing.controller.mindMapActions.*;
-import dsw.gerumap.app.state.concrete.ColorState;
 import lombok.Getter;
 import lombok.Setter;
 

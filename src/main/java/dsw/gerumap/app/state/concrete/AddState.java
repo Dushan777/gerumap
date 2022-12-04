@@ -30,11 +30,13 @@ public class AddState extends State {
         Color color = MainFrame.getInstance().getActionManager().getConfirmAction().getColor();
         if(br != 0 && br2 != 0)
         {
+            // ovde baca null ne znamo kad
             int stroke = Integer.parseInt(MainFrame.getInstance().getActionManager().getColorChooserAction().getTextField().getText()) ;
             Concept concept = new Concept(name, new Point(x, y), br, br2);
             concept.setColor(color);
             concept.setLineStroke(stroke);
             mindMapView.getPainters().add(new ConceptPainter(concept));
+            //concept.setParent(mindMap);
             mindMap.addChild(concept);
         }
         else

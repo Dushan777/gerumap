@@ -71,6 +71,5 @@ public class ColorChooserAction extends AbstractGerumapAction {
         frame.add(panel1);
         frame.setVisible(true);
 
-        MainFrame.getInstance().getProjectView().startColorState();
     }
 }

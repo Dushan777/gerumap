@@ -171,8 +171,5 @@ public class ProjectView extends JPanel implements ISubscriber {
     {
         this.stateManager.setZoomState();
     }
-    public void startColorState()
-    {
-        this.stateManager.setColorState();
-    }
+
 }

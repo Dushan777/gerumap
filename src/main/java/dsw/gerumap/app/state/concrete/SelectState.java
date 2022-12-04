@@ -3,6 +3,7 @@ package dsw.gerumap.app.state.concrete;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.gui.swing.view.MindMapView;
 import dsw.gerumap.app.mapRepository.composite.MapNode;
+import dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
 import dsw.gerumap.app.mapRepository.implementation.Concept;
 import dsw.gerumap.app.mapRepository.implementation.Element;
 import dsw.gerumap.app.mapRepository.implementation.MindMap;
@@ -23,9 +24,11 @@ public class SelectState extends State {
             if(p.elementAt(x,y))
             {
                 toBeSelected = p;
+                for(MapNode mapNode : mindMap.getChildren())
+                    System.out.println(mapNode.getName());
             }
         }
-        if(toBeSelected != null)
+        if(toBeSelected != null && toBeSelected.getElement() instanceof Concept)
         {
             Element e = toBeSelected.getElement();
             mindMapView.getPainters().remove(toBeSelected);
