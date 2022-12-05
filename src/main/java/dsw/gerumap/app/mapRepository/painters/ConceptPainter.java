@@ -26,6 +26,7 @@ public class ConceptPainter extends Painter{
             ((MapNodeComposite)concept.getParent()).deleteChild(concept);
             return;
         }*/
+        // bilo sta
             if(name == null)
                 return;
             g.setPaint(Color.BLACK);
