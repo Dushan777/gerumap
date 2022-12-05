@@ -31,8 +31,11 @@ public class ConnectionPainter extends Painter{
         double firsty = connection.getFirstConcept().getPosition().getY();
         double secondx = connection.getSecondConcept().getPosition().getX();
         double secondy = connection.getSecondConcept().getPosition().getY();
-        double k = (firsty - secondy)/(firstx - secondx);
-        double rez = y - firsty - k * x + k * firstx;
-        return rez > -2 && rez < 2;
+        if((firstx < secondx && firstx <= x && secondx >=x) || (firstx > secondx && firstx >= x && secondx <=x) ) {
+            double k = (firsty - secondy) / (firstx - secondx);
+            double rez = y - firsty - k * x + k * firstx;
+            return rez > -2 && rez < 2;
+        }
+         return false;
     }
 }

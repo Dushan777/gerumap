@@ -25,8 +25,8 @@ public class ConceptPainter extends Painter{
         {
             ((MapNodeComposite)concept.getParent()).deleteChild(concept);
             return;
-        }
-*/
+        }*/
+
             g.setPaint(Color.BLACK);
             g.drawString(concept.getName(), concept.getPosition().x + concept.getHeight()/5+9 - concept.getHeight()/2, concept.getPosition().y);
 
@@ -63,8 +63,8 @@ public class ConceptPainter extends Painter{
             int a = (centerX - x) * (centerX - x) / ((height / 2 - k) * (height / 2 - k));
             int b = (centerY - y) * (centerY - y) / ((width / 2 - k / 3) * (width / 2 - k / 3));
 
-           // if(centerX < height/2 || centerY < width/2)
-              // return false;
+         //   if(centerX < height/2 || centerY < width/2)
+             //  return false;
         return a + b <= 1;
     }
 
