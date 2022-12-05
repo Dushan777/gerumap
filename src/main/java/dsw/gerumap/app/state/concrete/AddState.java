@@ -23,20 +23,26 @@ public class AddState extends State {
     @Override
     public void misKliknut(MindMapView mindMapView, int x, int y)
     {
+        if(MainFrame.getInstance().getActionManager().getColorChooserAction().getFlag()) {
+            ((MessageGeneratorImplementation) ApplicationFramework.getInstance().getMessageGenerator()).setType(EventType.CANNOT_ADD_CHILD);
+            ApplicationFramework.getInstance().getMessageGenerator().generateMessage();
+            return;
+        }
         int br = MainFrame.getInstance().getActionManager().getConfirmAction().getDimensionX();
         int br2 = MainFrame.getInstance().getActionManager().getConfirmAction().getDimensionY();
+
         MindMap mindMap = mindMapView.getMindMap();
         String name = MainFrame.getInstance().getActionManager().getConfirmAction().getText2();
         Color color = MainFrame.getInstance().getActionManager().getConfirmAction().getColor();
-        if(br != 0 && br2 != 0)
+
+        if(br != 0 && br2 != 0 )
         {
-            // ovde baca null ne znamo kad
             int stroke = Integer.parseInt(MainFrame.getInstance().getActionManager().getColorChooserAction().getTextField().getText()) ;
             Concept concept = new Concept(name, new Point(x, y), br, br2);
             concept.setColor(color);
             concept.setLineStroke(stroke);
             mindMapView.getPainters().add(new ConceptPainter(concept));
-            //concept.setParent(mindMap);
+            concept.setParent(mindMap);
             mindMap.addChild(concept);
         }
         else

@@ -10,6 +10,7 @@ import lombok.Setter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 @Getter
 @Setter
 public class ConfirmAction implements ActionListener {
@@ -39,5 +40,7 @@ public class ConfirmAction implements ActionListener {
         color = MainFrame.getInstance().getActionManager().getColorChooserAction().getColorChooser().getColor();
         System.out.println(color);
         MainFrame.getInstance().getActionManager().getColorChooserAction().getFrame().dispose();
+        MainFrame.getInstance().getActionManager().getColorChooserAction().setFlag(false);
     }
+
 }
