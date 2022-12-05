@@ -26,7 +26,8 @@ public class ConceptPainter extends Painter{
             ((MapNodeComposite)concept.getParent()).deleteChild(concept);
             return;
         }*/
-
+            if(name == null)
+                return;
             g.setPaint(Color.BLACK);
             g.drawString(concept.getName(), concept.getPosition().x + concept.getHeight()/5+9 - concept.getHeight()/2, concept.getPosition().y);
 

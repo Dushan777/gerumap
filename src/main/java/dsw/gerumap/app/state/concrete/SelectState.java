@@ -24,8 +24,6 @@ public class SelectState extends State {
             if(p.elementAt(x,y))
             {
                 toBeSelected = p;
-                for(MapNode mapNode : mindMap.getChildren())
-                    System.out.println(mapNode.getName());
             }
         }
         if(toBeSelected != null && toBeSelected.getElement() instanceof Concept)

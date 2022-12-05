@@ -25,7 +25,9 @@ public class MindMapView extends JPanel implements ISubscriber {
     {
         this.mindMap = mindMap;
         this.setBackground(Color.white);
-        this.addMouseListener(new MouseController());
+        MouseController mouseController = new MouseController();
+        this.addMouseListener(mouseController);
+        this.addMouseMotionListener(mouseController);
 
     }
 
@@ -65,7 +67,10 @@ public class MindMapView extends JPanel implements ISubscriber {
 
         @Override
         public void mouseDragged(MouseEvent e) {
-            super.mouseDragged(e);
+            MindMapView mindMapView = (MindMapView) MainFrame.getInstance().getProjectView().getTabbedPane().getSelectedComponent();
+            Point position = e.getPoint();
+            MainFrame.getInstance().getProjectView().misPrevucen(mindMapView, position.x, position.y);
+
         }
     }
 }
