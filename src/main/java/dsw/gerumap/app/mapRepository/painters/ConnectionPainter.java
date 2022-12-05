@@ -18,7 +18,7 @@ public class ConnectionPainter extends Painter{
         Connection connection = (Connection) e;
         connection.setColor(Color.BLACK);
         g.setPaint(Color.BLACK);
-        g.setStroke(new BasicStroke(3f));
+        g.setStroke(new BasicStroke(2f));
         g.drawLine(connection.getFirstConcept().getPosition().x, connection.getFirstConcept().getPosition().y,
                 connection.getSecondConcept().getPosition().x, connection.getSecondConcept().getPosition().y);
 
@@ -34,8 +34,15 @@ public class ConnectionPainter extends Painter{
         if((firstx < secondx && firstx <= x && secondx >=x) || (firstx > secondx && firstx >= x && secondx <=x) ) {
             double k = (firsty - secondy) / (firstx - secondx);
             double rez = y - firsty - k * x + k * firstx;
-            return rez > -2 && rez < 2;
+            return rez > -3 && rez < 3;
         }
+        // ako su firstx i secondx jednaki - ne brise
+        if(firstx == secondx && firstx == x)
+        {
+            return (firsty > secondy && firsty >= y && secondy <= y) || ((firsty < secondy && firsty <= y && secondy >= y));
+
+        }
+
          return false;
     }
 }

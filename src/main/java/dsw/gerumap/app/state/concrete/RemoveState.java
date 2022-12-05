@@ -23,7 +23,6 @@ public class RemoveState extends State {
                 toBeDeleted = p;
             }
         }
-        // ubaciti iterator zbog brisanja elementa kad ima dve veze mozda
         if(toBeDeleted != null) {
             Connection connection = null;
             boolean flag = false;
