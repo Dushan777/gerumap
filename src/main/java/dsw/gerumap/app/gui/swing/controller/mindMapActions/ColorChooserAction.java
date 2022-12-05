@@ -30,6 +30,7 @@ public class ColorChooserAction extends AbstractGerumapAction {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        MainFrame.getInstance().setVisible(false);
         frame = new JFrame();
         colorChooser = new JColorChooser(Color.BLACK);
         textField = new JTextField();
@@ -82,6 +83,7 @@ public class ColorChooserAction extends AbstractGerumapAction {
             public void windowClosing(WindowEvent e)
             {
                 flag = true;
+                MainFrame.getInstance().setVisible(true);
             }
         });
 

@@ -41,6 +41,7 @@ public class ConfirmAction implements ActionListener {
         System.out.println(color);
         MainFrame.getInstance().getActionManager().getColorChooserAction().getFrame().dispose();
         MainFrame.getInstance().getActionManager().getColorChooserAction().setFlag(false);
+        MainFrame.getInstance().setVisible(true);
     }
 
 }
