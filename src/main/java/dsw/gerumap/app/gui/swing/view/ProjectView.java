@@ -4,8 +4,12 @@ package dsw.gerumap.app.gui.swing.view;
 import dsw.gerumap.app.gui.swing.observer.ISubscriber;
 import dsw.gerumap.app.mapRepository.composite.MapNode;
 import dsw.gerumap.app.mapRepository.factory.MindMapFactory;
+import dsw.gerumap.app.mapRepository.implementation.Concept;
+import dsw.gerumap.app.mapRepository.implementation.Element;
 import dsw.gerumap.app.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.mapRepository.implementation.Project;
+import dsw.gerumap.app.mapRepository.painters.ConceptPainter;
+import dsw.gerumap.app.mapRepository.painters.ConnectionPainter;
 import dsw.gerumap.app.state.StateManager;
 import lombok.Getter;
 import lombok.Setter;
@@ -52,11 +56,17 @@ public class ProjectView extends JPanel implements ISubscriber {
         {
             MindMap mindMap = (MindMap)mapNode;
             MindMapView mindMapView = new MindMapView(mindMap);
-//            if(!mindMapViews.contains(mindMapView))
-//                mindMapViews.add(mindMapView);
-            tabbedPane.addTab(mindMap.getName(),mindMapView);
             mindMap.addSubscribers(MainFrame.getInstance().getProjectView());
             mindMap.addSubscribers(mindMapView);
+            for(MapNode mapNode1 : mindMap.getChildren())
+            {
+                Element e = (Element) mapNode1;
+                if(e instanceof Concept)
+                    mindMapView.getPainters().add(new ConceptPainter(e));
+                else
+                    mindMapView.getPainters().add(new ConnectionPainter(e));
+            }
+            tabbedPane.addTab(mindMap.getName(),mindMapView);
         }
     }
 
@@ -93,8 +103,6 @@ public class ProjectView extends JPanel implements ISubscriber {
                         MindMapView mindMapView = new MindMapView((MindMap) mapNode);
                         ((MindMap) mapNode).addSubscribers(mindMapView);
                         tabbedPane.addTab(mindMapView.getMindMap().getName(), mindMapView);
-//                        if (!mindMapViews.contains(mindMapView))
-//                            mindMapViews.add(mindMapView);
                     }
                 }
             }

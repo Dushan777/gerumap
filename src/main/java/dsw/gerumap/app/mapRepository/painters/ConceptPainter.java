@@ -1,8 +1,6 @@
 package dsw.gerumap.app.mapRepository.painters;
 
 import dsw.gerumap.app.gui.swing.view.MainFrame;
-import dsw.gerumap.app.mapRepository.composite.MapNode;
-import dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
 import dsw.gerumap.app.mapRepository.implementation.Concept;
 import dsw.gerumap.app.mapRepository.implementation.Element;
 import lombok.Getter;
@@ -19,14 +17,11 @@ public class ConceptPainter extends Painter{
         Concept concept = (Concept)e;
         String name = concept.getName();
 
-        // ne crta elemente koji predju desnu ili gornju granicu
-        // ali ih dodaje!!!
         /*if(!elementAt(concept.getPosition().x, concept.getPosition().y))
         {
             ((MapNodeComposite)concept.getParent()).deleteChild(concept);
             return;
         }*/
-        // bilo sta
             if(name == null)
                 return;
             g.setPaint(Color.BLACK);
@@ -65,8 +60,6 @@ public class ConceptPainter extends Painter{
             int a = (centerX - x) * (centerX - x) / ((height / 2 - k) * (height / 2 - k));
             int b = (centerY - y) * (centerY - y) / ((width / 2 - k / 3) * (width / 2 - k / 3));
 
-         //   if(centerX < height/2 || centerY < width/2)
-             //  return false;
         return a + b <= 1;
     }
 
