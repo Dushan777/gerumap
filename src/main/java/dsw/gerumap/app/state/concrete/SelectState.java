@@ -26,20 +26,24 @@ public class SelectState extends State {
         if(toBeSelected != null && toBeSelected.getElement() instanceof Concept)
         {
             Element e = toBeSelected.getElement();
-            mindMapView.getPainters().remove(toBeSelected);
-            mindMap.deleteChild(e);
-            Concept c  = new Concept(((Concept)e).getName(), ((Concept)e).getPosition(), ((Concept)e).getHeight(), ((Concept)e).getWidth());
+            Concept c = (Concept) e;
             c.setSelected(true);
-            c.setColor(((Concept)e).getColor());
-            c.setLineStroke(((Concept)e).getLineStroke());
-            mindMapView.getPainters().add(new ConceptPainter(c));
             if(mindMapView.getMapSelectionModel().getSelectedElements() != null)
-                mindMapView.getMapSelectionModel().getSelectedElements().clear();
-            mindMapView.getMapSelectionModel().getSelectedElements().add(c);
-            mindMap.addChild(c);
+                mindMapView.getMapSelectionModel().deselectElements();
+            mindMapView.getMapSelectionModel().selectElement(e);
 
         }
+        if(toBeSelected == null)
+            mindMapView.getMapSelectionModel().deselectElements();
+    }
 
+    @Override
+    public void misPrevucen(MindMapView mindMapView, int x, int y) {
+
+    }
+
+    @Override
+    public void misPusten(MindMapView mindMapView, int x, int y) {
 
     }
 }

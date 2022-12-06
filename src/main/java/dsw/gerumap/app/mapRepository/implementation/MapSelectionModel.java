@@ -11,8 +11,19 @@ import java.util.List;
 public class MapSelectionModel extends IPublisher {
 
     private List<Element> selectedElements = new ArrayList<>();
-
-    // treba da notifikuje kad se dodaju elementi, metode za dodavanje i brisanje elemenata vrv
+    public void selectElement(Element element)
+    {
+        if(!selectedElements.contains(element) && element != null)
+        {
+            selectedElements.add(element);
+            this.notifySubscribers(this);
+        }
+    }
+    public void deselectElements()
+    {
+        selectedElements.clear();
+        this.notifySubscribers(this);
+    }
 
 
 }

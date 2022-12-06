@@ -83,8 +83,6 @@ public class ConnectState extends State {
         Graphics2D g = (Graphics2D) mindMapView.getGraphics();
         Shape shape  = new Line2D.Float(firstConcept.getPosition().x,firstConcept.getPosition().y, x, y);
         g.draw(shape);
-        MindMap mindMap = mindMapView.getMindMap();
-        // treba preko observer-a
         mindMapView.repaint();
 
 

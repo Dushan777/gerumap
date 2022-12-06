@@ -18,14 +18,12 @@ public class ConceptPainter extends Painter{
         String name = concept.getName();
 
         /*if(!elementAt(concept.getPosition().x, concept.getPosition().y))
-        {
-            ((MapNodeComposite)concept.getParent()).deleteChild(concept);
             return;
-        }*/
-            if(name == null)
-                return;
-            g.setPaint(Color.BLACK);
-            g.drawString(concept.getName(), concept.getPosition().x + concept.getHeight()/5+9 - concept.getHeight()/2, concept.getPosition().y);
+        */
+        if(name == null)
+            return;
+        g.setPaint(Color.BLACK);
+        g.drawString(concept.getName(), concept.getPosition().x + concept.getHeight()/5+9 - concept.getHeight()/2, concept.getPosition().y);
 
         g.setPaint(concept.getColor());
         g.setStroke(new BasicStroke(concept.getLineStroke()));
@@ -38,8 +36,17 @@ public class ConceptPainter extends Painter{
             else
                 g.setPaint(Color.BLACK);
             g.drawString(concept.getName(), concept.getPosition().x + concept.getHeight()/5+9 - concept.getHeight()/2, concept.getPosition().y);
-            concept.setSelected(false);
+            //concept.setSelected(false);
         }
+        else
+        {
+            // da li za multiselekciju da prodje kroz listu svih i da im oboji pozadine u belo
+            g.setPaint(Color.WHITE);
+            g.fillOval(concept.getPosition().x - concept.getHeight() / 2, concept.getPosition().y - concept.getWidth() / 2, concept.getHeight(), concept.getWidth());
+            g.setPaint(Color.BLACK);
+            g.drawString(concept.getName(), concept.getPosition().x + concept.getHeight()/5+9 - concept.getHeight()/2, concept.getPosition().y);
+        }
+        concept.setSelected(false);
     }
     public ConceptPainter(Element element)
     {

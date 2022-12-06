@@ -31,6 +31,7 @@ public class MindMapView extends JPanel implements ISubscriber {
         MouseController mouseController = new MouseController();
         this.addMouseListener(mouseController);
         this.addMouseMotionListener(mouseController);
+        mapSelectionModel.addSubscribers(this);
 
     }
 
