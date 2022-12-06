@@ -1,10 +1,11 @@
 package dsw.gerumap.app.mapRepository.painters;
 
-import dsw.gerumap.app.gui.swing.view.MainFrame;
+import dsw.gerumap.app.mapRepository.implementation.Concept;
 import dsw.gerumap.app.mapRepository.implementation.Connection;
 import dsw.gerumap.app.mapRepository.implementation.Element;
 
 import java.awt.*;
+import java.awt.geom.Line2D;
 
 public class ConnectionPainter extends Painter{
     public ConnectionPainter(Element element) {
@@ -26,8 +27,13 @@ public class ConnectionPainter extends Painter{
 
     @Override
     public boolean elementAt(int x, int y) {
+
         Connection connection = (Connection) element;
-        double firstx = connection.getFirstConcept().getPosition().getX();
+        Concept c = new Concept("brisanje", new Point(x,y), 10 ,10);
+        Shape shape = new Line2D.Float(connection.getFirstConcept().getPosition().x,connection.getFirstConcept().getPosition().y,connection.getSecondConcept().getPosition().x,connection.getSecondConcept().getPosition().y);
+        return shape.intersects(c.getPosition().x, c.getPosition().y, c.getWidth(),c.getHeight());
+
+    /*    double firstx = connection.getFirstConcept().getPosition().getX();
         double firsty = connection.getFirstConcept().getPosition().getY();
         double secondx = connection.getSecondConcept().getPosition().getX();
         double secondy = connection.getSecondConcept().getPosition().getY();
@@ -43,6 +49,6 @@ public class ConnectionPainter extends Painter{
 
         }
 
-         return false;
+         return false;*/
     }
 }
