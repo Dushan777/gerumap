@@ -10,7 +10,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.concurrent.Flow;
 
 @Getter
 @Setter
@@ -20,7 +19,7 @@ public class ColorChooserAction extends AbstractGerumapAction {
     private JColorChooser colorChooser;
     private JTextField textField;
     private JTextField textFieldText;
-    private Boolean flag;
+    private Boolean flag = false;
     public ColorChooserAction()
     {
         putValue(SMALL_ICON, loadIcon("/images/edit.png"));
