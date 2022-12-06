@@ -8,12 +8,15 @@ import dsw.gerumap.app.gui.swing.view.MindMapView;
 import dsw.gerumap.app.mapRepository.implementation.Concept;
 import dsw.gerumap.app.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.mapRepository.painters.ConceptPainter;
+import dsw.gerumap.app.mapRepository.painters.Painter;
 import dsw.gerumap.app.messageGenerator.MessageGeneratorImplementation;
 import dsw.gerumap.app.state.State;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 
 @Getter
 @Setter
@@ -41,6 +44,18 @@ public class AddState extends State {
             Concept concept = new Concept(name, new Point(x, y), br, br2);
             concept.setColor(color);
             concept.setLineStroke(stroke);
+            Rectangle2D shape = new Rectangle2D.Float(x,y,br,br2);
+            for(Painter p : mindMapView.getPainters())
+            {
+                if(p instanceof ConceptPainter)
+                {
+                    // ne radi za razlicite dimenzije
+                    Concept c = (Concept) p.getElement();
+                    Rectangle2D shape1 = new Rectangle2D.Float(c.getPosition().x, c.getPosition().y, c.getHeight(), c.getWidth());
+                    if(shape.intersects(shape1))
+                        return;
+                }
+            }
             mindMapView.getPainters().add(new ConceptPainter(concept));
             concept.setParent(mindMap);
             mindMap.addChild(concept);
