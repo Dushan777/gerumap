@@ -11,6 +11,7 @@ public class StateManager {
     private RemoveState removeState;
     private ZoomState zoomState;
     private SelectState selectState;
+    private ZoomOutState zoomOutState;
 
 
     public StateManager()
@@ -26,6 +27,7 @@ public class StateManager {
         removeState = new RemoveState();
         zoomState = new ZoomState();
         selectState = new SelectState();
+        zoomOutState = new ZoomOutState();
         currentState = addState;
     }
 
@@ -59,7 +61,7 @@ public class StateManager {
         currentState = zoomState;
     }
 
-
+    public void setZoomOutState() {currentState = zoomOutState;}
     public void setSelectState() {
         currentState = selectState;
     }

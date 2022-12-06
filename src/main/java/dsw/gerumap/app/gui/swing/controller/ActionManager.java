@@ -21,6 +21,7 @@ public class ActionManager {
     private ZoomStateAction zoomStateAction;
     private SelectStateAction selectStateAction;
     private ColorChooserAction colorChooserAction;
+    private ZoomOutStateAction zoomOutStateAction;
     private ConfirmAction confirmAction;
     public ActionManager()
     {
@@ -38,6 +39,7 @@ public class ActionManager {
         removeStateAction = new RemoveStateAction();
         connectStateAction = new ConnectStateAction();
         zoomStateAction = new ZoomStateAction();
+        zoomOutStateAction = new ZoomOutStateAction();
         selectStateAction = new SelectStateAction();
         colorChooserAction = new ColorChooserAction();
         confirmAction = new ConfirmAction();
