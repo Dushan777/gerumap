@@ -1,9 +1,6 @@
 package dsw.gerumap.app.state.concrete;
 
-import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.gui.swing.view.MindMapView;
-import dsw.gerumap.app.mapRepository.composite.MapNode;
-import dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
 import dsw.gerumap.app.mapRepository.implementation.Concept;
 import dsw.gerumap.app.mapRepository.implementation.Element;
 import dsw.gerumap.app.mapRepository.implementation.MindMap;
@@ -36,6 +33,9 @@ public class SelectState extends State {
             c.setColor(((Concept)e).getColor());
             c.setLineStroke(((Concept)e).getLineStroke());
             mindMapView.getPainters().add(new ConceptPainter(c));
+            if(mindMapView.getMapSelectionModel().getSelectedElements() != null)
+                mindMapView.getMapSelectionModel().getSelectedElements().clear();
+            mindMapView.getMapSelectionModel().getSelectedElements().add(c);
             mindMap.addChild(c);
 
         }

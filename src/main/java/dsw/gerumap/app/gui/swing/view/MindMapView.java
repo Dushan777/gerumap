@@ -1,6 +1,7 @@
 package dsw.gerumap.app.gui.swing.view;
 
 import dsw.gerumap.app.gui.swing.observer.ISubscriber;
+import dsw.gerumap.app.mapRepository.implementation.MapSelectionModel;
 import dsw.gerumap.app.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.mapRepository.painters.Painter;
 import lombok.Getter;
@@ -20,6 +21,8 @@ public class MindMapView extends JPanel implements ISubscriber {
 
     private MindMap mindMap;
     private List<Painter> painters = new ArrayList<>();
+    private MapSelectionModel mapSelectionModel = new MapSelectionModel();
+
 
     public MindMapView(MindMap mindMap)
     {
