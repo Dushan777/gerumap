@@ -1,6 +1,7 @@
 package dsw.gerumap.app.mapRepository.painters;
 
 import dsw.gerumap.app.gui.swing.view.MainFrame;
+import dsw.gerumap.app.gui.swing.view.MindMapView;
 import dsw.gerumap.app.mapRepository.implementation.Concept;
 import dsw.gerumap.app.mapRepository.implementation.Element;
 import lombok.Getter;
@@ -28,6 +29,7 @@ public class ConceptPainter extends Painter{
         g.setPaint(concept.getColor());
         g.setStroke(new BasicStroke(concept.getLineStroke()));
         g.drawOval(concept.getPosition().x - concept.getHeight()/2, concept.getPosition().y - concept.getWidth()/2, concept.getHeight(), concept.getWidth());
+
         if(concept.isSelected())
         {
             g.fillOval(concept.getPosition().x - concept.getHeight() / 2, concept.getPosition().y - concept.getWidth() / 2, concept.getHeight(), concept.getWidth());

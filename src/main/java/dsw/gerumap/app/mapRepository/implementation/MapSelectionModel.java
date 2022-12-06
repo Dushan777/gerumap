@@ -21,8 +21,10 @@ public class MapSelectionModel extends IPublisher {
     }
     public void deselectElements()
     {
-        selectedElements.clear();
-        this.notifySubscribers(this);
+        if(selectedElements != null) {
+            selectedElements.clear();
+            this.notifySubscribers(this);
+        }
     }
 
 

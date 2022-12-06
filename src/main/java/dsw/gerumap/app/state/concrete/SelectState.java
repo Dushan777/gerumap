@@ -11,6 +11,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 
 @Getter
 @Setter
@@ -51,18 +53,32 @@ public class SelectState extends State {
             width = width * -1;
         if(height < 0)
             height = height * -1;
-        Shape shape;
+        Rectangle2D shape;
         if(x1 < x && y1 < y)                              // kada vuce od gornjeg levog ugla
-             shape = new Rectangle(x1,y1,width,height);
+             shape = new Rectangle2D.Float(x1,y1,width,height);
         else if(x1 > x && y1 < y)                         // kada vuce od gornjeg desnog ugla
-             shape = new Rectangle(x1-width,y1,width,height);
+             shape = new Rectangle2D.Float(x1-width,y1,width,height);
         else if(x1 < x && y1 > y)                         // kada vuce od donjeg levog ugla
-             shape = new Rectangle(x1,y1-height,width,height);
+             shape = new Rectangle2D.Float(x1,y1-height,width,height);
         else                                              // kada vuce od donjeg desnog ugla
-             shape = new Rectangle(x,y,width,height);
+             shape = new Rectangle2D.Float(x,y,width,height);
         Graphics2D g = (Graphics2D) mindMapView.getGraphics();
         g.draw(shape);
         mindMapView.repaint();
+        Shape shape2 = null;
+        for(Painter p : mindMapView.getPainters())
+        {
+            if(p instanceof ConceptPainter)
+            {
+                Concept c = (Concept)p.getElement();
+                 shape2 = new Ellipse2D.Float(c.getPosition().x - c.getHeight()/2,c.getPosition().y - c.getWidth()/2,c.getHeight(),c.getWidth());
+                 if(shape2.intersects(shape))
+                 {
+                     System.out.println(c.getName());
+                 }
+            }
+
+        }
     }
 
     @Override
