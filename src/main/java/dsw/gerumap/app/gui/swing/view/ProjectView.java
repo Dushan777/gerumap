@@ -167,6 +167,11 @@ public class ProjectView extends JPanel implements ISubscriber {
     {
         this.stateManager.setConnectState();
     }
+    public void startZoomOutState()
+    {
+        this.stateManager.setZoomOutState();
+    }
+
     public void startMoveState()
     {
         this.stateManager.setMoveState();
