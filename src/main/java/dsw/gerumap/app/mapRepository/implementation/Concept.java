@@ -13,7 +13,7 @@ public class Concept extends Element{
 
     private String name;
     private boolean selected = false;
-    private int height, width;
+    private int height, width, originalX, originalY;
     private Point position;
 
     public Concept(String name, Point position, int height, int width)
@@ -22,6 +22,8 @@ public class Concept extends Element{
         this.position = position;
         this.height = height;
         this.width = width;
+        originalX = position.x;
+        originalY = position.y;
     }
 
     @Override
@@ -29,4 +31,11 @@ public class Concept extends Element{
         Concept c = (Concept) obj;
         return  position.equals(c.getPosition());
     }
+
+    public void setPosition(Point p)
+    {
+        position.setLocation(p);
+        this.notifySubscribers(this);
+    }
+
 }
