@@ -42,9 +42,9 @@ public class ConfirmAction implements ActionListener {
                     c.setWidth(dimensionY);
                     element.setName(text2);
                 }
-
             }
         }
+        mindMapView.getMapSelectionModel().deselectElements();
         if(!text.matches("[0-9]+") || !text2.matches("[0-9a-zA-Z\\s]+"))
         {
             ((MessageGeneratorImplementation) ApplicationFramework.getInstance().getMessageGenerator()).setType(EventType.CANNOT_SET_NAME);
@@ -56,7 +56,6 @@ public class ConfirmAction implements ActionListener {
 
         lineStroke = Integer.parseInt(text);
         color = MainFrame.getInstance().getActionManager().getColorChooserAction().getColorChooser().getColor();
-        System.out.println(color);
         MainFrame.getInstance().getActionManager().getColorChooserAction().getFrame().dispose();
         MainFrame.getInstance().getActionManager().getColorChooserAction().setFlag(false);
         MainFrame.getInstance().setVisible(true);

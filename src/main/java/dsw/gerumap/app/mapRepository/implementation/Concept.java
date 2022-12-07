@@ -24,4 +24,9 @@ public class Concept extends Element{
         this.width = width;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        Concept c = (Concept) obj;
+        return  position.equals(c.getPosition());
+    }
 }

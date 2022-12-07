@@ -74,7 +74,8 @@ public class SelectState extends State {
                  shape2 = new Ellipse2D.Float(c.getPosition().x - c.getHeight()/2,c.getPosition().y - c.getWidth()/2,c.getHeight(),c.getWidth());
                  if(shape2.intersects(shape))
                  {
-                     System.out.println(c.getName());
+                     c.setSelected(true);
+                     mindMapView.getMapSelectionModel().selectElement(c);
                  }
             }
 
