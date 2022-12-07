@@ -29,6 +29,11 @@ public class ConfirmAction implements ActionListener {
         dimensionX = text2.length()*9 + 45;
         dimensionY = text2.length()*3/2 + 30;
         MindMapView mindMapView = (MindMapView)MainFrame.getInstance().getProjectView().getTabbedPane().getSelectedComponent();
+        if(mindMapView == null) {
+            ((MessageGeneratorImplementation) ApplicationFramework.getInstance().getMessageGenerator()).setType(EventType.MUST_OPET_MINDMAP);
+            ApplicationFramework.getInstance().getMessageGenerator().generateMessage();
+            return;
+        }
         if(mindMapView.getMapSelectionModel().getSelectedElements() != null)
         {
             for(Element element : mindMapView.getMapSelectionModel().getSelectedElements())

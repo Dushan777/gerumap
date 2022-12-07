@@ -22,7 +22,8 @@ public class MindMapView extends JPanel implements ISubscriber {
     private MindMap mindMap;
     private List<Painter> painters = new ArrayList<>();
     private MapSelectionModel mapSelectionModel = new MapSelectionModel();
-
+    // scroll ne radi, treba da se popravi     !!!
+    //TODO
 
     public MindMapView(MindMap mindMap)
     {
@@ -32,6 +33,9 @@ public class MindMapView extends JPanel implements ISubscriber {
         this.addMouseListener(mouseController);
         this.addMouseMotionListener(mouseController);
         mapSelectionModel.addSubscribers(this);
+        JScrollPane vertical = new JScrollPane(this);
+        vertical.setMinimumSize(new Dimension(200,150));
+
 
     }
 

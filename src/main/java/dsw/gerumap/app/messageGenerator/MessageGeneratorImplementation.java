@@ -32,6 +32,8 @@ public class MessageGeneratorImplementation extends MessageGenerator {
             this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [Must select a node!]"));
         if(type.equals(EventType.CANNOT_SET_NAME))
             this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [Must choose a valid value!]"));
+        if(type.equals(EventType.MUST_OPET_MINDMAP))
+            this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [Must open a mindmap first!]"));
 
     }
 
