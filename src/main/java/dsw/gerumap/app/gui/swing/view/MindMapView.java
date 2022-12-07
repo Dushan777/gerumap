@@ -9,8 +9,10 @@ import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.AdjustmentListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +24,10 @@ public class MindMapView extends JPanel implements ISubscriber {
     private MindMap mindMap;
     private List<Painter> painters = new ArrayList<>();
     private MapSelectionModel mapSelectionModel = new MapSelectionModel();
+
+    private AffineTransform affineTransform = new AffineTransform();
+
+    private double percentageZoomed = 1;
     // scroll ne radi, treba da se popravi     !!!
     //TODO
 
@@ -43,6 +49,9 @@ public class MindMapView extends JPanel implements ISubscriber {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D graphics2D = (Graphics2D)g;
+        graphics2D.scale(percentageZoomed, percentageZoomed);
+        graphics2D.transform(affineTransform);
+        // treba translate
         for(Painter p : painters)
         {
             p.draw(graphics2D, p.getElement());

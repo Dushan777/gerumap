@@ -4,6 +4,7 @@ import dsw.gerumap.app.gui.swing.view.MindMapView;
 import dsw.gerumap.app.mapRepository.composite.MapNode;
 import dsw.gerumap.app.mapRepository.implementation.Concept;
 import dsw.gerumap.app.mapRepository.implementation.Connection;
+import dsw.gerumap.app.mapRepository.implementation.Element;
 import dsw.gerumap.app.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.mapRepository.painters.ConnectionPainter;
 import dsw.gerumap.app.mapRepository.painters.Painter;
@@ -28,6 +29,19 @@ public class RemoveState extends State {
             boolean flag = false;
             if (toBeDeleted.getElement() instanceof Concept)
             {
+               /* if(mindMapView.getMapSelectionModel().getSelectedElements() != null)
+                {
+                    Iterator<Element> iterator = mindMapView.getMapSelectionModel().getSelectedElements().iterator();
+                    while(iterator.hasNext())
+                    {
+                        Element e = iterator.next();
+                        if(e instanceof Concept)
+                        iterator.remove();
+
+                    }
+
+                }*/
+
                 Concept concept = (Concept) toBeDeleted.getElement();
                 mindMapView.getPainters().remove(toBeDeleted);
                 mindMap.deleteChild(concept);
