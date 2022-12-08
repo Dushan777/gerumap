@@ -28,8 +28,7 @@ public class MindMapView extends JPanel implements ISubscriber {
     private AffineTransform affineTransform = new AffineTransform();
 
     private double percentageZoomed = 1;
-    // scroll ne radi, treba da se popravi     !!!
-    //TODO
+
 
     public MindMapView(MindMap mindMap)
     {
