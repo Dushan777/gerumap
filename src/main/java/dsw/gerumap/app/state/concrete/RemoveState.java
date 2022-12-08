@@ -10,6 +10,7 @@ import dsw.gerumap.app.mapRepository.painters.ConnectionPainter;
 import dsw.gerumap.app.mapRepository.painters.Painter;
 import dsw.gerumap.app.state.State;
 
+import java.awt.*;
 import java.util.Iterator;
 
 public class RemoveState extends State {
@@ -29,54 +30,34 @@ public class RemoveState extends State {
             boolean flag = false;
             if (toBeDeleted.getElement() instanceof Concept)
             {
-               /* if(mindMapView.getMapSelectionModel().getSelectedElements() != null)
+               if(!mindMapView.getMapSelectionModel().getSelectedElements().isEmpty())
                 {
-                    Iterator<Element> iterator = mindMapView.getMapSelectionModel().getSelectedElements().iterator();
+                    Iterator<Painter> iterator = mindMapView.getPainters().iterator();
+                    Concept[] delete = new Concept[mindMapView.getMapSelectionModel().getSelectedElements().size()];
+                    int i = 0;
                     while(iterator.hasNext())
                     {
-                        Element e = iterator.next();
+                        Element e = iterator.next().getElement();
                         if(e instanceof Concept)
-                        iterator.remove();
-
-                    }
-
-                }*/
-
-                Concept concept = (Concept) toBeDeleted.getElement();
-                mindMapView.getPainters().remove(toBeDeleted);
-                mindMap.deleteChild(concept);
-                Iterator<MapNode> iterator = mindMap.getChildren().iterator();
-                while(iterator.hasNext())
-                {
-                    MapNode mapNode = iterator.next();
-                    if (mapNode instanceof Connection) {
-                        connection = (Connection) mapNode;
-                        if ((connection.getFirstConcept().getPosition().getX() == concept.getPosition().getX() &&
-                                connection.getFirstConcept().getPosition().getY() == concept.getPosition().getY()) ||
-                                (connection.getSecondConcept().getPosition().getX() == concept.getPosition().getX() &&
-                                        connection.getSecondConcept().getPosition().getY() == concept.getPosition().getY()))
-                        {
-                            ConnectionPainter connectionPainter = null;
-                            Iterator<Painter> painterIterator = mindMapView.getPainters().iterator();
-                            while(painterIterator.hasNext())
-                            {
-                                Painter p = painterIterator.next();
-                                if(p instanceof ConnectionPainter)
-                                {
-                                    connectionPainter = (ConnectionPainter) p;
-                                    if(connectionPainter.getElement().getName().equals(connection.getName())) {
-                                        painterIterator.remove();
-                                        iterator.remove();
-                                    }
-                                }
-                            }
-
-
+                            if(mindMapView.getMapSelectionModel().getSelectedElements().contains(e)) {
+                                delete[i++] = (Concept) e;
+                            mindMap.deleteChild(e);
+                            mindMapView.getMapSelectionModel().getSelectedElements().remove(e);
+                            iterator.remove();
                         }
                     }
+                    for(int j=0; j<i; j++)
+                    {
+                        deleteConnections(mindMap,connection,delete[j],mindMapView);
+                    }
+
                 }
-                // ako je pojam obrisati i njegovu vezu, proci kroz sve veze iz mape uma
-                // ako je jedan od njenih pojmova onda se brise
+                else {
+                   Concept concept = (Concept) toBeDeleted.getElement();
+                   mindMapView.getPainters().remove(toBeDeleted);
+                   mindMap.deleteChild(concept);
+                   deleteConnections(mindMap,connection,concept,mindMapView);
+               }
             }
             else
             {
@@ -100,6 +81,39 @@ public class RemoveState extends State {
                 mindMap.deleteChild(connection);
             }
 
+        }
+    }
+    private void deleteConnections(MindMap mindMap, Connection connection, Concept concept, MindMapView mindMapView)
+    {
+        Iterator<MapNode> iterator = mindMap.getChildren().iterator();
+        while(iterator.hasNext())
+        {
+            MapNode mapNode = iterator.next();
+            if (mapNode instanceof Connection) {
+                connection = (Connection) mapNode;
+                if ((connection.getFirstConcept().getPosition().getX() == concept.getPosition().getX() &&
+                        connection.getFirstConcept().getPosition().getY() == concept.getPosition().getY()) ||
+                        (connection.getSecondConcept().getPosition().getX() == concept.getPosition().getX() &&
+                                connection.getSecondConcept().getPosition().getY() == concept.getPosition().getY()))
+                {
+                    ConnectionPainter connectionPainter = null;
+                    Iterator<Painter> painterIterator = mindMapView.getPainters().iterator();
+                    while(painterIterator.hasNext())
+                    {
+                        Painter p = painterIterator.next();
+                        if(p instanceof ConnectionPainter)
+                        {
+                            connectionPainter = (ConnectionPainter) p;
+                            if(connectionPainter.getElement().getName().equals(connection.getName())) {
+                                painterIterator.remove();
+                                iterator.remove();
+                            }
+                        }
+                    }
+
+
+                }
+            }
         }
     }
 }
