@@ -33,22 +33,22 @@ public class RemoveState extends State {
                if(!mindMapView.getMapSelectionModel().getSelectedElements().isEmpty())
                 {
                     Iterator<Painter> iterator = mindMapView.getPainters().iterator();
-                    Concept[] delete = new Concept[mindMapView.getMapSelectionModel().getSelectedElements().size()];
-                    int i = 0;
+                    Concept[] toBeDeletedArray = new Concept[mindMapView.getMapSelectionModel().getSelectedElements().size()];
+                    int number = 0;
                     while(iterator.hasNext())
                     {
                         Element e = iterator.next().getElement();
                         if(e instanceof Concept)
                             if(mindMapView.getMapSelectionModel().getSelectedElements().contains(e)) {
-                                delete[i++] = (Concept) e;
+                                toBeDeletedArray[number++] = (Concept) e;
                             mindMap.deleteChild(e);
                             mindMapView.getMapSelectionModel().getSelectedElements().remove(e);
                             iterator.remove();
                         }
                     }
-                    for(int j=0; j<i; j++)
+                    for(int currCon=0; currCon<number;currCon++)
                     {
-                        deleteConnections(mindMap,connection,delete[j],mindMapView);
+                        deleteConnections(mindMap,connection,toBeDeletedArray[currCon],mindMapView);
                     }
 
                 }

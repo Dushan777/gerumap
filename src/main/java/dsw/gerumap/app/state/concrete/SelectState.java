@@ -19,10 +19,12 @@ import java.awt.geom.Rectangle2D;
 public class SelectState extends State {
 
     private int x1, y1;
+    private Rectangle2D shape = null;
     @Override
     public void misKliknut(MindMapView mindMapView, int x, int y) {
         x1 = x;
         y1 = y;
+        mindMapView.getMapSelectionModel().deselectElements();
         Painter toBeSelected = null;
         for(Painter p : mindMapView.getPainters())
         {
@@ -53,7 +55,6 @@ public class SelectState extends State {
             width = width * -1;
         if(height < 0)
             height = height * -1;
-        Rectangle2D shape;
         if(x1 < x && y1 < y)                              // kada vuce od gornjeg levog ugla
              shape = new Rectangle2D.Float(x1,y1,width,height);
         else if(x1 > x && y1 < y)                         // kada vuce od gornjeg desnog ugla
@@ -65,24 +66,29 @@ public class SelectState extends State {
         Graphics2D g = (Graphics2D) mindMapView.getGraphics();
         g.draw(shape);
         mindMapView.repaint();
+
+    }
+
+    @Override
+    public void misPusten(MindMapView mindMapView, int x, int y) {
         Shape shape2 = null;
+        if(shape != null)
         for(Painter p : mindMapView.getPainters())
         {
             if(p instanceof ConceptPainter)
             {
                 Concept c = (Concept)p.getElement();
-                 shape2 = new Ellipse2D.Float(c.getPosition().x - c.getHeight()/2,c.getPosition().y - c.getWidth()/2,c.getHeight(),c.getWidth());
-                 if(shape2.intersects(shape))
-                 {
-                     c.setSelected(true);
-                     mindMapView.getMapSelectionModel().selectElement(c);
-                 }
+                shape2 = new Ellipse2D.Float(c.getPosition().x - c.getHeight()/2,c.getPosition().y - c.getWidth()/2,c.getHeight(),c.getWidth());
+                if(shape2.intersects(shape))
+                {
+                    c.setSelected(true);
+                    mindMapView.getMapSelectionModel().selectElement(c);
+                }
             }
-
         }
-    }
-
-    @Override
-    public void misPusten(MindMapView mindMapView, int x, int y) {
+        else
+            if(mindMapView.getMapSelectionModel().getSelectedElements().size() > 1)
+                mindMapView.getMapSelectionModel().deselectElements();
+        shape = null;
     }
 }
