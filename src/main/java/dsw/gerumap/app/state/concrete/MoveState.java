@@ -1,6 +1,7 @@
 package dsw.gerumap.app.state.concrete;
 
 import dsw.gerumap.app.gui.swing.view.MindMapView;
+import dsw.gerumap.app.mapRepository.composite.MapNode;
 import dsw.gerumap.app.mapRepository.implementation.Concept;
 import dsw.gerumap.app.mapRepository.implementation.Element;
 import dsw.gerumap.app.state.State;
@@ -21,22 +22,48 @@ public class MoveState extends State {
     }
     @Override
     public void misPrevucen(MindMapView mindMapView, int x, int y) {
-        for(Element e : mindMapView.getMapSelectionModel().getSelectedElements())
+        if(mindMapView.getMapSelectionModel().getSelectedElements().isEmpty() && mindMapView.getPercentageZoomed() > 1)
         {
-            Concept c = (Concept) e;
-            c.setPosition(new Point(c.getOriginalX() + x - clickedX, c.getOriginalY() + y - clickedY));
+            for(MapNode e : mindMapView.getMindMap().getChildren())
+            {
+                if(e instanceof Concept)
+                {
+                    Concept c = (Concept) e;
+                    c.setPosition(new Point(c.getOriginalX() + x - clickedX, c.getOriginalY() + y - clickedY));
+                }
+            }
+        }
+        else
+        {
+            for (Element e : mindMapView.getMapSelectionModel().getSelectedElements()) {
+                Concept c = (Concept) e;
+                c.setPosition(new Point(c.getOriginalX() + x - clickedX, c.getOriginalY() + y - clickedY));
+            }
         }
     }
     @Override
     public void misPusten(MindMapView mindMapView, int x, int y) {
-
-        // provera da li se nalazi element tu gde je pusteno
-        for(Element e : mindMapView.getMapSelectionModel().getSelectedElements())
+        if(mindMapView.getMapSelectionModel().getSelectedElements().isEmpty() && mindMapView.getPercentageZoomed() > 1)
         {
-            Concept c = (Concept) e;
-            c.setOriginalX(c.getPosition().x);
-            c.setOriginalY(c.getPosition().y);
+            for(MapNode e : mindMapView.getMindMap().getChildren())
+            {
+                if(e instanceof Concept)
+                {
+                    Concept c = (Concept) e;
+                    c.setOriginalX(c.getPosition().x);
+                    c.setOriginalY(c.getPosition().y);
+                }
+            }
         }
-        mindMapView.getMapSelectionModel().deselectElements();
+        else
+        {
+            // provera da li se nalazi element tu gde je pusteno
+            for (Element e : mindMapView.getMapSelectionModel().getSelectedElements()) {
+                Concept c = (Concept) e;
+                c.setOriginalX(c.getPosition().x);
+                c.setOriginalY(c.getPosition().y);
+            }
+            mindMapView.getMapSelectionModel().deselectElements();
+        }
     }
 }
