@@ -27,7 +27,7 @@ public class MindMapView extends JPanel implements ISubscriber {
 
     private AffineTransform affineTransform = new AffineTransform();
 
-    private double percentageZoomed = 1;
+    private double timesZoomed = 1;
 
 
     public MindMapView(MindMap mindMap)
@@ -37,6 +37,7 @@ public class MindMapView extends JPanel implements ISubscriber {
         MouseController mouseController = new MouseController();
         this.addMouseListener(mouseController);
         this.addMouseMotionListener(mouseController);
+        // treba li ovde addSubs?
         mapSelectionModel.addSubscribers(this);
 
     }
@@ -45,7 +46,7 @@ public class MindMapView extends JPanel implements ISubscriber {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D graphics2D = (Graphics2D)g;
-        graphics2D.scale(percentageZoomed, percentageZoomed);
+        graphics2D.scale(timesZoomed, timesZoomed);
         graphics2D.transform(affineTransform);
         for(Painter p : painters)
         {

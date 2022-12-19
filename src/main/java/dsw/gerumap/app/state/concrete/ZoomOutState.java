@@ -6,8 +6,8 @@ import dsw.gerumap.app.state.State;
 public class ZoomOutState extends State {
     @Override
     public void misKliknut(MindMapView mindMapView, int x, int y) {
-        if(mindMapView.getPercentageZoomed() > 0.4)
-            mindMapView.setPercentageZoomed(mindMapView.getPercentageZoomed() - 0.2);
+        if(mindMapView.getTimesZoomed() > 0.4)
+            mindMapView.setTimesZoomed(mindMapView.getTimesZoomed() - 0.2);
         mindMapView.repaint();
     }
 }

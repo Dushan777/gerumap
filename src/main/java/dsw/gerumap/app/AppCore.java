@@ -1,6 +1,7 @@
 package dsw.gerumap.app;
 
 import dsw.gerumap.app.core.*;
+import dsw.gerumap.app.gui.serializer.GsonSerializer;
 import dsw.gerumap.app.gui.swing.SwingGui;
 import dsw.gerumap.app.gui.swing.errorLogger.ErrorFactory;
 import dsw.gerumap.app.mapRepository.MapRepositoryImpl;
@@ -19,7 +20,8 @@ public class AppCore {
         ErrorFactory errorFactory = new ErrorFactory();
         ErrorLogger errorLogger = errorFactory.createLogger("fileLogger");
         messageGenerator.addSubscribers(errorLogger);
-        appCore.initialise(gui,repository,messageGenerator,errorLogger);
+        Serializer serializer = new GsonSerializer();
+        appCore.initialise(gui,repository,messageGenerator,errorLogger,serializer);
         appCore.run();
     }
 

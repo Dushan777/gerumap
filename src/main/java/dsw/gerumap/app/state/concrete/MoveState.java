@@ -22,7 +22,7 @@ public class MoveState extends State {
     }
     @Override
     public void misPrevucen(MindMapView mindMapView, int x, int y) {
-        if(mindMapView.getMapSelectionModel().getSelectedElements().isEmpty() && mindMapView.getPercentageZoomed() > 1)
+        if(mindMapView.getMapSelectionModel().getSelectedElements().isEmpty() && mindMapView.getTimesZoomed() > 1)
         {
             for(MapNode e : mindMapView.getMindMap().getChildren())
             {
@@ -43,7 +43,7 @@ public class MoveState extends State {
     }
     @Override
     public void misPusten(MindMapView mindMapView, int x, int y) {
-        if(mindMapView.getMapSelectionModel().getSelectedElements().isEmpty() && mindMapView.getPercentageZoomed() > 1)
+        if(mindMapView.getMapSelectionModel().getSelectedElements().isEmpty() && mindMapView.getTimesZoomed() > 1)
         {
             for(MapNode e : mindMapView.getMindMap().getChildren())
             {

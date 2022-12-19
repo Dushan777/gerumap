@@ -8,8 +8,8 @@ public class ZoomState extends State {
     @Override
     public void misKliknut(MindMapView mindMapView, int x, int y) {
 
-       if(mindMapView.getPercentageZoomed() < 2)
-           mindMapView.setPercentageZoomed(mindMapView.getPercentageZoomed() + 0.2);
+       if(mindMapView.getTimesZoomed() < 2)
+           mindMapView.setTimesZoomed(mindMapView.getTimesZoomed() + 0.2);
        mindMapView.repaint();
     }
 }
