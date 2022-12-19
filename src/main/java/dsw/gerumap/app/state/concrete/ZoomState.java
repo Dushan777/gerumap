@@ -3,8 +3,6 @@ package dsw.gerumap.app.state.concrete;
 import dsw.gerumap.app.gui.swing.view.MindMapView;
 import dsw.gerumap.app.state.State;
 
-import java.awt.*;
-import java.awt.geom.AffineTransform;
 
 public class ZoomState extends State {
     @Override

@@ -38,9 +38,6 @@ public class MindMapView extends JPanel implements ISubscriber {
         this.addMouseListener(mouseController);
         this.addMouseMotionListener(mouseController);
         mapSelectionModel.addSubscribers(this);
-        JScrollPane vertical = new JScrollPane(this);
-        vertical.setMinimumSize(new Dimension(200,150));
-
 
     }
 
@@ -50,10 +47,10 @@ public class MindMapView extends JPanel implements ISubscriber {
         Graphics2D graphics2D = (Graphics2D)g;
         graphics2D.scale(percentageZoomed, percentageZoomed);
         graphics2D.transform(affineTransform);
-        // treba translate
         for(Painter p : painters)
         {
             p.draw(graphics2D, p.getElement());
+
         }
 
     }
