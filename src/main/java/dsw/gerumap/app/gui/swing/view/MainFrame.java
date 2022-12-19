@@ -44,7 +44,7 @@ public class MainFrame extends JFrame {
         Dimension screenSize = kit.getScreenSize();
         int screenHeight = screenSize.height;
         int screenWidth = screenSize.width;
-        setSize(screenWidth / 2,  screenHeight / 2 + 46);
+        setSize(screenWidth / 2,  screenHeight / 2 + 118);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("GeRuMap app");

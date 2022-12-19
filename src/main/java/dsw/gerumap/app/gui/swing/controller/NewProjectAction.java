@@ -18,7 +18,7 @@ public class NewProjectAction extends AbstractGerumapAction {
                 KeyEvent.VK_N, ActionEvent.CTRL_MASK));
         putValue(SMALL_ICON, loadIcon("/images/add.png"));
         putValue(NAME, "New Project");
-        putValue(SHORT_DESCRIPTION, "New Project"); //a
+        putValue(SHORT_DESCRIPTION, "New Project");
     }
 
     public void actionPerformed(ActionEvent arg0)
