@@ -14,11 +14,11 @@ public abstract class MapNode extends IPublisher {
 
     private String name;
 
-    private List<ISubscriber> subscribers;
+    private transient List<ISubscriber> subscribers;
 
 
     @ToString.Exclude
-    private MapNode parent;
+    private transient MapNode parent;
 
     public MapNode(String name, MapNode parent) {
         this.name = name;

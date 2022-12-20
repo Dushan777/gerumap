@@ -25,6 +25,7 @@ public class GsonSerializer implements Serializer {
 
     @Override
     public void saveProject(Project project) {
+
         try (FileWriter writer = new FileWriter(project.getFilePath())) {
             gson.toJson(project, writer);
         } catch (IOException e) {

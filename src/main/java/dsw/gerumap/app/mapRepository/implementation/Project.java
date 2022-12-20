@@ -7,13 +7,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 
-
-
 @Getter
 @Setter
 public class Project extends MapNodeComposite {
 
     private String author = " ", filePath;
+    private boolean changed = true;
     private int numberOfChildren = 0;
     public Project(String name, MapNode parent) {
         super(name, parent);
@@ -47,9 +46,12 @@ public class Project extends MapNodeComposite {
     }
 
 
+
+
     private void settName()
     {
         this.setName("Project");
+        changed = true;
     }
 
     @Override
