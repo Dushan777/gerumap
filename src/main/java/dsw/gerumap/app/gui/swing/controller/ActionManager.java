@@ -23,14 +23,11 @@ public class ActionManager {
     private ColorChooserAction colorChooserAction;
     private ZoomOutStateAction zoomOutStateAction;
     private ConfirmAction confirmAction;
-
     private RedoAction redoAction;
-
     private SaveAction saveAction;
-
     private SaveAsAction saveAsAction;
-
     private UndoAction undoAction;
+    private OpenAction openAction;
     public ActionManager()
     {
         initialiseActions();
@@ -55,6 +52,7 @@ public class ActionManager {
         saveAction = new SaveAction();
         saveAsAction = new SaveAsAction();
         undoAction = new UndoAction();
+        openAction = new OpenAction();
     }
 
 
