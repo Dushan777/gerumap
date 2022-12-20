@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 public class Project extends MapNodeComposite {
 
-    private String author = " ", folderDirection;
+    private String author = " ", filePath;
     private int numberOfChildren = 0;
     public Project(String name, MapNode parent) {
         super(name, parent);
