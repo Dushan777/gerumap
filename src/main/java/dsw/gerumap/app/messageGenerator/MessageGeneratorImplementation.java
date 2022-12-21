@@ -34,6 +34,8 @@ public class MessageGeneratorImplementation extends MessageGenerator {
             this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [Must choose a valid value!]"));
         if(type.equals(EventType.MUST_OPET_MINDMAP))
             this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [Must open a mindmap first!]"));
+        if(type.equals(EventType.MUST_CHOOSE_PROJECT))
+            this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [Must choose project!]"));
 
     }
 

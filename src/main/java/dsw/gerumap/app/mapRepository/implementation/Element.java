@@ -13,7 +13,7 @@ import java.awt.*;
 public class Element extends MapNode {
 
     protected int lineStroke;
-    protected Color color;
+    protected int color;
     public Element(String name, MapNode parent) {
         super(name, parent);
     }

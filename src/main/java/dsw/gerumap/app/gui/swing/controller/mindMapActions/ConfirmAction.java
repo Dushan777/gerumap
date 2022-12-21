@@ -40,7 +40,7 @@ public class ConfirmAction implements ActionListener {
             {
                 if(text.matches("[0-9]+") && text2.matches("[0-9a-zA-Z\\s]+"))
                 {
-                    element.setColor(MainFrame.getInstance().getActionManager().getColorChooserAction().getColorChooser().getColor());
+                    element.setColor(MainFrame.getInstance().getActionManager().getColorChooserAction().getColorChooser().getColor().getRGB());
                     element.setLineStroke(Integer.parseInt(text));
                     Concept c = (Concept) element;
                     c.setHeight(dimensionX);

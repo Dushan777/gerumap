@@ -11,14 +11,13 @@ import java.awt.*;
 @Setter
 public class Concept extends Element{
 
-    private String name;
     private boolean selected = false;
     private int height, width, originalX, originalY;
     private Point position;
 
     public Concept(String name, Point position, int height, int width)
     {
-        this.name = name;
+        this.setName(name);
         this.position = position;
         this.height = height;
         this.width = width;

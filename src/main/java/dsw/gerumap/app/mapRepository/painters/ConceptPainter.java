@@ -26,14 +26,15 @@ public class ConceptPainter extends Painter{
         g.setPaint(Color.BLACK);
         g.drawString(concept.getName(), concept.getPosition().x + concept.getHeight()/5+9 - concept.getHeight()/2, concept.getPosition().y);
 
-        g.setPaint(concept.getColor());
+        g.setPaint(new Color(concept.getColor()));
+
         g.setStroke(new BasicStroke(concept.getLineStroke()));
         g.drawOval(concept.getPosition().x - concept.getHeight()/2, concept.getPosition().y - concept.getWidth()/2, concept.getHeight(), concept.getWidth());
 
         if(concept.isSelected())
         {
             g.fillOval(concept.getPosition().x - concept.getHeight() / 2, concept.getPosition().y - concept.getWidth() / 2, concept.getHeight(), concept.getWidth());
-            if(concept.getColor().equals(Color.BLACK))
+            if(concept.getColor() == Color.BLACK.getRGB())
                 g.setPaint(Color.LIGHT_GRAY);
             else
                 g.setPaint(Color.BLACK);

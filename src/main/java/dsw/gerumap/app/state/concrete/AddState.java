@@ -42,7 +42,7 @@ public class AddState extends State {
         {
             int stroke = Integer.parseInt(MainFrame.getInstance().getActionManager().getColorChooserAction().getTextField().getText()) ;
             Concept concept = new Concept(name, new Point(x, y), br, br2);
-            concept.setColor(color);
+            concept.setColor(color.getRGB());
             concept.setLineStroke(stroke);
             Rectangle2D shape = new Rectangle2D.Float(x,y,br,br2);
             for(Painter p : mindMapView.getPainters())

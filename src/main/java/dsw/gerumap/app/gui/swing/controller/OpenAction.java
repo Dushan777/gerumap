@@ -39,6 +39,8 @@ public class OpenAction extends AbstractGerumapAction{
         if (jfc.showOpenDialog(MainFrame.getInstance()) == JFileChooser.APPROVE_OPTION) {
             try {
                 File file = jfc.getSelectedFile();
+                if(!file.getName().contains(".json"))
+                    return;
                 Project p = ApplicationFramework.getInstance().getSerializer().loadProject(file);
                 MainFrame.getInstance().getMapTree().loadProject(p);
 

@@ -17,7 +17,7 @@ public class ConnectionPainter extends Painter{
     @Override
     public void draw(Graphics2D g, Element e) {
         Connection connection = (Connection) e;
-        connection.setColor(Color.BLACK);
+        connection.setColor(Color.BLACK.getRGB());
         g.setPaint(Color.BLACK);
         g.setStroke(new BasicStroke(2f));
         g.drawLine(connection.getFirstConcept().getPosition().x, connection.getFirstConcept().getPosition().y,
