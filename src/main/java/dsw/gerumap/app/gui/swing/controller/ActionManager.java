@@ -28,6 +28,8 @@ public class ActionManager {
     private SaveAsAction saveAsAction;
     private UndoAction undoAction;
     private OpenAction openAction;
+
+    private CenterConceptAction centerConceptAction;
     public ActionManager()
     {
         initialiseActions();
@@ -53,6 +55,7 @@ public class ActionManager {
         saveAsAction = new SaveAsAction();
         undoAction = new UndoAction();
         openAction = new OpenAction();
+        centerConceptAction = new CenterConceptAction();
     }
 
 
