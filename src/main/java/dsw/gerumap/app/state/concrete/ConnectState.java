@@ -1,6 +1,9 @@
 package dsw.gerumap.app.state.concrete;
 
+import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.view.MindMapView;
+import dsw.gerumap.app.mapRepository.command.AbstractCommand;
+import dsw.gerumap.app.mapRepository.command.implementation.ConnectCommand;
 import dsw.gerumap.app.mapRepository.implementation.Concept;
 import dsw.gerumap.app.mapRepository.implementation.Connection;
 import dsw.gerumap.app.mapRepository.implementation.Element;
@@ -71,6 +74,8 @@ public class ConnectState extends State {
         connection.setParent(mindMap);
         mindMapView.getPainters().add(new ConnectionPainter(connection));
         mindMap.addChild(connection);
+        AbstractCommand abstractCommand = new ConnectCommand(connection, mindMap);
+        ApplicationFramework.getInstance().getGui().getCommandManager().addCommand(abstractCommand);
         firstConcept = null;
         secondConcept = null;
 
