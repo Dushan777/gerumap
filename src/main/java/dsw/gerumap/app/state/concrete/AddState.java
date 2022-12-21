@@ -56,7 +56,7 @@ public class AddState extends State {
                         return;
                 }
             }
-            mindMapView.getPainters().add(new ConceptPainter(concept));
+            //mindMapView.getPainters().add(new ConceptPainter(concept));
             concept.setParent(mindMap);
             concept.addSubscribers(mindMapView);
             mindMap.addChild(concept);

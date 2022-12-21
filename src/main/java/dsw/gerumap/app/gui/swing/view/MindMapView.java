@@ -1,8 +1,12 @@
 package dsw.gerumap.app.gui.swing.view;
 
 import dsw.gerumap.app.gui.swing.observer.ISubscriber;
+import dsw.gerumap.app.mapRepository.implementation.Concept;
+import dsw.gerumap.app.mapRepository.implementation.Connection;
 import dsw.gerumap.app.mapRepository.implementation.MapSelectionModel;
 import dsw.gerumap.app.mapRepository.implementation.MindMap;
+import dsw.gerumap.app.mapRepository.painters.ConceptPainter;
+import dsw.gerumap.app.mapRepository.painters.ConnectionPainter;
 import dsw.gerumap.app.mapRepository.painters.Painter;
 import lombok.Getter;
 import lombok.Setter;
@@ -58,6 +62,14 @@ public class MindMapView extends JPanel implements ISubscriber {
 
     @Override
     public void update(Object notification) {
+        if(notification instanceof Concept)
+        {
+            painters.add(new ConceptPainter((Concept) notification));
+        }
+        else if(notification instanceof Connection)
+        {
+            painters.add(new ConnectionPainter((Connection) notification));
+        }
         repaint();
     }
 

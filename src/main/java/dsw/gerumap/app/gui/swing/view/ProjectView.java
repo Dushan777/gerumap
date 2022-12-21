@@ -4,10 +4,7 @@ package dsw.gerumap.app.gui.swing.view;
 import dsw.gerumap.app.gui.swing.observer.ISubscriber;
 import dsw.gerumap.app.mapRepository.composite.MapNode;
 import dsw.gerumap.app.mapRepository.factory.MindMapFactory;
-import dsw.gerumap.app.mapRepository.implementation.Concept;
-import dsw.gerumap.app.mapRepository.implementation.Element;
-import dsw.gerumap.app.mapRepository.implementation.MindMap;
-import dsw.gerumap.app.mapRepository.implementation.Project;
+import dsw.gerumap.app.mapRepository.implementation.*;
 import dsw.gerumap.app.mapRepository.painters.ConceptPainter;
 import dsw.gerumap.app.mapRepository.painters.ConnectionPainter;
 import dsw.gerumap.app.state.StateManager;
@@ -107,7 +104,7 @@ public class ProjectView extends JPanel implements ISubscriber {
                 }
             }
         }
-        if(notification instanceof MindMap)
+        else if(notification instanceof MindMap)
             mindMapTabNames((Project) ((MindMap)notification).getParent());
     }
     private void mindMapTabNames(Project p)
