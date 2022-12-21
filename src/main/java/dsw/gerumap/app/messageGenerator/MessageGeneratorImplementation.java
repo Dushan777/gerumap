@@ -22,19 +22,19 @@ public class MessageGeneratorImplementation extends MessageGenerator {
 
         if(type.equals(EventType.CANNOT_ADD_CHILD))
             this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [Child cannot be added!]"));
-        if(type.equals(EventType.CANNOT_REMOVE))
+        else if(type.equals(EventType.CANNOT_REMOVE))
             this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [ProjectExplorer cannot be removed!]"));
-        if(type.equals(EventType.CANNOT_SET_AUTHOR))
+        else if(type.equals(EventType.CANNOT_SET_AUTHOR))
             this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [Cannot set author for nodes that are not projects!]"));
-        if(type.equals(EventType.NAME_CANNOT_BE_EMPTY))
+        else if(type.equals(EventType.NAME_CANNOT_BE_EMPTY))
             this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [Cannot set an empty name!]"));
-        if(type.equals(EventType.NOTHING_IS_SELECTED))
+        else if(type.equals(EventType.NOTHING_IS_SELECTED))
             this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [Must select a node!]"));
-        if(type.equals(EventType.CANNOT_SET_NAME))
+        else if(type.equals(EventType.CANNOT_SET_NAME))
             this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [Must choose a valid value!]"));
-        if(type.equals(EventType.MUST_OPET_MINDMAP))
+        else if(type.equals(EventType.MUST_OPET_MINDMAP))
             this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [Must open a mindmap first!]"));
-        if(type.equals(EventType.MUST_CHOOSE_PROJECT))
+        else if(type.equals(EventType.MUST_CHOOSE_PROJECT))
             this.notifySubscribers(new Message("[Error]" + "[" + timeStamp + "] [Must choose project!]"));
 
     }
