@@ -1,6 +1,8 @@
 package dsw.gerumap.app.state.concrete;
 
 import dsw.gerumap.app.gui.swing.view.MindMapView;
+import dsw.gerumap.app.mapRepository.command.AbstractCommand;
+import dsw.gerumap.app.mapRepository.command.implementation.RemoveCommand;
 import dsw.gerumap.app.mapRepository.composite.MapNode;
 import dsw.gerumap.app.mapRepository.implementation.Concept;
 import dsw.gerumap.app.mapRepository.implementation.Connection;
@@ -10,10 +12,13 @@ import dsw.gerumap.app.mapRepository.painters.ConnectionPainter;
 import dsw.gerumap.app.mapRepository.painters.Painter;
 import dsw.gerumap.app.state.State;
 
-import java.awt.*;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class RemoveState extends State {
+
+    private List<Element> elements = new ArrayList<>();
     @Override
     public void misKliknut(MindMapView mindMapView, int x, int y) {
         MindMap mindMap = mindMapView.getMindMap();
@@ -27,7 +32,6 @@ public class RemoveState extends State {
         }
         if(toBeDeleted != null) {
             Connection connection = null;
-            boolean flag = false;
             if (toBeDeleted.getElement() instanceof Concept)
             {
                if(!mindMapView.getMapSelectionModel().getSelectedElements().isEmpty())
@@ -41,47 +45,41 @@ public class RemoveState extends State {
                         if(e instanceof Concept)
                             if(mindMapView.getMapSelectionModel().getSelectedElements().contains(e)) {
                                 toBeDeletedArray[number++] = (Concept) e;
-                            mindMap.deleteChild(e);
-                            mindMapView.getMapSelectionModel().getSelectedElements().remove(e);
-                            iterator.remove();
+                                elements.add(e);
+                            //mindMapView.getMapSelectionModel().getSelectedElements().remove(e);
                         }
                     }
                     for(int currCon=0; currCon<number;currCon++)
                     {
                         deleteConnections(mindMap,connection,toBeDeletedArray[currCon],mindMapView);
                     }
+                    System.out.println("a");
+                    AbstractCommand abstractCommand = new RemoveCommand(mindMap, elements);
+                    mindMap.getCommandManager().addCommand(abstractCommand);
+
 
                 }
                 else {
                    Concept concept = (Concept) toBeDeleted.getElement();
-                   mindMapView.getPainters().remove(toBeDeleted);
-                   mindMap.deleteChild(concept);
+                   elements.add(concept);
                    deleteConnections(mindMap,connection,concept,mindMapView);
+                   System.out.println("b");
+                   AbstractCommand abstractCommand = new RemoveCommand(mindMap, elements);
+                   mindMap.getCommandManager().addCommand(abstractCommand);
                }
             }
             else
             {
                 connection = (Connection) toBeDeleted.getElement();
-                ConnectionPainter connectionPainter = null;
-                flag = false;
-                for(Painter p : mindMapView.getPainters())
-                {
-                    if(p instanceof ConnectionPainter)
-                    {
-                        connectionPainter = (ConnectionPainter) p;
-                        if(connectionPainter.getElement().getName().equals(connection.getName()))
-                        {
-                            flag = true;
-                            break;
-                        }
-                    }
-                }
-                if(flag)
-                    mindMapView.getPainters().remove(connectionPainter);
-                mindMap.deleteChild(connection);
+                elements.add(connection);
+                System.out.println("c");
+                AbstractCommand abstractCommand = new RemoveCommand(mindMap, elements);
+                mindMap.getCommandManager().addCommand(abstractCommand);
             }
 
         }
+        elements.clear();
+
     }
     private void deleteConnections(MindMap mindMap, Connection connection, Concept concept, MindMapView mindMapView)
     {
@@ -104,14 +102,10 @@ public class RemoveState extends State {
                         if(p instanceof ConnectionPainter)
                         {
                             connectionPainter = (ConnectionPainter) p;
-                            if(connectionPainter.getElement().getName().equals(connection.getName())) {
-                                painterIterator.remove();
-                                iterator.remove();
-                            }
+                            if(connectionPainter.getElement().getName().equals(connection.getName()))
+                                elements.add((Connection) mapNode);
                         }
                     }
-
-
                 }
             }
         }

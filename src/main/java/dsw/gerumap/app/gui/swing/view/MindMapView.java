@@ -83,7 +83,6 @@ public class MindMapView extends JPanel implements ISubscriber {
     public void removeElement(MindMap mindMap)
     {
         for (int j = 0; j < this.getPainters().size(); j++) {
-            System.out.println("pocetak: "+ this.getPainters().size());
             boolean flag = false;
             for (MapNode mapNode : mindMap.getChildren())
             {
@@ -99,7 +98,6 @@ public class MindMapView extends JPanel implements ISubscriber {
                 this.getMapSelectionModel().getSelectedElements().clear();
 
             }
-            System.out.println("kraj: "+ this.getPainters().size());
         }
     }
 
