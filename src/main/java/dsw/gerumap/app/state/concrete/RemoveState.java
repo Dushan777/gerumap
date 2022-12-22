@@ -53,7 +53,6 @@ public class RemoveState extends State {
                     {
                         deleteConnections(mindMap,connection,toBeDeletedArray[currCon],mindMapView);
                     }
-                    System.out.println("a");
                     AbstractCommand abstractCommand = new RemoveCommand(mindMap, elements);
                     mindMap.getCommandManager().addCommand(abstractCommand);
 
@@ -63,7 +62,6 @@ public class RemoveState extends State {
                    Concept concept = (Concept) toBeDeleted.getElement();
                    elements.add(concept);
                    deleteConnections(mindMap,connection,concept,mindMapView);
-                   System.out.println("b");
                    AbstractCommand abstractCommand = new RemoveCommand(mindMap, elements);
                    mindMap.getCommandManager().addCommand(abstractCommand);
                }
@@ -72,7 +70,6 @@ public class RemoveState extends State {
             {
                 connection = (Connection) toBeDeleted.getElement();
                 elements.add(connection);
-                System.out.println("c");
                 AbstractCommand abstractCommand = new RemoveCommand(mindMap, elements);
                 mindMap.getCommandManager().addCommand(abstractCommand);
             }
