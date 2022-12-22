@@ -10,7 +10,7 @@ import javax.swing.*;
 public class SwingGui implements Gui {
 
     private MainFrame instance;
-    private CommandManager commandManager;
+
 
     public SwingGui()
     {
@@ -21,16 +21,12 @@ public class SwingGui implements Gui {
     @Override
     public void start() {
         instance = MainFrame.getInstance();
-        commandManager = new CommandManager();
         disableRedoAction();
         disableUndoAction();
         instance.setVisible(true);
     }
 
-    @Override
-    public CommandManager getCommandManager() {
-        return commandManager;
-    }
+
     @Override
     public void disableUndoAction() {
         MainFrame.getInstance().getActionManager().getUndoAction().setEnabled(false);

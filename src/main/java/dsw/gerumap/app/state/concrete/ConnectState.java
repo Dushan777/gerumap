@@ -72,11 +72,8 @@ public class ConnectState extends State {
             return;
         Connection connection = new Connection("Connection" + mindMap.getNumberOfChildren(), mindMap, firstConcept, secondConcept);
         connection.setParent(mindMap);
-        //mindMapView.getPainters().add(new ConnectionPainter(connection));
-        mindMap.addChild(connection);
-        // poremetilo je brisanje
-        //AbstractCommand abstractCommand = new ConnectCommand(connection, mindMap);
-        //ApplicationFramework.getInstance().getGui().getCommandManager().addCommand(abstractCommand);
+        AbstractCommand abstractCommand = new ConnectCommand(mindMap, connection);
+        mindMap.getCommandManager().addCommand(abstractCommand);
         firstConcept = null;
         secondConcept = null;
 

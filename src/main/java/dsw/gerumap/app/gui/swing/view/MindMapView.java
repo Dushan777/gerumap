@@ -1,10 +1,8 @@
 package dsw.gerumap.app.gui.swing.view;
 
 import dsw.gerumap.app.gui.swing.observer.ISubscriber;
-import dsw.gerumap.app.mapRepository.implementation.Concept;
-import dsw.gerumap.app.mapRepository.implementation.Connection;
-import dsw.gerumap.app.mapRepository.implementation.MapSelectionModel;
-import dsw.gerumap.app.mapRepository.implementation.MindMap;
+import dsw.gerumap.app.mapRepository.composite.MapNode;
+import dsw.gerumap.app.mapRepository.implementation.*;
 import dsw.gerumap.app.mapRepository.painters.ConceptPainter;
 import dsw.gerumap.app.mapRepository.painters.ConnectionPainter;
 import dsw.gerumap.app.mapRepository.painters.Painter;
@@ -41,7 +39,6 @@ public class MindMapView extends JPanel implements ISubscriber {
         MouseController mouseController = new MouseController();
         this.addMouseListener(mouseController);
         this.addMouseMotionListener(mouseController);
-        // treba li ovde addSubs?
         mapSelectionModel.addSubscribers(this);
 
     }
@@ -62,16 +59,50 @@ public class MindMapView extends JPanel implements ISubscriber {
 
     @Override
     public void update(Object notification) {
-        if(notification instanceof Concept)
-        {
-            painters.add(new ConceptPainter((Concept) notification));
-        }
-        else if(notification instanceof Connection)
-        {
-            painters.add(new ConnectionPainter((Connection) notification));
+        if (notification instanceof MindMap) {
+            MindMap mindMap = (MindMap) notification;
+            if (mindMap.getChildren().size() > this.getPainters().size()) {
+                addElement(mindMap);
+            }
+            else if (mindMap.getChildren().size() < this.getPainters().size()) {
+                removeElement(mindMap);
+            }
         }
         repaint();
     }
+
+    public void addElement(MindMap mindMap) {
+
+        Element element = (Element) mindMap.getChildren().get(mindMap.getChildren().size() - 1);
+
+        if (element instanceof Concept)
+            this.getPainters().add(new ConceptPainter(element));
+        else
+            this.getPainters().add(new ConnectionPainter(element));
+    }
+    public void removeElement(MindMap mindMap)
+    {
+        for (int j = 0; j < this.getPainters().size(); j++) {
+            System.out.println("pocetak: "+ this.getPainters().size());
+            boolean flag = false;
+            for (MapNode mapNode : mindMap.getChildren())
+            {
+                Element element = (Element) mapNode;
+
+                    if (this.getPainters().get(j).getElement().equals2(element)) {
+                        flag = true;
+                        break;
+                    }
+            }
+            if (!flag) {
+                this.getPainters().remove(j);
+                this.getMapSelectionModel().getSelectedElements().clear();
+
+            }
+            System.out.println("kraj: "+ this.getPainters().size());
+        }
+    }
+
 
     private class MouseController extends MouseAdapter {
 

@@ -25,4 +25,10 @@ public class Element extends MapNode {
     {
         this.setName("Element");
     }
+
+    public boolean equals2(Object obj)
+    {
+        return this == obj;
+    }
+
 }

@@ -27,8 +27,10 @@ public class Concept extends Element{
 
     @Override
     public boolean equals(Object obj) {
+        if(!(obj instanceof Concept))
+            return false;
         Concept c = (Concept) obj;
-        return  position.equals(c.getPosition());
+        return position.equals(c.getPosition());
     }
 
     public void setPosition(Point p)

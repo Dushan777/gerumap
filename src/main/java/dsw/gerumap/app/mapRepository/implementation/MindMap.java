@@ -1,5 +1,6 @@
 package dsw.gerumap.app.mapRepository.implementation;
 import dsw.gerumap.app.gui.swing.observer.IPublisher;
+import dsw.gerumap.app.mapRepository.command.CommandManager;
 import dsw.gerumap.app.mapRepository.composite.MapNode;
 import dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
 import lombok.Getter;
@@ -14,13 +15,17 @@ public class MindMap extends MapNodeComposite {
     private boolean template;
     private int numberOfChildren = 0;
 
+    private CommandManager commandManager;
+
     public MindMap(String name, MapNode parent) {
         super(name, parent);
+        commandManager = new CommandManager();
     }
 
     public MindMap()
     {
         this.settName();
+        commandManager = new CommandManager();
     }
     @Override
     public void addChild(MapNode child) {
@@ -28,8 +33,7 @@ public class MindMap extends MapNodeComposite {
         {
             getChildren().add((Element) child);
             numberOfChildren++;
-            //child umesto this za notification
-            this.notifySubscribers(child);
+            this.notifySubscribers(this);
         }
     }
 

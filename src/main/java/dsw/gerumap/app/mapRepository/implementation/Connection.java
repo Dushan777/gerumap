@@ -15,4 +15,14 @@ public class Connection extends Element{
         this.firstConcept = firstConcept;
         this.secondConcept = secondConcept;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Connection))
+            return false;
+        Connection connection = (Connection) obj;
+        if(connection.getFirstConcept().equals(firstConcept) && connection.getSecondConcept().equals(secondConcept))
+            return true;
+        return false;
+    }
 }

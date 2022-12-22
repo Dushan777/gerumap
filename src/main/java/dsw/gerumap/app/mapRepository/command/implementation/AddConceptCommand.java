@@ -4,28 +4,49 @@ import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.mapRepository.command.AbstractCommand;
 import dsw.gerumap.app.mapRepository.composite.MapNode;
 import dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
+import dsw.gerumap.app.mapRepository.implementation.Concept;
+import dsw.gerumap.app.mapRepository.implementation.Element;
+import dsw.gerumap.app.mapRepository.implementation.MindMap;
+
+import java.util.List;
 
 public class AddConceptCommand extends AbstractCommand {
 
-    private MapNodeComposite parent;
-    private MapNode child;
+    private MindMap mindMap;
+    private Concept concept;
+    private List<Element> selected;
 
-    public AddConceptCommand(MapNodeComposite parent, MapNode child) {
-        this.parent = parent;
-        this.child = child;
+    public AddConceptCommand(MindMap mindMap, Concept concept, List<Element> selected) {
+        this.mindMap = mindMap;
+        this.concept = concept;
+        this.selected = selected;
     }
 
     @Override
     public void doCommand() {
+        if(concept == null || selected == null ||  mindMap == null)
+            return;
 
-        if(child == null ||  parent==null) return;
-        parent.addChild(child);
+        int numChildern = mindMap.getChildren().size();
+
+
+        mindMap.addChild(concept);
+        String name = concept.getName();
+        while (numChildern == mindMap.getChildren().size()) {
+            concept.setName(name + mindMap.getNumberOfChildren());
+            mindMap.addChild(concept);
+        }
+
 
     }
 
     @Override
     public void undoCommand() {
-        if(child == null ||  parent==null) return;
-        parent.deleteChild(child);
+        if(concept == null || selected == null ||  mindMap == null)
+            return;
+
+        selected.remove(concept);
+        mindMap.deleteChild(concept);
+
     }
 }

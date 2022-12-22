@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommandManager {
-    private List<AbstractCommand> commands = new ArrayList<AbstractCommand>();
+    private List<AbstractCommand> commands = new ArrayList<>();
 
     private int currentCommand = 0;
 

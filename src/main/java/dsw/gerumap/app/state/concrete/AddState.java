@@ -5,6 +5,8 @@ import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.errorLogger.EventType;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.gui.swing.view.MindMapView;
+import dsw.gerumap.app.mapRepository.command.AbstractCommand;
+import dsw.gerumap.app.mapRepository.command.implementation.AddConceptCommand;
 import dsw.gerumap.app.mapRepository.implementation.Concept;
 import dsw.gerumap.app.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.mapRepository.painters.ConceptPainter;
@@ -15,7 +17,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.awt.*;
-import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
 @Getter
@@ -56,10 +57,12 @@ public class AddState extends State {
                         return;
                 }
             }
-            //mindMapView.getPainters().add(new ConceptPainter(concept));
             concept.setParent(mindMap);
             concept.addSubscribers(mindMapView);
-            mindMap.addChild(concept);
+            AbstractCommand abstractCommand = new AddConceptCommand(mindMap, concept, mindMapView.getMapSelectionModel().getSelectedElements());
+            if(mindMap == null)
+                return;
+            mindMap.getCommandManager().addCommand(abstractCommand);
         }
         else
         {
