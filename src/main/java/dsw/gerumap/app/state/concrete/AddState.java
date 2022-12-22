@@ -27,6 +27,7 @@ public class AddState extends State {
     @Override
     public void misKliknut(MindMapView mindMapView, int x, int y)
     {
+        mindMapView.getMapSelectionModel().getSelectedElements().clear();
         if(MainFrame.getInstance().getActionManager().getColorChooserAction().getFlag()) {
             ((MessageGeneratorImplementation) ApplicationFramework.getInstance().getMessageGenerator()).setType(EventType.CANNOT_ADD_CHILD);
             ApplicationFramework.getInstance().getMessageGenerator().generateMessage();

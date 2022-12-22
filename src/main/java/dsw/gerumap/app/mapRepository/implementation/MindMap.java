@@ -31,8 +31,13 @@ public class MindMap extends MapNodeComposite {
     public void addChild(MapNode child) {
         if(child instanceof Element)
         {
+            if(getChildren().contains(child))
+                return;
             getChildren().add((Element) child);
             numberOfChildren++;
+            System.out.println(getChildren().size());
+            for(MapNode element : getChildren())
+                System.out.println("element.getName() = " + element.getName());
             this.notifySubscribers(this);
         }
     }
@@ -50,6 +55,9 @@ public class MindMap extends MapNodeComposite {
     @Override
     public void deleteChild(MapNode child) {
         super.deleteChild(child);
+        System.out.println(getChildren().size());
+        for(MapNode element : getChildren())
+            System.out.println("element.getName() = " + element.getName());
         this.notifySubscribers(this);
     }
 }

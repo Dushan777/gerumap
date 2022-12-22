@@ -61,10 +61,11 @@ public class MoveState extends State {
 
             int movedX = x - clickedX;
             int movedY = y - clickedY;
-            System.out.println("movedX = " + movedX);
-            System.out.println("movedY = " + movedY);
+           // System.out.println("movedX = " + movedX);
+            //System.out.println("movedY = " + movedY);
             AbstractCommand abstractCommand = new MoveCommand(mindMapView.getMindMap(), mindMapView.getMapSelectionModel().getSelectedElements(), movedX, movedY);
             mindMapView.getMindMap().getCommandManager().addCommand(abstractCommand);
+            //mindMapView.getMapSelectionModel().getSelectedElements().clear();
         }
 
     }

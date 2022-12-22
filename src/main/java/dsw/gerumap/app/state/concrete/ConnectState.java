@@ -24,6 +24,7 @@ public class ConnectState extends State {
     private Concept secondConcept = null;
     @Override
     public void misKliknut(MindMapView mindMapView, int x, int y) {
+        mindMapView.getMapSelectionModel().getSelectedElements().clear();
         Painter selected = null;
         for(Painter p : mindMapView.getPainters())
         {
