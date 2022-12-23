@@ -51,7 +51,7 @@ public class AddState extends State {
             {
                 if(p instanceof ConceptPainter)
                 {
-                    // ne radi za razlicite dimenzije
+
                     Concept c = (Concept) p.getElement();
                     Rectangle2D shape1 = new Rectangle2D.Float(c.getPosition().x, c.getPosition().y, c.getHeight(), c.getWidth());
                     if(shape.intersects(shape1))
