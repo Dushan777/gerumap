@@ -1,5 +1,4 @@
 package dsw.gerumap.app.mapRepository.implementation;
-import dsw.gerumap.app.gui.swing.observer.IPublisher;
 import dsw.gerumap.app.mapRepository.command.CommandManager;
 import dsw.gerumap.app.mapRepository.composite.MapNode;
 import dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
@@ -55,9 +54,9 @@ public class MindMap extends MapNodeComposite {
     @Override
     public void deleteChild(MapNode child) {
         super.deleteChild(child);
-        System.out.println(getChildren().size());
-        for(MapNode element : getChildren())
-            System.out.println("element.getName() = " + element.getName());
+        //System.out.println(getChildren().size());
+        //for(MapNode element : getChildren())
+          //  System.out.println("element.getName() = " + element.getName());
         this.notifySubscribers(this);
     }
 }

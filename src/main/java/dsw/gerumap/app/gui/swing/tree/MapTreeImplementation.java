@@ -68,9 +68,23 @@ public class MapTreeImplementation implements MapTree {
 
         MapNodeComposite mapNode = (MapNodeComposite) ((MapTreeItem)treeModel.getRoot()).getMapNode();
         mapNode.addChild(node);
+        for(MapNode mapNode1 : node.getChildren())
+        {
+            mapNode1.setParent(node);
+            MapTreeItem mapTreeItem = new MapTreeItem(mapNode1);
+            loadedProject.add(mapTreeItem);
+            MindMap mindMap = (MindMap) mapNode1;
+            //for(Map)
 
+        }
+        
         treeView.expandPath(treeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(treeView);
+    }
+
+    @Override
+    public void loadMindMap(MindMap mindMap) {
+
     }
 
     private MapNode createChild(MapNode parent) {

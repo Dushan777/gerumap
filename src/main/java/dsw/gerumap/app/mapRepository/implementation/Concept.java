@@ -36,6 +36,8 @@ public class Concept extends Element{
     public void setPosition(Point p)
     {
         position.setLocation(p);
+        if(this.getParent() != null)
+            ((Project)this.getParent()).setChanged(true);
         this.notifySubscribers(this);
     }
 

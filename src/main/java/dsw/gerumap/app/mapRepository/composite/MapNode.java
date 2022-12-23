@@ -2,6 +2,9 @@ package dsw.gerumap.app.mapRepository.composite;
 
 import dsw.gerumap.app.gui.swing.observer.IPublisher;
 import dsw.gerumap.app.gui.swing.observer.ISubscriber;
+import dsw.gerumap.app.mapRepository.implementation.Element;
+import dsw.gerumap.app.mapRepository.implementation.MindMap;
+import dsw.gerumap.app.mapRepository.implementation.Project;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -40,6 +43,16 @@ public abstract class MapNode extends IPublisher {
 
     public void setName(String name) {
         this.name = name;
+        if(this instanceof Project)
+            ((Project) this).setChanged(true);
+        if(this instanceof Element){
+            if( this.getParent() != null)
+                ((Project)(this.getParent()).getParent()).setChanged(true);
+        }
+        if(this instanceof MindMap){
+            if( this.getParent() != null)
+                ((Project)this.getParent()).setChanged(true);
+        }
         this.notifySubscribers(this);
     }
 }

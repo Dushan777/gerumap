@@ -30,8 +30,10 @@ public class Project extends MapNodeComposite {
         {
 
             this.getChildren().add((MindMap) child);
+            child.setParent(this);
             numberOfChildren ++;
             this.notifySubscribers(this);
+            changed = true;
         }
 
     }
@@ -44,10 +46,6 @@ public class Project extends MapNodeComposite {
         return getName() + " - " + author;
 
     }
-
-
-
-
     private void settName()
     {
         this.setName("Project");
@@ -57,6 +55,7 @@ public class Project extends MapNodeComposite {
     @Override
     public void deleteChild(MapNode child) {
         super.deleteChild(child);
+        changed = true;
         this.notifySubscribers(this);
     }
 }

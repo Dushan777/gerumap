@@ -65,7 +65,15 @@ public class ConceptPainter extends Painter{
             int height = c.getHeight();
             int width = c.getWidth();
             int centerX = x1 + height / 2;
-            int k = MainFrame.getInstance().getActionManager().getColorChooserAction().getTextFieldText().getText().length();
+            int k;
+
+            if(MainFrame.getInstance().getActionManager().getColorChooserAction().getTextFieldText() == null)
+                k = 1;
+            else if(MainFrame.getInstance().getActionManager().getColorChooserAction().getTextFieldText().getText() == null)
+                k = 1;
+            else
+                k = MainFrame.getInstance().getActionManager().getColorChooserAction().getTextFieldText().getText().length();
+
             int centerY = y1 + width / 2;
             int a = (centerX - x) * (centerX - x) / ((height / 2 - k) * (height / 2 - k));
             int b = (centerY - y) * (centerY - y) / ((width / 2 - k / 3) * (width / 2 - k / 3));
