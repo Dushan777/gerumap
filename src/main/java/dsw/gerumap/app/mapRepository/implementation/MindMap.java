@@ -15,7 +15,7 @@ public class MindMap extends MapNodeComposite {
     private boolean template;
     private int numberOfChildren = 0;
 
-    private CommandManager commandManager;
+    private transient CommandManager commandManager;
 
     public MindMap(String name, MapNode parent) {
         super(name, parent);

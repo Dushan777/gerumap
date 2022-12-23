@@ -5,7 +5,7 @@ import java.util.List;
 
 public abstract class IPublisher {
 
-  List<ISubscriber> subscribers = null;
+    transient List<ISubscriber> subscribers = null;
     public void addSubscribers(ISubscriber sub) {
     if(sub == null)
       return;
