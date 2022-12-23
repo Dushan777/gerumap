@@ -37,7 +37,7 @@ public class Concept extends Element{
     {
         position.setLocation(p);
         if(this.getParent() != null)
-            ((Project)this.getParent()).setChanged(true);
+            ((Project)this.getParent().getParent()).setChanged(true);
         this.notifySubscribers(this);
     }
 

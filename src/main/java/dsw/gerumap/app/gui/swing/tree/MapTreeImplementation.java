@@ -68,6 +68,7 @@ public class MapTreeImplementation implements MapTree {
 
         MapNodeComposite mapNode = (MapNodeComposite) ((MapTreeItem)treeModel.getRoot()).getMapNode();
         mapNode.addChild(node);
+        node.setParent(mapNode);
         for(MapNode mapNode1 : node.getChildren())
         {
             mapNode1.setParent(node);
