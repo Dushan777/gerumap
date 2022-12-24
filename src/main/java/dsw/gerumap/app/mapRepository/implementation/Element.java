@@ -31,4 +31,19 @@ public class Element extends MapNode {
         return this == obj;
     }
 
+    public void setColor(int color) {
+        ((Project)this.getParent().getParent()).setChanged(true);
+        this.color = color;
+    }
+
+    public void setLineStroke(int lineStroke) {
+        ((Project)this.getParent().getParent()).setChanged(true);
+        this.lineStroke = lineStroke;
+    }
+
+    @Override
+    public void setName(String name) {
+        super.setName(name);
+        ((Project)this.getParent().getParent()).setChanged(true);
+    }
 }
