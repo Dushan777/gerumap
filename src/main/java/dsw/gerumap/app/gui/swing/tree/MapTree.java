@@ -15,5 +15,5 @@ public interface MapTree {
     void removeChild(MapTreeItem parent);
     MapTreeItem getSelectedNode();
     void loadProject(Project node);
-    void loadMindMap(MindMap mindMap);
+
 }

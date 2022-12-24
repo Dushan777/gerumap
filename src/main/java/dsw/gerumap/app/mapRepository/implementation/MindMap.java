@@ -13,6 +13,7 @@ public class MindMap extends MapNodeComposite {
 
     private boolean template;
     private int numberOfChildren = 0;
+    private String filePath;
 
     private transient CommandManager commandManager;
 
@@ -33,6 +34,7 @@ public class MindMap extends MapNodeComposite {
             if(getChildren().contains(child))
                 return;
             getChildren().add((Element) child);
+            child.setParent(this);
             numberOfChildren++;
             System.out.println(getChildren().size());
 //            for(MapNode element : getChildren())

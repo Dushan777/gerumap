@@ -3,6 +3,7 @@ package dsw.gerumap.app.gui.swing.tree;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
+import dsw.gerumap.app.gui.swing.view.MindMapView;
 import dsw.gerumap.app.mapRepository.composite.MapNode;
 import dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
 import dsw.gerumap.app.mapRepository.factory.FactoryUtils;
@@ -62,31 +63,24 @@ public class MapTreeImplementation implements MapTree {
     }
 
     @Override
-    public void loadProject(Project node) {
-        MapTreeItem loadedProject = new MapTreeItem(node);
+    public void loadProject(Project project) {
+        MapTreeItem loadedProject = new MapTreeItem(project);
         ((MapTreeItem)treeModel.getRoot()).add(loadedProject);
 
         MapNodeComposite mapNode = (MapNodeComposite) ((MapTreeItem)treeModel.getRoot()).getMapNode();
-        mapNode.addChild(node);
-        node.setParent(mapNode);
-        for(MapNode mapNode1 : node.getChildren())
+        mapNode.addChild(project);
+        project.setParent(mapNode);
+        for(MapNode mapNode1 : project.getChildren())
         {
-            mapNode1.setParent(node);
+            mapNode1.setParent(project);
             MapTreeItem mapTreeItem = new MapTreeItem(mapNode1);
             loadedProject.add(mapTreeItem);
-            MindMap mindMap = (MindMap) mapNode1;
-            //for(Map)
-
         }
         
         treeView.expandPath(treeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(treeView);
     }
 
-    @Override
-    public void loadMindMap(MindMap mindMap) {
-
-    }
 
     private MapNode createChild(MapNode parent) {
         return FactoryUtils.getFactory(parent).getNode();

@@ -44,6 +44,8 @@ public class SaveAsAction extends AbstractGerumapAction {
             if (jfc.showSaveDialog(MainFrame.getInstance()) == JFileChooser.APPROVE_OPTION) {
                 projectFile = jfc.getSelectedFile();
                 project.setFilePath(projectFile.getPath());
+                if(!projectFile.getPath().contains(".json"))
+                    project.setFilePath(projectFile.getPath() + ".json");
             } else
                 return;
 
