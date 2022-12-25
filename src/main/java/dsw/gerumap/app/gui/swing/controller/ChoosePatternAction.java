@@ -1,6 +1,7 @@
 package dsw.gerumap.app.gui.swing.controller;
 
 import dsw.gerumap.app.core.ApplicationFramework;
+import dsw.gerumap.app.gui.swing.errorLogger.EventType;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.gui.swing.view.MindMapView;
 import dsw.gerumap.app.mapRepository.composite.MapNode;
@@ -8,6 +9,7 @@ import dsw.gerumap.app.mapRepository.implementation.Concept;
 import dsw.gerumap.app.mapRepository.implementation.Element;
 import dsw.gerumap.app.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.mapRepository.implementation.Project;
+import dsw.gerumap.app.messageGenerator.MessageGeneratorImplementation;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
@@ -40,7 +42,13 @@ public class ChoosePatternAction extends AbstractGerumapAction{
                 }
             }
         });
-
+        if (MainFrame.getInstance().getMapTree().getSelectedNode() == null || !(MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode() instanceof MindMap))
+        {
+            ((MessageGeneratorImplementation) ApplicationFramework.getInstance().getMessageGenerator()).setType(EventType.MUST_CHOOSE_MINDMAP);
+            ApplicationFramework.getInstance().getMessageGenerator().generateMessage();
+            return;
+        }
+        jfc.setCurrentDirectory(new File("src/main/resources/patternGallery"));
         if (jfc.showOpenDialog(MainFrame.getInstance()) == JFileChooser.APPROVE_OPTION) {
             try {
                 File file = jfc.getSelectedFile();
@@ -54,10 +62,6 @@ public class ChoosePatternAction extends AbstractGerumapAction{
                 MindMapView view = ((MindMapView)MainFrame.getInstance().getProjectView().getTabbedPane().getSelectedComponent());
                 MindMap mindMap1 = view.getMindMap();
 
-            //    mindMap1.getChildren().clear();
-
-                System.out.println(m.getChildren().size());
-                System.out.println("m broj dece");
                 view.getMapSelectionModel().getSelectedElements().clear();
 
                 for(MapNode mapNode : m.getChildren())
@@ -69,9 +73,6 @@ public class ChoosePatternAction extends AbstractGerumapAction{
                         ((Concept) mapNode).setSelected(true);
                     }
                 }
-                System.out.println(mindMap1.getChildren().size());
-                System.out.println("mindMap1 broj dece");
-
 
             } catch (Exception ex) {
                 ex.printStackTrace();

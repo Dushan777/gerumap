@@ -1,9 +1,6 @@
 package dsw.gerumap.app.mapRepository.command;
 
 import dsw.gerumap.app.core.ApplicationFramework;
-import dsw.gerumap.app.gui.swing.view.MainFrame;
-
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,9 +28,6 @@ public class CommandManager {
         }
     }
 
-    /*
-     * Metoda koja poziva redo konkretne komande
-     */
     public void undoCommand(){
         if(currentCommand > 0){
             ApplicationFramework.getInstance().getGui().enableRedoAction();

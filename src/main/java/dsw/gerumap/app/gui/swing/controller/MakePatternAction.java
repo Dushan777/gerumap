@@ -30,15 +30,9 @@ public class MakePatternAction extends AbstractGerumapAction{
             ApplicationFramework.getInstance().getMessageGenerator().generateMessage();
             return;
         }
-
-
+        jfc.setCurrentDirectory(new File("src/main/resources/patternGallery"));
         MindMap mindMap = (MindMap) MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode();
         File mindMapFile = null;
-
-     /*   if (!project.isChanged()) {
-            return;
-        }*/
-
 
             if (jfc.showSaveDialog(MainFrame.getInstance()) == JFileChooser.APPROVE_OPTION) {
                 mindMapFile = jfc.getSelectedFile();
@@ -51,6 +45,5 @@ public class MakePatternAction extends AbstractGerumapAction{
 
         ApplicationFramework.getInstance().getSerializer().saveMindMap(mindMap);
 
-      //  project.setChanged(false);
     }
 }

@@ -17,7 +17,6 @@ public class SwingGui implements Gui {
 
     }
 
-
     @Override
     public void start() {
         instance = MainFrame.getInstance();
@@ -26,30 +25,22 @@ public class SwingGui implements Gui {
         instance.setVisible(true);
     }
 
-
     @Override
     public void disableUndoAction() {
         MainFrame.getInstance().getActionManager().getUndoAction().setEnabled(false);
-
     }
-
     @Override
     public void disableRedoAction() {
         MainFrame.getInstance().getActionManager().getRedoAction().setEnabled(false);
-
     }
     @Override
     public void enableRedoAction() {
         MainFrame.getInstance().getActionManager().getRedoAction().setEnabled(true);
-
-
     }
     @Override
     public void enableUndoAction() {
         MainFrame.getInstance().getActionManager().getUndoAction().setEnabled(true);
-
     }
-
     @Override
     public void update(Object notification) {
         JOptionPane.showMessageDialog(new JFrame(), ((Message)notification).toString());

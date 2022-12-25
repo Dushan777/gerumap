@@ -51,21 +51,19 @@ public class MoveState extends State {
                     c.setOriginalY(c.getPosition().y);
                 }
             }
-        } else {
-            // provera da li se nalazi element tu gde je pusteno
-            for (Element e : mindMapView.getMapSelectionModel().getSelectedElements()) {
-                Concept c = (Concept) e;
-                //c.setOriginalX(c.getPosition().x);
-                //c.setOriginalY(c.getPosition().y);
-            }
-
+        }
+        else
+        {
             int movedX = x - clickedX;
             int movedY = y - clickedY;
-           // System.out.println("movedX = " + movedX);
-            //System.out.println("movedY = " + movedY);
             AbstractCommand abstractCommand = new MoveCommand(mindMapView.getMindMap(), mindMapView.getMapSelectionModel().getSelectedElements(), movedX, movedY);
             mindMapView.getMindMap().getCommandManager().addCommand(abstractCommand);
-            //mindMapView.getMapSelectionModel().getSelectedElements().clear();
+            for (MapNode e : mindMapView.getMindMap().getChildren()) {
+                if (e instanceof Concept) {
+                    Concept c = (Concept) e;
+                    c.setSelected(true);
+                }
+            }
         }
 
     }
