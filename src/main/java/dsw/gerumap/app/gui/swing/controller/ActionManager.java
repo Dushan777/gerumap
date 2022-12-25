@@ -32,6 +32,7 @@ public class ActionManager {
     private PictureAction pictureAction;
     private MakePatternAction makePatternAction;
     private ChoosePatternAction choosePatternAction;
+    private PatternGalleryAction patternGalleryAction;
     public ActionManager()
     {
         initialiseActions();
@@ -61,6 +62,7 @@ public class ActionManager {
         pictureAction = new PictureAction();
         makePatternAction = new MakePatternAction();
         choosePatternAction = new ChoosePatternAction();
+        patternGalleryAction = new PatternGalleryAction();
     }
 
 

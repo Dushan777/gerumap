@@ -48,7 +48,7 @@ public class ChoosePatternAction extends AbstractGerumapAction{
             ApplicationFramework.getInstance().getMessageGenerator().generateMessage();
             return;
         }
-        jfc.setCurrentDirectory(new File("src/main/resources/patternGallery"));
+        jfc.setCurrentDirectory(new File("src/main/resources/patternGalleryFiles"));
         if (jfc.showOpenDialog(MainFrame.getInstance()) == JFileChooser.APPROVE_OPTION) {
             try {
                 File file = jfc.getSelectedFile();
