@@ -10,11 +10,9 @@ import java.awt.event.KeyEvent;
 public class PatternGalleryAction extends AbstractGerumapAction {
 
     public PatternGalleryAction() {
-        putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
-                KeyEvent.VK_O, ActionEvent.CTRL_MASK));
-        putValue(SMALL_ICON, loadIcon("/images/open.png"));
-        putValue(NAME, "Open");
-        putValue(SHORT_DESCRIPTION, "Open");
+        putValue(SMALL_ICON, loadIcon("/images/patternGallery.png"));
+        putValue(NAME, "Pattern Gallery");
+        putValue(SHORT_DESCRIPTION, "Pattern Gallery");
 
     }
 
