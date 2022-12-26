@@ -5,7 +5,7 @@ import dsw.gerumap.app.gui.swing.view.PatternGalleryFrame;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
+
 
 public class PatternGalleryAction extends AbstractGerumapAction {
 
@@ -27,7 +27,6 @@ public class PatternGalleryAction extends AbstractGerumapAction {
             }
 
             PatternGalleryFrame frame = new PatternGalleryFrame();
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.pack();
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);

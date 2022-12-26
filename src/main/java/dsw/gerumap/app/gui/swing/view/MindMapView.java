@@ -79,6 +79,7 @@ public class MindMapView extends JPanel implements ISubscriber {
             this.getPainters().add(new ConceptPainter(element));
         else
             this.getPainters().add(new ConnectionPainter(element));
+        element.addSubscribers(this);
     }
     public void removeElement(MindMap mindMap)
     {

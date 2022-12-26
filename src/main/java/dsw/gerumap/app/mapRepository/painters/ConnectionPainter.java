@@ -33,22 +33,5 @@ public class ConnectionPainter extends Painter{
         Shape shape = new Line2D.Float(connection.getFirstConcept().getPosition().x,connection.getFirstConcept().getPosition().y,connection.getSecondConcept().getPosition().x,connection.getSecondConcept().getPosition().y);
         return shape.intersects(c.getPosition().x, c.getPosition().y, c.getWidth(),c.getHeight());
 
-    /*    double firstx = connection.getFirstConcept().getPosition().getX();
-        double firsty = connection.getFirstConcept().getPosition().getY();
-        double secondx = connection.getSecondConcept().getPosition().getX();
-        double secondy = connection.getSecondConcept().getPosition().getY();
-        if((firstx < secondx && firstx <= x && secondx >=x) || (firstx > secondx && firstx >= x && secondx <=x) ) {
-            double k = (firsty - secondy) / (firstx - secondx);
-            double rez = y - firsty - k * x + k * firstx;
-            return rez > -3 && rez < 3;
-        }
-        // ako su firstx i secondx jednaki - ne brise
-        if(firstx == secondx && firstx == x)
-        {
-            return (firsty > secondy && firsty >= y && secondy <= y) || ((firsty < secondy && firsty <= y && secondy >= y));
-
-        }
-
-         return false;*/
     }
 }
