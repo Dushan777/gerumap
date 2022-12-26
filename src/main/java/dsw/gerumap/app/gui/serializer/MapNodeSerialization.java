@@ -11,11 +11,8 @@ public class MapNodeSerialization implements JsonDeserializer<MapNode>, JsonSeri
     @Override
     public MapNode deserialize(JsonElement jsonElement, Type typeOfT, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         JsonObject jsonObject = jsonElement.getAsJsonObject();
-        System.out.println(jsonObject);
         String type = jsonObject.get("type").getAsString();
         JsonElement element = jsonObject.get("properties");
-        System.out.println("element = " + element);
-
 
         try {
             return jsonDeserializationContext.deserialize(element, Class.forName("dsw.gerumap.app.mapRepository.implementation." + type));

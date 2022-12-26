@@ -42,7 +42,6 @@ public class OpenAction extends AbstractGerumapAction{
                 if(!file.getName().contains(".json"))
                     return;
                 Project p = ApplicationFramework.getInstance().getSerializer().loadProject(file);
-                System.out.println(p.getChildren());
                 MainFrame.getInstance().getMapTree().loadProject(p);
 
             } catch (Exception ex) {

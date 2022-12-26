@@ -139,8 +139,6 @@ public class ProjectView extends JPanel implements ISubscriber {
     {
         stateManager.getCurrentState().misKliknut(mindMapView, x, y);
     }
-    // za svaku metodu u mouseController-u postoji metoda u ProjectView-u i u State-u
-    // paintComponent se poziva metodom repaint, ne drugacije
 
     public void misPusten(MindMapView mindMapView, int x, int y)
     {

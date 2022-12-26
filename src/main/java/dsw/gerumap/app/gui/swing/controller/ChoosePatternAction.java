@@ -55,7 +55,6 @@ public class ChoosePatternAction extends AbstractGerumapAction{
                 if(!file.getName().contains(".json"))
                     return;
                 MindMap m = ApplicationFramework.getInstance().getSerializer().loadMindMap(file);
-                System.out.println(m.getChildren());
 
                 if(MainFrame.getInstance().getProjectView() == null || MainFrame.getInstance().getProjectView().getTabbedPane() == null || MainFrame.getInstance().getProjectView().getTabbedPane().getSelectedComponent() == null)
                     return;
