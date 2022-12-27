@@ -7,10 +7,7 @@ import dsw.gerumap.app.gui.swing.view.MindMapView;
 import dsw.gerumap.app.mapRepository.composite.MapNode;
 import dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
 import dsw.gerumap.app.mapRepository.factory.FactoryUtils;
-import dsw.gerumap.app.mapRepository.implementation.Element;
-import dsw.gerumap.app.mapRepository.implementation.MindMap;
-import dsw.gerumap.app.mapRepository.implementation.Project;
-import dsw.gerumap.app.mapRepository.implementation.ProjectExplorer;
+import dsw.gerumap.app.mapRepository.implementation.*;
 
 
 import javax.swing.*;
@@ -74,6 +71,18 @@ public class MapTreeImplementation implements MapTree {
         {
             mapNode1.setParent(project);
             MapTreeItem mapTreeItem = new MapTreeItem(mapNode1);
+            for (MapNode element : ((MapNodeComposite)mapNode1).getChildren()){
+                element.setParent(mapNode1);
+                if(element instanceof Connection){
+                    for(MapNode concept : ((MapNodeComposite) mapNode1).getChildren()){
+                        if(concept instanceof Concept && ((Concept) concept).getPosition().equals(((Connection) element).getFirstConcept().getPosition())){
+                            ((Connection) element).setFirstConcept((Concept) concept);
+                        } else if (concept instanceof Concept && ((Concept) concept).getPosition().equals(((Connection) element).getSecondConcept().getPosition())) {
+                            ((Connection) element).setSecondConcept((Concept) concept);
+                        }
+                    }
+                }
+            }
             loadedProject.add(mapTreeItem);
         }
         

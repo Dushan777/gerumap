@@ -59,12 +59,11 @@ public class MoveState extends State {
             AbstractCommand abstractCommand = new MoveCommand(mindMapView.getMindMap(), mindMapView.getMapSelectionModel().getSelectedElements(), movedX, movedY);
             mindMapView.getMindMap().getCommandManager().addCommand(abstractCommand);
             for (MapNode e : mindMapView.getMindMap().getChildren()) {
-                if (e instanceof Concept) {
+                if (e instanceof Concept && mindMapView.getMapSelectionModel().getSelectedElements().contains(e)) {
                     Concept c = (Concept) e;
                     c.setSelected(true);
                 }
             }
         }
-
     }
 }

@@ -5,6 +5,7 @@ import dsw.gerumap.app.gui.swing.errorLogger.EventType;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.gui.swing.view.MindMapView;
 import dsw.gerumap.app.mapRepository.composite.MapNode;
+import dsw.gerumap.app.mapRepository.composite.MapNodeComposite;
 import dsw.gerumap.app.mapRepository.implementation.*;
 import dsw.gerumap.app.messageGenerator.MessageGeneratorImplementation;
 
@@ -63,6 +64,15 @@ public class ChoosePatternAction extends AbstractGerumapAction{
                 {
                     mindMap1.addChild(mapNode);
                     mapNode.setParent(mindMap1);
+                    if(mapNode instanceof Connection){
+                        for(MapNode concept : ((MapNodeComposite) m).getChildren()){
+                            if(concept instanceof Concept && ((Concept) concept).getPosition().equals(((Connection) mapNode).getFirstConcept().getPosition())){
+                                ((Connection) mapNode).setFirstConcept((Concept) concept);
+                            } else if (concept instanceof Concept && ((Concept) concept).getPosition().equals(((Connection) mapNode).getSecondConcept().getPosition())) {
+                                ((Connection) mapNode).setSecondConcept((Concept) concept);
+                            }
+                        }
+                    }
                     if(mapNode instanceof Concept) {
                         view.getMapSelectionModel().getSelectedElements().add((Element) mapNode);
                         ((Concept) mapNode).setSelected(true);
