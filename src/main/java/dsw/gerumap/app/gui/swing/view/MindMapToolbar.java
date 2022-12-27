@@ -16,7 +16,6 @@ public class MindMapToolbar extends JToolBar {
         add(MainFrame.getInstance().getActionManager().getZoomStateAction());
         add(MainFrame.getInstance().getActionManager().getZoomOutStateAction());
         add(MainFrame.getInstance().getActionManager().getColorChooserAction());
-        add(MainFrame.getInstance().getActionManager().getCenterConceptAction());
 
     }
 

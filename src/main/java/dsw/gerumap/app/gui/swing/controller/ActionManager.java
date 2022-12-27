@@ -28,7 +28,6 @@ public class ActionManager {
     private SaveAsAction saveAsAction;
     private UndoAction undoAction;
     private OpenAction openAction;
-    private CenterConceptAction centerConceptAction;
     private PictureAction pictureAction;
     private MakePatternAction makePatternAction;
     private ChoosePatternAction choosePatternAction;
@@ -58,7 +57,6 @@ public class ActionManager {
         saveAsAction = new SaveAsAction();
         undoAction = new UndoAction();
         openAction = new OpenAction();
-        centerConceptAction = new CenterConceptAction();
         pictureAction = new PictureAction();
         makePatternAction = new MakePatternAction();
         choosePatternAction = new ChoosePatternAction();
